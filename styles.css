@@ -178,3 +178,107 @@ img {
   border-bottom: 1px solid var(--line);
   box-shadow: 0 1px 0 rgba(16, 24, 40, 0.02);
 }
+
+.header-main {
+  position: relative;
+  z-index: 3;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+}
+
+.hamburger,
+.icon-button {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--ink);
+}
+
+.hamburger {
+  flex: 0 0 auto;
+}
+
+.hamburger:active,
+.icon-button:active,
+.btn:active {
+  transform: scale(0.97);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 115px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--navy);
+}
+
+.brand-word span {
+  color: var(--orange);
+}
+
+.brand-orbs {
+  width: 36px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.brand-orbs i {
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  border: 1px solid rgba(16, 24, 40, .1);
+}
+
+.brand-orbs i:nth-child(1) {
+  left: 0;
+  background: #f7d58e;
+}
+
+.brand-orbs i:nth-child(2) {
+  left: 7px;
+  background: #f89a3c;
+}
+
+.brand-orbs i:nth-child(3) {
+  left: 15px;
+  background: #d4e9f7;
+}
+
+.header-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 4px;
+}
+
+.theme-control {
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 6px;
+  background: transparent;
+  color: var(--ink);
+  border-radius: 9px;
+  white-space: nowrap;
+}
+
+.theme-label {
+  display: none;
+  font-size: 13px;
+  font-weight: 700;
+}
