@@ -282,3 +282,115 @@ img {
   font-size: 13px;
   font-weight: 700;
 }
+
+.theme-icon {
+  color: var(--orange);
+  display: grid;
+  place-items: center;
+}
+
+.switch {
+  width: 36px;
+  height: 20px;
+  padding: 2px;
+  border-radius: 99px;
+  background: var(--line);
+  transition: background 180ms var(--ease);
+}
+
+.switch i {
+  width: 16px;
+  height: 16px;
+  display: block;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+  transition: transform 180ms var(--ease);
+}
+
+.switch.is-on {
+  background: var(--orange);
+}
+
+.switch.is-on i {
+  transform: translateX(16px);
+}
+
+.cart-link,
+.account-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.account-link.desktop-only {
+  display: none;
+}
+
+.cart-link b {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  display: grid;
+  place-items: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border: 2px solid var(--surface);
+  border-radius: 99px;
+  background: var(--orange);
+  color: #fff;
+  font-size: 10px;
+}
+
+.mobile-search {
+  position: relative;
+  z-index: 3;
+  padding: 0 0 12px;
+  background: var(--surface);
+}
+
+.search-form {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+}
+
+.search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  color: var(--ink-soft);
+}
+
+.search-input-wrap svg,
+.search-input-wrap i {
+  position: absolute;
+  left: 12px;
+  pointer-events: none;
+}
+
+.search-input-wrap input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px 0 39px;
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  background: var(--surface);
+  color: var(--ink);
+  transition: border-color 160ms var(--ease), box-shadow 160ms var(--ease);
+}
+
+.search-input-wrap input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 17%, transparent);
+  outline: none;
+}
