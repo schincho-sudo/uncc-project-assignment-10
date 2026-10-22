@@ -394,3 +394,116 @@ img {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 17%, transparent);
   outline: none;
 }
+
+.btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  border-radius: 7px;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  transition: transform 150ms var(--ease), background-color 150ms var(--ease), box-shadow 150ms var(--ease);
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 3px 0 rgba(193, 65, 12, .18);
+}
+
+.btn-primary:hover {
+  background: var(--orange-dark);
+  box-shadow: 0 5px 12px rgba(217, 95, 7, .2);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.btn-secondary:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.btn-sm {
+  min-height: 36px;
+  padding: 0 11px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.mobile-menu.is-open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-menu__backdrop {
+  position: absolute;
+  inset: 124px 0 0;
+  background: rgba(2, 6, 23, .56);
+  opacity: 0;
+  transition: opacity 200ms var(--ease);
+}
+
+.mobile-menu.is-open .mobile-menu__backdrop {
+  opacity: 1;
+}
+
+.mobile-menu__panel {
+  position: absolute;
+  top: 124px;
+  bottom: 0;
+  width: min(320px, 86vw);
+  padding: 24px 18px;
+  overflow-y: auto;
+  background: var(--surface);
+  box-shadow: 10px 8px 30px rgba(0, 0, 0, .24);
+  transform: translateX(-105%);
+  transition: transform 250ms var(--ease);
+}
+
+.mobile-menu.is-open .mobile-menu__panel {
+  transform: translateX(0);
+}
+
+.mobile-menu__panel p {
+  margin: 0 10px 11px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.mobile-nav-link {
+  display: grid;
+  grid-template-columns: 24px 1fr 18px;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mobile-nav-link svg:last-child,
+.mobile-nav-link i:last-child {
+  color: var(--ink-soft);
+}
