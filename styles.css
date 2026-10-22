@@ -158,3 +158,23 @@ img {
   display: inline-flex;
 }
 
+.desktop-only,
+.desktop-search,
+.desktop-nav,
+.category-rail,
+.filters-panel {
+  display: none;
+}
+
+.desktop-search {
+  display: none !important;
+}
+
+/* Header */
+.site-header {
+  position: relative;
+  z-index: 20;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 0 rgba(16, 24, 40, 0.02);
+}
