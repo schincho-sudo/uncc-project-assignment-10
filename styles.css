@@ -123,3 +123,38 @@ img {
   border: 0;
 }
 
+[hidden] {
+  display: none !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 16px;
+  transform: translateY(-120%);
+  z-index: 1000;
+  padding: 10px 14px;
+  background: var(--orange);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0 0 8px 8px;
+  transition: transform 160ms var(--ease);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.shell {
+  width: min(100% - 32px, 1240px);
+  margin-inline: auto;
+}
+
+.page {
+  min-height: calc(100vh - 200px);
+}
+
+.mobile-only {
+  display: inline-flex;
+}
+
