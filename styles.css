@@ -707,3 +707,126 @@ h2 {
   background: radial-gradient(ellipse, rgba(15, 23, 42, .18), transparent 67%);
   filter: blur(4px);
 }
+
+.product-image {
+  width: min(100%, 180px);
+  height: 160px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+.sponsored {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  padding: 3px 7px;
+  border: 1px solid var(--blue);
+  border-radius: 4px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .045em;
+}
+
+.product-card__body {
+  flex: 1;
+  padding: 16px 16px 11px;
+}
+
+.product-card__eyebrow {
+  margin-bottom: 4px;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.product-card h3 {
+  margin-bottom: 7px;
+  font-size: 17px;
+  line-height: 1.18;
+}
+
+.product-card__desc {
+  display: -webkit-box;
+  margin-bottom: 10px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.35;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.product-card__price {
+  margin-bottom: 6px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.rating {
+  color: var(--orange);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.rating span {
+  color: var(--ink-soft);
+  letter-spacing: 0;
+}
+
+.product-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 16px 15px;
+}
+
+.compare-check {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.compare-check input,
+.filter-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.compare-check>span,
+.filter-option>span {
+  width: 16px;
+  height: 16px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 3px;
+  background: var(--surface);
+}
+
+.compare-check input:checked+span,
+.filter-option input:checked+span {
+  border-color: var(--blue);
+  background: var(--blue);
+}
+
+.compare-check input:checked+span::after,
+.filter-option input:checked+span::after {
+  content: "✓";
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+}
