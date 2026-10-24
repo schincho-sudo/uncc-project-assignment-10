@@ -65,3 +65,26 @@
       </nav>
     </div>
   </header>
+  <main id="main-content" class="page">
+    <section class="support-page shell" data-support-view>
+      <div class="form-intro"><span class="eyebrow-dot"></span><span>We’re here to help</span>
+        <h1>Support Request Form</h1>
+        <p>Send your question to our team. Fields marked with <b>*</b> are required.</p>
+      </div>
+      <form class="support-form" data-support-form novalidate>
+        <div class="form-field"><label for="name">Name <b>*</b></label><input id="name" name="name" type="text"
+            placeholder="Enter your full name" />
+          <p class="field-message" hidden></p>
+        </div>
+        <div class="form-field"><label for="email">Email <b>*</b></label><input id="email" name="email" type="email"
+            placeholder="name@example.com" />
+          <p class="field-message" hidden></p>
+        </div>
+        <div class="form-field"><label for="message">Message <b>*</b></label><textarea id="message" name="message"
+            placeholder="Describe your issue or question..."></textarea>
+          <p class="field-message" hidden></p>
+        </div>
+        <button class="btn btn-primary support-submit" type="submit">Submit request <i
+            class="fa-solid fa-arrow-right"></i></button>
+      </form>
+    </section>
