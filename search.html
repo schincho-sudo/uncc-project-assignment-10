@@ -49,3 +49,38 @@
             class="fa-solid fa-tag"></i><span>Deals</span></a><a class="nav-link" href="support.html"><i
             class="fa-solid fa-headset"></i><span>Support</span></a><a class="nav-link" href="index.html"><i
             class="fa-solid fa-plus"></i><span>More</span></a></div>
+ </nav>
+    <div class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu__backdrop" data-menu-close></div>
+      <nav class="mobile-menu__panel" aria-label="Mobile navigation">
+        <p>Explore</p><a class="mobile-nav-link" href="index.html"><i
+            class="fa-solid fa-display"></i><span>Home</span><i class="fa-solid fa-arrow-right"></i></a><a
+          class="mobile-nav-link is-active" href="search.html"><i class="fa-solid fa-magnifying-glass"></i><span>Search
+            products</span><i class="fa-solid fa-arrow-right"></i></a><a class="mobile-nav-link" href="product.html"><i
+            class="fa-solid fa-laptop"></i><span>Product details</span><i class="fa-solid fa-arrow-right"></i></a><a
+          class="mobile-nav-link" href="support.html"><i class="fa-solid fa-headset"></i><span>Support</span><i
+            class="fa-solid fa-arrow-right"></i></a><button class="mobile-menu__theme" type="button"
+          data-theme-toggle><i class="fa-regular fa-moon"></i> Switch to dark mode</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="page">
+    <section class="search-page shell">
+      <div class="search-page__top">
+        <div>
+          <p class="section-kicker">Search products</p>
+          <h1>Search Results</h1>
+          <p class="results-meta">Gaming laptop · 24 results</p>
+        </div>
+        <div class="sort-control"><label for="sort">Sort by:</label><select id="sort">
+            <option>Relevance</option>
+            <option>Price: low to high</option>
+            <option>Price: high to low</option>
+          </select></div>
+      </div>
+      <div class="mobile-filter-row"><button class="filter-trigger" type="button" data-filter-open><i
+            class="fa-solid fa-sliders"></i> Filters</button>
+        <div class="mobile-sort"><span>Sort:</span><button type="button" data-filter-open>Relevance <i
+              class="fa-solid fa-chevron-down"></i></button></div>
+      </div>
