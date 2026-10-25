@@ -1071,3 +1071,74 @@ h2 {
 .filter-drawer.is-open .filter-drawer__backdrop {
   opacity: 1;
 }
+
+.filter-drawer__panel {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-height: 83vh;
+  overflow-y: auto;
+  padding: 12px;
+  border-radius: 18px 18px 0 0;
+  background: var(--surface);
+  transform: translateY(105%);
+  transition: transform 260ms var(--ease);
+}
+
+.filter-drawer.is-open .filter-drawer__panel {
+  transform: translateY(0);
+}
+
+.comparison-tray {
+  position: sticky;
+  bottom: 13px;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin-top: 18px;
+  padding: 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.comparison-tray strong {
+  flex: 1;
+  min-width: 130px;
+  font-size: 13px;
+}
+
+.comparison-previews {
+  display: flex;
+}
+
+.comparison-previews img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  margin-right: -5px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #fff;
+}
+
+/* Search Loading */
+.search-loading {
+  padding-block: 44px;
+}
+
+.loading-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 28px;
+}
+
+.loading-heading h1 {
+  margin: 0 0 2px;
+}
