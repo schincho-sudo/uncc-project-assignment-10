@@ -629,6 +629,21 @@ h2 {
   background: linear-gradient(90deg, rgba(4, 13, 37, .96) 0%, rgba(4, 13, 37, .75) 40%, rgba(4, 13, 37, .08) 100%);
 }
 
+.promo-hero {
+  align-items: flex-end;
+  justify-content: flex-start;
+  background-position: center;
+}
+
+.promo-hero::before {
+  background: rgba(4, 13, 37, 0.08);
+}
+
+.hero-shop-button {
+  position: relative;
+  z-index: 1;
+}
+
 .hero__content {
   max-width: 360px;
   color: #fff;
