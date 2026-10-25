@@ -60,7 +60,7 @@ body {
   overflow-x: clip;
   background: var(--canvas);
   color: var(--ink);
-  font-family: "DM Sans", Arial, sans-serif;
+  font-family: "inter", Arial, sans-serif;
   font-size: 16px;
   line-height: 1.45;
   transition: background-color 180ms var(--ease), color 180ms var(--ease);
@@ -216,7 +216,7 @@ img {
   align-items: center;
   gap: 7px;
   min-width: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   font-size: 19px;
   font-weight: 700;
   letter-spacing: -1px;
@@ -563,7 +563,7 @@ p {
 h1,
 h2,
 h3 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   letter-spacing: -.03em;
 }
 
@@ -791,7 +791,7 @@ h2 {
 
 .product-card__price {
   margin-bottom: 6px;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   font-size: 20px;
   font-weight: 700;
 }
@@ -1142,3 +1142,4 @@ h2 {
 .loading-heading h1 {
   margin: 0 0 2px;
 }
+
