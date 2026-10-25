@@ -1,4 +1,4 @@
-# Newegg Responsive Redesign
+## Newegg Responsive Redesign
 
 This is a responsive front-end implementation of our redesigned Newegg website. It is built with plain **HTML, CSS, and JavaScript** and does not need React, a database, an API, or a build step to run.
 
@@ -11,7 +11,26 @@ This is a responsive front-end implementation of our redesigned Newegg website. 
 4. Use the navigation links in the website to move between the four pages.
 
 
-# Built with
+## Run a local server (Optional)
+
+If python is installed, open a terminal in the project folder and run
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open this address in your browser `http://localhost:8000`.
+
+
+## Pages
+
+- `index.html` — Home page
+- `search.html` — Search Results page
+- `product.html` — Product Details page
+- `support.html` — Support Request Form and Request Received confirmation
+
+
+## Built with
 
 HTML5
 CSS3
