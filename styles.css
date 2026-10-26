@@ -1799,3 +1799,121 @@ h2 {
     display: none;
   }
 }
+
+.desktop-only,
+  .desktop-search,
+  .desktop-nav {
+    display: flex;
+  }
+
+  .desktop-search {
+    display: flex !important;
+  }
+
+  .account-link.desktop-only {
+    display: inline-flex;
+  }
+
+  .header-main {
+    gap: 19px;
+  }
+
+  .brand {
+    min-width: 128px;
+    font-size: 21px;
+  }
+
+  .header-actions {
+    gap: 9px;
+  }
+
+  .theme-label {
+    display: inline;
+  }
+
+  .desktop-search {
+    flex: 1;
+    max-width: 530px;
+  }
+
+  .search-form .btn {
+    min-width: 88px;
+  }
+
+  .desktop-nav {
+    min-height: 52px;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 12px;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    right: 12px;
+    bottom: 0;
+    left: 12px;
+    height: 3px;
+    border-radius: 5px 5px 0 0;
+    background: transparent;
+    transition: background 160ms var(--ease);
+  }
+
+  .nav-link:hover {
+    color: var(--blue);
+  }
+
+  .nav-link.is-active::after {
+    background: var(--orange);
+  }
+
+  .home-grid {
+    padding-top: 34px;
+  }
+
+  .hero {
+    min-height: 356px;
+    padding: 44px;
+  }
+
+  .featured-section {
+    padding-top: 45px;
+  }
+
+  .product-card__media {
+    min-height: 210px;
+  }
+
+  .product-image {
+    width: min(100%, 205px);
+    height: 175px;
+  }
+
+  .search-page {
+    padding-top: 35px;
+  }
+
+  .sort-control {
+    display: flex;
+  }
+
+  .search-layout {
+    display: grid;
+    grid-template-columns: 205px minmax(0, 1fr);
+    gap: 20px;
+  }
