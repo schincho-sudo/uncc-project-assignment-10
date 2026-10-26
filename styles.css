@@ -1476,3 +1476,116 @@ h2 {
   border-radius: 50%;
   background: var(--orange);
 }
+
+.form-intro>span:not(.eyebrow-dot) {
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.form-intro h1 {
+  margin: 8px 0 9px;
+}
+
+.form-intro p {
+  margin-bottom: 0;
+  color: var(--ink-soft);
+}
+
+.form-intro p b {
+  color: var(--orange);
+}
+
+.support-form {
+  display: grid;
+  gap: 19px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.form-field {
+  position: relative;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.form-field label b {
+  color: var(--orange);
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  transition: border-color 160ms var(--ease), box-shadow 160ms var(--ease);
+}
+
+.form-field input {
+  height: 46px;
+  padding: 0 12px;
+}
+
+.form-field textarea {
+  min-height: 132px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 17%, transparent);
+  outline: none;
+}
+
+.form-field.is-error input,
+.form-field.is-error textarea {
+  border-color: var(--error);
+}
+
+.form-field.is-valid input,
+.form-field.is-valid textarea {
+  border-color: var(--success);
+}
+
+.field-message {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 6px 0 0;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.is-error .field-message {
+  color: var(--error);
+}
+
+.is-valid .field-message {
+  color: var(--success);
+}
+
+.support-submit {
+  justify-self: start;
+  min-width: 170px;
+}
+
+.success-page {
+  min-height: 560px;
+  display: grid;
+  place-items: center;
+  padding-block: 44px;
+}
