@@ -16,7 +16,7 @@ This is a responsive front-end implementation of our redesigned Newegg website. 
 If python is installed, open a terminal in the project folder and run
 
 ```bash
-python3 -m http.server 8000
+python -m http.server 8000
 ```
 
 Then open this address in your browser `http://localhost:8000`.
@@ -32,9 +32,9 @@ Then open this address in your browser `http://localhost:8000`.
 
 ## Built with
 
-HTML5
-CSS3
-JavaScript
-Font Awesome icons
-Google fonts
+- HTML5
+- CSS3
+- JavaScript
+- Font Awesome icons
+- Google fonts
 
