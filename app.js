@@ -256,3 +256,69 @@ document.querySelectorAll("[data-add-cart]").forEach(function (button) {
     showToast("Added to cart.");
   });
 });
+// Support form validation.
+const supportForm = document.querySelector("[data-support-form]");
+
+function showFieldMessage(field, isValid, message) {
+  const formField = field.closest(".form-field");
+  const messageBox = formField.querySelector(".field-message");
+
+  formField.classList.remove("is-error", "is-valid");
+  messageBox.hidden = false;
+  messageBox.innerHTML = isValid
+    ? '<i class="fa-solid fa-check"></i> ' + message
+    : '<i class="fa-solid fa-circle-exclamation"></i> ' + message;
+  formField.classList.add(isValid ? "is-valid" : "is-error");
+}
+
+function validateField(field) {
+  const value = field.value.trim();
+
+  if (value === "") {
+    showFieldMessage(field, false, "This field is required.");
+    return false;
+  }
+
+  if (field.name === "email" && !value.includes("@") || field.name === "email" && !value.includes(".")) {
+    showFieldMessage(field, false, "Enter a complete email address.");
+    return false;
+  }
+
+  if (field.name === "name") showFieldMessage(field, true, "Name looks valid.");
+  if (field.name === "email") showFieldMessage(field, true, "Email looks valid.");
+  if (field.name === "message") showFieldMessage(field, true, "Message looks good.");
+  return true;
+}
+
+if (supportForm) {
+  const fields = supportForm.querySelectorAll("input, textarea");
+
+  fields.forEach(function (field) {
+    field.addEventListener("blur", function () {
+      if (field.value.trim() !== "") validateField(field);
+    });
+  });
+
+  supportForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    let formIsValid = true;
+
+    fields.forEach(function (field) {
+      if (!validateField(field)) formIsValid = false;
+    });
+
+    if (formIsValid) {
+      document.querySelector("[data-support-view]").hidden = true;
+      document.querySelector("[data-success-view]").hidden = false;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  });
+}
+
+// Copy the confirmation number if the browser allows it.
+document.querySelectorAll("[data-copy-confirmation]").forEach(function (button) {
+  button.addEventListener("click", function () {
+    navigator.clipboard.writeText("#123456");
+    showToast("Confirmation number copied.");
+  });
+});
