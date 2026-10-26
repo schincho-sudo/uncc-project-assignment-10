@@ -137,3 +137,42 @@ document.querySelectorAll(".category-button").forEach(function (button) {
     window.location.href = "search.html";
   });
 });
+// Compare checkboxes update the comparison tray.
+const comparisonTray = document.querySelector(".comparison-tray");
+const compareMessage = document.querySelector(".compare-message");
+
+document.querySelectorAll("[data-compare]").forEach(function (checkbox) {
+  checkbox.addEventListener("change", function () {
+    selectedProducts = document.querySelectorAll("[data-compare]:checked").length;
+
+    if (selectedProducts > 2) {
+      checkbox.checked = false;
+      selectedProducts = 2;
+      showToast("You can compare up to two products at a time.");
+    }
+
+    if (comparisonTray) {
+      comparisonTray.hidden = selectedProducts === 0;
+    }
+
+    if (compareMessage) {
+      compareMessage.textContent = selectedProducts + (selectedProducts === 1 ? " product selected" : " products selected");
+    }
+  });
+});
+
+document.querySelectorAll("[data-clear-compare]").forEach(function (button) {
+  button.addEventListener("click", function () {
+    document.querySelectorAll("[data-compare]").forEach(function (checkbox) {
+      checkbox.checked = false;
+    });
+    selectedProducts = 0;
+    if (comparisonTray) comparisonTray.hidden = true;
+  });
+});
+
+document.querySelectorAll("[data-compare-now]").forEach(function (button) {
+  button.addEventListener("click", function () {
+    showToast("Comparison is ready in this prototype.");
+  });
+});
