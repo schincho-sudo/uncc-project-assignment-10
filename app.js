@@ -78,3 +78,62 @@ function toggleTheme() {
 document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
   button.addEventListener("click", toggleTheme);
 });
+// Mobile hamburger menu.
+function openMenu() {
+  if (!menu || !menuButton) return;
+  menu.classList.add("is-open");
+  menu.setAttribute("aria-hidden", "false");
+  menuButton.setAttribute("aria-label", "Close navigation");
+  menuButton.setAttribute("aria-expanded", "true");
+  menuButton.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+  body.classList.add("menu-is-open");
+}
+
+function closeMenu() {
+  if (!menu || !menuButton) return;
+  menu.classList.remove("is-open");
+  menu.setAttribute("aria-hidden", "true");
+  menuButton.setAttribute("aria-label", "Open navigation");
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  body.classList.remove("menu-is-open");
+}
+
+if (menuButton) {
+  menuButton.addEventListener("click", function () {
+    if (menu.classList.contains("is-open")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+}
+
+document.querySelectorAll("[data-menu-close]").forEach(function (area) {
+  area.addEventListener("click", closeMenu);
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
+});
+
+// Search form sends the user to the search results page.
+document.querySelectorAll("[data-search-form]").forEach(function (form) {
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    showToast("Loading products...");
+
+    setTimeout(function () {
+      window.location.href = "search.html";
+    }, 350);
+  });
+});
+
+// Category buttons go to Search Results.
+document.querySelectorAll(".category-button").forEach(function (button) {
+  button.addEventListener("click", function () {
+    window.location.href = "search.html";
+  });
+});
