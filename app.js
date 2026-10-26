@@ -221,3 +221,38 @@ document.querySelectorAll("[data-load-more]").forEach(function (button) {
     showToast("All prototype products are already shown.");
   });
 });
+// Product gallery and product information tabs.
+document.querySelectorAll(".gallery-thumb").forEach(function (thumb) {
+  thumb.addEventListener("click", function () {
+    document.querySelectorAll(".gallery-thumb").forEach(function (item) {
+      item.classList.remove("is-selected");
+    });
+    thumb.classList.add("is-selected");
+  });
+});
+
+document.querySelectorAll("[data-product-tab]").forEach(function (tab) {
+  tab.addEventListener("click", function () {
+    document.querySelectorAll("[data-product-tab]").forEach(function (item) {
+      item.classList.remove("is-active");
+    });
+    tab.classList.add("is-active");
+  });
+});
+
+// Add to Cart feedback on the product page.
+document.querySelectorAll("[data-add-cart]").forEach(function (button) {
+  button.addEventListener("click", function () {
+    cartCount = cartCount + 1;
+    sessionStorage.setItem("cartCount", cartCount);
+    updateCartCount();
+
+    const feedback = document.querySelector(".cart-feedback");
+    if (feedback) {
+      feedback.innerHTML = '<i class="fa-solid fa-check"></i> Cart (' + cartCount + ") updated";
+      feedback.hidden = false;
+    }
+
+    showToast("Added to cart.");
+  });
+});
