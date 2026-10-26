@@ -176,3 +176,48 @@ document.querySelectorAll("[data-compare-now]").forEach(function (button) {
     showToast("Comparison is ready in this prototype.");
   });
 });
+// Filter drawer on mobile.
+const filterDrawer = document.querySelector(".filter-drawer");
+
+function openFilters() {
+  if (filterDrawer) {
+    filterDrawer.classList.add("is-open");
+    filterDrawer.setAttribute("aria-hidden", "false");
+  }
+}
+
+function closeFilters() {
+  if (filterDrawer) {
+    filterDrawer.classList.remove("is-open");
+    filterDrawer.setAttribute("aria-hidden", "true");
+  }
+}
+
+document.querySelectorAll("[data-filter-open]").forEach(function (button) {
+  button.addEventListener("click", openFilters);
+});
+
+document.querySelectorAll("[data-filter-close]").forEach(function (button) {
+  button.addEventListener("click", closeFilters);
+});
+
+// Remove filter chips when the X is clicked.
+document.querySelectorAll("[data-remove-chip]").forEach(function (chip) {
+  chip.addEventListener("click", function () {
+    chip.remove();
+  });
+});
+
+document.querySelectorAll("[data-clear-chips]").forEach(function (button) {
+  button.addEventListener("click", function () {
+    document.querySelectorAll("[data-remove-chip]").forEach(function (chip) {
+      chip.remove();
+    });
+  });
+});
+
+document.querySelectorAll("[data-load-more]").forEach(function (button) {
+  button.addEventListener("click", function () {
+    showToast("All prototype products are already shown.");
+  });
+});
