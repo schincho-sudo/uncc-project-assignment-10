@@ -1589,3 +1589,108 @@ h2 {
   place-items: center;
   padding-block: 44px;
 }
+
+.success-card {
+  width: min(100%, 500px);
+  padding: 32px 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.success-mark {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 19px;
+  border-radius: 50%;
+  background: var(--success);
+  color: #fff;
+}
+
+.success-card h1 {
+  margin: 6px 0 12px;
+}
+
+.success-card>p {
+  color: var(--ink-soft);
+}
+
+.confirmation-number {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 9px;
+  margin: 20px 0;
+  padding: 13px;
+  border-radius: 7px;
+  background: var(--blue-soft);
+  text-align: left;
+}
+
+.confirmation-number span {
+  color: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.confirmation-number strong {
+  grid-row: 2;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+}
+
+.confirmation-number button {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  padding: 7px;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--blue);
+}
+
+.success-card ul {
+  margin: 0 0 23px;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.success-card li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 10px 0;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.success-card li svg,
+.success-card li i {
+  color: var(--success);
+}
+
+.empty-page {
+  padding-block: 90px;
+  text-align: center;
+}
+
+.site-footer {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  background: var(--blue-soft);
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.site-footer .shell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 13px;
+}
