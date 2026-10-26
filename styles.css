@@ -1694,3 +1694,108 @@ h2 {
   flex-wrap: wrap;
   gap: 6px 13px;
 }
+
+.footer-note {
+  width: 100%;
+  opacity: .75;
+}
+
+.toast {
+  position: fixed;
+  right: 16px;
+  bottom: 18px;
+  z-index: 200;
+  max-width: min(355px, calc(100vw - 32px));
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 15px;
+  border: 1px solid color-mix(in srgb, var(--success) 50%, var(--line));
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  font-size: 14px;
+  font-weight: 700;
+  animation: toast-in 220ms var(--ease);
+}
+
+.toast svg,
+.toast i {
+  color: var(--success);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 600px) {
+  .shell {
+    width: min(100% - 48px, 1240px);
+  }
+
+  .header-main {
+    min-height: 74px;
+  }
+
+  .featured-grid,
+  .results-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skeleton-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-layout {
+    grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr);
+    align-items: start;
+  }
+
+  .support-form {
+    padding: 28px;
+  }
+
+  .support-page {
+    padding-top: 62px;
+  }
+
+  .spec-row {
+    grid-template-columns: 25px 142px 1fr;
+    align-items: center;
+  }
+
+  .spec-row>span {
+    grid-column: 3;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .mobile-only,
+  .hamburger,
+  .mobile-search,
+  .mobile-filter-row {
+    display: none;
+  }
+}
