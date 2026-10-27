@@ -1293,7 +1293,7 @@ h2 {
 
 .product-price {
   margin: 8px 0 22px;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   font-size: 38px;
   font-weight: 700;
   letter-spacing: -.05em;
@@ -1639,7 +1639,7 @@ h2 {
 
 .confirmation-number strong {
   grid-row: 2;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   font-size: 20px;
 }
 
@@ -2019,7 +2019,8 @@ h2 {
     background: var(--blue-soft);
   }
 
-  .hero {
+
+.hero {
     min-height: 370px;
   }
 
