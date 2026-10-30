@@ -322,3 +322,87 @@ document.querySelectorAll("[data-copy-confirmation]").forEach(function (button) 
     showToast("Confirmation number copied.");
   });
 });
+
+// This short list is only used for live search suggestions.
+const assignment11Products = [
+  { title: "MSI Katana 15 Gaming Laptop", category: "Laptops", details: "Intel Core i7, RTX 4060, 16GB RAM" },
+  { title: "Cooler Master Elite Liquid 240", category: "Components", details: "Quiet desktop cooling for gaming and streaming" },
+  { title: "ASUS Zenbook 14 Creator Laptop", category: "Laptops", details: "OLED display, AMD Ryzen 7, 16GB RAM" },
+  { title: 'ASUS ROG Strix OLED 32" Monitor', category: "Monitors", details: "4K gaming display with a high refresh rate" },
+  { title: "PlayStation 5 Slim Disc Console", category: "Gaming", details: "Console with haptic feedback and 3D audio" },
+  { title: "MSI MAG Coreliquid A13 360 Black", category: "Components", details: "AIO cooling for custom desktop systems" },
+];
+
+let assignment11SearchTimer;
+
+// Small button loading helper
+
+function assignment11SetButtonLoading(button, message) {
+  if (!button || button.dataset.assignment11Loading === "true") return;
+
+  button.dataset.assignment11Loading = "true";
+  button.dataset.assignment11OriginalText = button.innerHTML;
+  button.disabled = true;
+  button.classList.add("is-loading");
+  button.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> ' + message;
+}
+
+function assignment11ResetButton(button) {
+  if (!button) return;
+
+  button.disabled = false;
+  button.classList.remove("is-loading");
+  button.dataset.assignment11Loading = "false";
+
+  if (button.dataset.assignment11OriginalText) {
+    button.innerHTML = button.dataset.assignment11OriginalText;
+  }
+}
+
+// Live search suggestions
+function assignment11FindMatches(query) {
+  const searchText = query.trim().toLowerCase();
+
+  if (searchText === "") return assignment11Products;
+
+  return assignment11Products.filter(function (product) {
+    const allProductText = product.title + " " + product.category + " " + product.details;
+    return allProductText.toLowerCase().includes(searchText);
+  });
+}
+
+function assignment11ShowSuggestions(suggestionBox, query) {
+  const matches = assignment11FindMatches(query).slice(0, 4);
+  suggestionBox.innerHTML = "";
+
+  // When the input is empty, hide the suggestion dropdown.
+  if (query.trim() === "") {
+    suggestionBox.hidden = true;
+    return;
+  }
+
+  // When no product matches, display a clear message.
+  if (matches.length === 0) {
+    suggestionBox.innerHTML = '<p class="live-suggestion-empty"><i class="fa-solid fa-magnifying-glass"></i> No products found</p>';
+    suggestionBox.hidden = false;
+    return;
+  }
+
+  matches.forEach(function (product) {
+    const suggestion = document.createElement("button");
+    suggestion.className = "live-suggestion";
+    suggestion.type = "button";
+    suggestion.innerHTML =
+      '<span class="live-suggestion-icon"><i class="fa-solid fa-magnifying-glass"></i></span>' +
+      "<span><strong>" + product.title + "</strong><small>" +
+      product.category + " · " + product.details + "</small></span>";
+
+    suggestion.addEventListener("click", function () {
+      assignment11StartPageLoading("search.html?query=" + encodeURIComponent(product.title), "search");
+    });
+
+    suggestionBox.appendChild(suggestion);
+  });
+
+  suggestionBox.hidden = false;
+}
