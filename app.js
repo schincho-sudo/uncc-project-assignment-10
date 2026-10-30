@@ -406,3 +406,38 @@ function assignment11ShowSuggestions(suggestionBox, query) {
 
   suggestionBox.hidden = false;
 }
+function assignment11SyncSearchInputs(currentInput, value) {
+  document.querySelectorAll("[data-search-form] input[name='query']").forEach(function (input) {
+    if (input !== currentInput) input.value = value;
+  });
+}
+
+// Make a suggestion dropdown for each desktop or mobile search input.
+document.querySelectorAll("[data-search-form] input[name='query']").forEach(function (input) {
+  const inputWrap = input.closest(".search-input-wrap");
+  if (!inputWrap) return;
+
+  const suggestionBox = document.createElement("div");
+  suggestionBox.className = "live-suggestions";
+  suggestionBox.hidden = true;
+  suggestionBox.setAttribute("role", "listbox");
+  inputWrap.appendChild(suggestionBox);
+
+  input.addEventListener("input", function () {
+    assignment11SyncSearchInputs(input, input.value);
+    assignment11ShowSuggestions(suggestionBox, input.value);
+    assignment11UpdateSearchResults(input.value, true);
+  });
+
+  input.addEventListener("focus", function () {
+    if (input.value.trim() !== "") {
+      assignment11ShowSuggestions(suggestionBox, input.value);
+    }
+  });
+
+  input.addEventListener("blur", function () {
+    setTimeout(function () {
+      suggestionBox.hidden = true;
+    }, 160);
+  });
+});
