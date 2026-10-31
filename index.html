@@ -8,9 +8,7 @@
   <title>Newegg Redesign | Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-  rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -91,65 +89,77 @@
       </aside>
 
       <div class="home-main">
-        <div class="home-main">
-          <section class="hero promo-hero" style="--hero-image: url('./assets/Promotional-image.png')">
-            <a class="btn btn-primary hero-shop-button" href="search.html">
+        <section class="hero" style="--hero-image: url('./assets/hero-tech.png')">
+          <div class="hero__content">
+            <h1>
+              New tech,
+
+              <em>built for you.</em>
+            </h1>
+
+            <p>
+              Discover performance-ready laptops, components,
+              and everyday essentials.
+            </p>
+
+            <a class="btn btn-primary" href="search.html">
               Shop now <i class="fa-solid fa-arrow-right"></i>
             </a>
-          </section>
+          </div>
+        </section>
 
-          <section class="featured-section">
-            <div class="section-heading">
-              <div><span class="section-kicker">Curated for your workflow</span>
-                <h2>Featured products</h2>
-              </div><a class="text-link" href="search.html">See all <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-            <div class="featured-grid">
-              <article class="product-card">
-                <div class="product-card__media"><span class="sponsored">Sponsored</span><img class="product-image"
-                    src="./assets/MSIKatana.png" alt="Katana 15 Gaming Laptop" /></div>
-                <div class="product-card__body">
-                  <p class="product-card__eyebrow">Laptops</p>
-                  <h3>MSI Katana 15 Gaming Laptop</h3>
-                  <p class="product-card__desc">15.6&quot; FHD 144 Hz | Intel Core i7 | RTX 4060 | 16GB RAM</p>
-                  <div class="product-card__price">$499.99</div>
-                  <div class="rating">★★★★★ <span>892</span></div>
-                </div>
-                <div class="product-card__actions"><label class="compare-check"><input type="checkbox"
-                      data-compare /><span></span>Compare</label><a class="btn btn-primary btn-sm"
-                    href="product.html">View product</a></div>
-              </article>
-              <article class="product-card">
-                <div class="product-card__media"><img class="product-image" src="./assets/CoolerMaster.png"
-                    alt="Elite Liquid desktop" /></div>
-                <div class="product-card__body">
-                  <p class="product-card__eyebrow">Components</p>
-                  <h3>Cooler Master Elite Liquid 240</h3>
-                  <p class="product-card__desc">Quiet performance desktop for gaming and streaming.</p>
-                  <div class="product-card__price">$999.99</div>
-                  <div class="rating">★★★★★ <span>29</span></div>
-                </div>
-                <div class="product-card__actions"><label class="compare-check"><input type="checkbox"
-                      data-compare /><span></span>Compare</label><a class="btn btn-primary btn-sm"
-                    href="product.html">View product</a></div>
-              </article>
-              <article class="product-card">
-                <div class="product-card__media"><img class="product-image" src="./assets/AsusZenbook.png"
-                    alt="Zenbook creator laptop" /></div>
-                <div class="product-card__body">
-                  <p class="product-card__eyebrow">Laptops</p>
-                  <h3>ASUS Zenbook 14 Laptop</h3>
-                  <p class="product-card__desc">14&quot; 2.8K OLED | AMD Ryzen 7 | 16GB RAM</p>
-                  <div class="product-card__price">$1,299.99</div>
-                  <div class="rating">★★★★★ <span>291</span></div>
-                </div>
-                <div class="product-card__actions"><label class="compare-check"><input type="checkbox"
-                      data-compare /><span></span>Compare</label><a class="btn btn-primary btn-sm"
-                    href="product.html">View product</a></div>
-              </article>
-            </div>
-          </section>
-        </div>
+        <section class="featured-section">
+          <div class="section-heading">
+            <div><span class="section-kicker">Curated for your workflow</span>
+              <h2>Featured products</h2>
+            </div><a class="text-link" href="search.html">See all <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="featured-grid">
+            <article class="product-card">
+              <div class="product-card__media"><span class="sponsored">Sponsored</span><img class="product-image"
+                  src="./assets/MSIKatana.png" alt="Katana 15 Gaming Laptop" /></div>
+              <div class="product-card__body">
+                <p class="product-card__eyebrow">Laptops</p>
+                <h3>MSI Katana 15 Gaming Laptop</h3>
+                <p class="product-card__desc">15.6&quot; FHD 144 Hz | Intel Core i7 | RTX 4060 | 16GB RAM</p>
+                <div class="product-card__price">$499.99</div>
+                <div class="rating">★★★★★ <span>892</span></div>
+              </div>
+              <div class="product-card__actions"><label class="compare-check"><input type="checkbox"
+                    data-compare /><span></span>Compare</label><a class="btn btn-primary btn-sm"
+                  href="product.html">View product</a></div>
+            </article>
+            <article class="product-card">
+              <div class="product-card__media"><img class="product-image" src="./assets/CoolerMaster.png"
+                  alt="Elite Liquid desktop" /></div>
+              <div class="product-card__body">
+                <p class="product-card__eyebrow">Components</p>
+                <h3>Cooler Master Elite Liquid 240</h3>
+                <p class="product-card__desc">Quiet performance desktop for gaming and streaming.</p>
+                <div class="product-card__price">$999.99</div>
+                <div class="rating">★★★★★ <span>29</span></div>
+              </div>
+              <div class="product-card__actions"><label class="compare-check"><input type="checkbox"
+                    data-compare /><span></span>Compare</label><a class="btn btn-primary btn-sm"
+                  href="product.html">View product</a></div>
+            </article>
+            <article class="product-card">
+              <div class="product-card__media"><img class="product-image" src="./assets/AsusZenbook.png"
+                  alt="Zenbook creator laptop" /></div>
+              <div class="product-card__body">
+                <p class="product-card__eyebrow">Laptops</p>
+                <h3>ASUS Zenbook 14 Laptop</h3>
+                <p class="product-card__desc">14&quot; 2.8K OLED | AMD Ryzen 7 | 16GB RAM</p>
+                <div class="product-card__price">$1,299.99</div>
+                <div class="rating">★★★★★ <span>291</span></div>
+              </div>
+              <div class="product-card__actions"><label class="compare-check"><input type="checkbox"
+                    data-compare /><span></span>Compare</label><a class="btn btn-primary btn-sm"
+                  href="product.html">View product</a></div>
+            </article>
+          </div>
+        </section>
+      </div>
     </section>
   </main>
 
