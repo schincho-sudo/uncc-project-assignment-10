@@ -441,3 +441,117 @@ document.querySelectorAll("[data-search-form] input[name='query']").forEach(func
     }, 160);
   });
 });
+// Search Results skeleton and empty state
+const assignment11ResultsGrid = document.querySelector(".results-grid");
+const assignment11ResultsArea = document.querySelector(".results-area") ||
+  (assignment11ResultsGrid ? assignment11ResultsGrid.parentElement : null);
+const assignment11ResultsMeta = document.querySelector(".results-meta");
+let assignment11LoadingBox;
+let assignment11EmptyBox;
+
+if (assignment11ResultsGrid && assignment11ResultsArea) {
+  assignment11LoadingBox = document.createElement("div");
+  assignment11LoadingBox.className = "live-search-loading";
+  assignment11LoadingBox.hidden = true;
+  assignment11LoadingBox.innerHTML =
+    '<div class="loading-heading"><span class="loader"></span>' +
+    '<div><h2>Searching products...</h2>' +
+    '<p>Updating your results.</p></div></div>' +
+    '<div class="skeleton-grid">' +
+    '<div class="skeleton-card"><div></div><i></i><i></i><i></i></div>' +
+    '<div class="skeleton-card"><div></div><i></i><i></i><i></i></div>' +
+    '<div class="skeleton-card"><div></div><i></i><i></i><i></i></div>' +
+    "</div>";
+
+  assignment11EmptyBox = document.createElement("div");
+  assignment11EmptyBox.className = "live-empty-state";
+  assignment11EmptyBox.hidden = true;
+  assignment11EmptyBox.innerHTML =
+    '<i class="fa-solid fa-magnifying-glass"></i>' +
+    '<h2>No products found</h2>' +
+    '<p>Try a different product name, category, or keyword.</p>';
+
+  assignment11ResultsGrid.insertAdjacentElement(
+    "beforebegin",
+    assignment11LoadingBox
+  );
+  assignment11ResultsGrid.insertAdjacentElement(
+    "afterend",
+    assignment11EmptyBox
+  );
+  assignment11ResultsArea.setAttribute("aria-busy", "false");
+}
+
+function assignment11UpdateSearchResults(query, showLoading) {
+  if (!assignment11ResultsGrid) return;
+
+  clearTimeout(assignment11SearchTimer);
+
+  function finishSearch() {
+    const searchText = query.trim().toLowerCase();
+    let matchCount = 0;
+
+    assignment11ResultsGrid.querySelectorAll(".product-card").forEach(function (card) {
+      const cardMatches = searchText === "" ||
+        card.textContent.toLowerCase().includes(searchText);
+      card.hidden = !cardMatches;
+      if (cardMatches) matchCount = matchCount + 1;
+    });
+
+    if (assignment11LoadingBox) assignment11LoadingBox.hidden = true;
+    if (assignment11EmptyBox) assignment11EmptyBox.hidden = matchCount !== 0;
+
+    assignment11ResultsGrid.hidden = matchCount === 0;
+    assignment11ResultsArea.setAttribute("aria-busy", "false");
+
+    const loadMoreButton = document.querySelector("[data-load-more]");
+    if (loadMoreButton) loadMoreButton.hidden = matchCount === 0;
+
+    if (assignment11ResultsMeta) {
+      if (matchCount === 0) {
+        assignment11ResultsMeta.textContent = 'No matches for "' + query + '"';
+      } else if (searchText === "") {
+        assignment11ResultsMeta.textContent = matchCount + " products available";
+      } else {
+        assignment11ResultsMeta.textContent = matchCount +
+          (matchCount === 1 ? " product found" : " products found") +
+          ' for "' + query + '"';
+      }
+    }
+
+    assignment11ResultsGrid.classList.remove("live-results-updated");
+    void assignment11ResultsGrid.offsetWidth;
+    assignment11ResultsGrid.classList.add("live-results-updated");
+  }
+
+  if (!showLoading) {
+    finishSearch();
+    return;
+  }
+
+  assignment11ResultsGrid.hidden = true;
+  if (assignment11LoadingBox) assignment11LoadingBox.hidden = false;
+  if (assignment11EmptyBox) assignment11EmptyBox.hidden = true;
+  assignment11ResultsArea.setAttribute("aria-busy", "true");
+
+  if (assignment11ResultsMeta) {
+    assignment11ResultsMeta.textContent = "Searching products...";
+  }
+
+  assignment11SearchTimer = setTimeout(finishSearch, 420);
+}
+
+// Read a search word from the URL after Search Results opens.
+if (assignment11ResultsGrid) {
+  const assignment11QueryFromUrl =
+    new URLSearchParams(window.location.search).get("query");
+
+  if (assignment11QueryFromUrl) {
+    document.querySelectorAll("[data-search-form] input[name='query']").forEach(function (input) {
+      input.value = assignment11QueryFromUrl;
+    });
+    assignment11UpdateSearchResults(assignment11QueryFromUrl, true);
+  } else {
+    assignment11UpdateSearchResults("", false);
+  }
+}
