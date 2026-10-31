@@ -555,3 +555,59 @@ if (assignment11ResultsGrid) {
     assignment11UpdateSearchResults("", false);
   }
 }
+// This listener captures the click first so your existing code above stays unchanged.
+document.addEventListener("click", function (event) {
+  const loadMoreButton = event.target.closest("[data-load-more]");
+  const filterButton = event.target.closest(".filter-apply");
+  const addToCartButton = event.target.closest("[data-add-cart]");
+
+  if (loadMoreButton) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    assignment11SetButtonLoading(loadMoreButton, "Loading...");
+
+    setTimeout(function () {
+      assignment11ResetButton(loadMoreButton);
+      showToast("All prototype products are already shown.");
+    }, 650);
+
+    return;
+  }
+
+  if (filterButton) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    assignment11SetButtonLoading(filterButton, "Updating...");
+
+    setTimeout(function () {
+      assignment11ResetButton(filterButton);
+      closeFilters();
+      showToast("Updating results...");
+    }, 520);
+
+    return;
+  }
+
+  if (addToCartButton) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    assignment11SetButtonLoading(addToCartButton, "Adding...");
+
+    setTimeout(function () {
+      cartCount = cartCount + 1;
+      sessionStorage.setItem("cartCount", cartCount);
+      updateCartCount();
+      assignment11ResetButton(addToCartButton);
+
+      const feedback = document.querySelector(".cart-feedback");
+      if (feedback) {
+        feedback.innerHTML =
+          '<i class="fa-solid fa-check"></i> Cart (' +
+          cartCount + ") updated";
+        feedback.hidden = false;
+      }
+
+      showToast("Added to cart.");
+    }, 520);
+  }
+}, true);
