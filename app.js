@@ -383,7 +383,7 @@ function assignment11ShowSuggestions(suggestionBox, query) {
 
   // When no product matches, display a clear message.
   if (matches.length === 0) {
-    suggestionBox.innerHTML = '<p class="live-suggestion-empty"><i class="fa-solid fa-magnifying-glass"></i> No products found</p>';
+    suggestionBox.innerHTML = '<p class="live-suggestion-empty"><i class="fa-solid fa-magnifying-glass"></i> No results found</p>';
     suggestionBox.hidden = false;
     return;
   }
@@ -468,7 +468,7 @@ if (assignment11ResultsGrid && assignment11ResultsArea) {
   assignment11EmptyBox.hidden = true;
   assignment11EmptyBox.innerHTML =
     '<i class="fa-solid fa-magnifying-glass"></i>' +
-    '<h2>No products found</h2>' +
+    '<h2>No results found</h2>' +
     '<p>Try a different product name, category, or keyword.</p>';
 
   assignment11ResultsGrid.insertAdjacentElement(
