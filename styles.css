@@ -2198,6 +2198,15 @@ h2 {
   font-weight: 700;
 }
 
+.search-input-wrap .live-suggestion-empty i {
+  position: static !important;
+  left: auto !important;
+  display: inline-block;
+  flex: 0 0 auto;
+  margin: 0;
+  pointer-events: auto;
+}
+
 .live-search-loading {
   padding-top: 12px;
 }
