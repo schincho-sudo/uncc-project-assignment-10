@@ -8,10 +8,7 @@
   <title>Newegg Redesign | Search Results</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-  rel="stylesheet"
-/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -20,7 +17,8 @@
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="header-main shell"><button class="hamburger" type="button" data-menu-toggle aria-label="Open navigation"
-        aria-expanded="false"><i class="fa-solid fa-bars"></i></button><a class="brand" href="index.html" aria-label="Newegg home">
+        aria-expanded="false"><i class="fa-solid fa-bars"></i></button><a class="brand" href="index.html"
+        aria-label="Newegg home">
         <img class="brand-logo" src="./assets/NeweggLogo.png" alt="Newegg" />
       </a>
       <form class="search-form desktop-search" data-search-form><label class="sr-only" for="desktop-search">Search
@@ -28,7 +26,7 @@
         <div class="search-input-wrap"><i class="fa-solid fa-magnifying-glass"></i><input id="desktop-search"
             name="query" placeholder="Search products" /></div><button class="btn btn-primary"
           type="submit">Search</button>
-</form>
+      </form>
       <div class="header-actions"><button class="theme-control" type="button" data-theme-toggle><span
             class="theme-label">Dark mode</span><span class="switch"><i></i></span><span class="theme-icon"><i
               class="fa-regular fa-sun"></i></span></button><a class="account-link desktop-only" href="support.html"><i
@@ -44,25 +42,30 @@
       </form>
     </div>
     <nav class="desktop-nav" aria-label="Primary navigation">
-  <div class="shell nav-inner">
-    <a class="nav-link" href="index.html?tab=categories" data-nav="categories"><span>Categories</span></a>
-    <a class="nav-link is-active" href="search.html?tab=trending" data-nav="trending"><i class="fa-solid fa-arrow-trend-up"></i><span>New &amp; Trending</span></a>
-    <a class="nav-link" href="search.html?tab=deals" data-nav="deals"><i class="fa-solid fa-tag"></i><span>Deals</span></a>
-    <a class="nav-link" href="support.html?tab=support" data-nav="support"><i class="fa-solid fa-headset"></i><span>Support</span></a>
-    <a class="nav-link" href="index.html?tab=more" data-nav="more"><i class="fa-solid fa-plus"></i><span>More</span></a>
-  </div>
-</nav>
+      <div class="shell nav-inner">
+        <a class="nav-link" href="index.html?tab=categories" data-nav="categories"><span>Categories</span></a>
+        <a class="nav-link is-active" href="search.html?tab=trending" data-nav="trending"><i
+            class="fa-solid fa-arrow-trend-up"></i><span>New &amp; Trending</span></a>
+        <a class="nav-link" href="search.html?tab=deals" data-nav="deals"><i
+            class="fa-solid fa-tag"></i><span>Deals</span></a>
+        <a class="nav-link" href="support.html?tab=support" data-nav="support"><i
+            class="fa-solid fa-headset"></i><span>Support</span></a>
+        <a class="nav-link" href="index.html?tab=more" data-nav="more"><i
+            class="fa-solid fa-plus"></i><span>More</span></a>
+      </div>
+    </nav>
     <div class="mobile-menu" aria-hidden="true">
       <div class="mobile-menu__backdrop" data-menu-close></div>
       <nav class="mobile-menu__panel" aria-label="Mobile navigation">
         <p>Explore</p><a class="mobile-nav-link" href="index.html"><i
             class="fa-solid fa-display"></i><span>Home</span><i class="fa-solid fa-arrow-right"></i></a><a
-          class="mobile-nav-link is-active" href="search.html"><i class="fa-solid fa-magnifying-glass"></i><span>Search
-            products</span><i class="fa-solid fa-arrow-right"></i></a><a class="mobile-nav-link" href="product.html"><i
-            class="fa-solid fa-laptop"></i><span>Product details</span><i class="fa-solid fa-arrow-right"></i></a><a
+          class="mobile-nav-link is-active" href="search.html"><i class="fa-solid fa-arrow-trend-up"></i><span>New &amp;
+            Trending</span><i class="fa-solid fa-arrow-right"></i></a><a class="mobile-nav-link" href="search.html"><i
+            class="fa-solid fa-tag"></i><span>Deals</span><i class="fa-solid fa-arrow-right"></i></a><a
           class="mobile-nav-link" href="support.html"><i class="fa-solid fa-headset"></i><span>Support</span><i
-            class="fa-solid fa-arrow-right"></i></a><button class="mobile-menu__theme" type="button"
-          data-theme-toggle><i class="fa-regular fa-moon"></i> Switch to dark mode</button>
+            class="fa-solid fa-arrow-right"></i></a>
+        <button class="mobile-menu__theme" type="button" data-theme-toggle><i class="fa-regular fa-moon"></i> Switch to
+          dark mode</button>
       </nav>
     </div>
   </header>
@@ -86,7 +89,7 @@
         <div class="mobile-sort"><span>Sort:</span><button type="button" data-filter-open>Relevance <i
               class="fa-solid fa-chevron-down"></i></button></div>
       </div>
-<div class="chips"><button class="chip" type="button" data-remove-chip>MSI <span>×</span></button><button
+      <div class="chips"><button class="chip" type="button" data-remove-chip>MSI <span>×</span></button><button
           class="chip" type="button" data-remove-chip>$500 – $1000 <span>×</span></button><button class="chip"
           type="button" data-remove-chip>NVIDIA RTX <span>×</span></button><button class="chip chip-clear" type="button"
           data-clear-chips>Clear all</button></div>
@@ -129,7 +132,7 @@
               <div class="product-card__actions"><label class="compare-check"><input type="checkbox"
                     data-compare /><span></span>Compare</label><a class="btn btn-primary btn-sm"
                   href="product.html">View product</a></div>
-</article>
+            </article>
             <article class="product-card">
               <div class="product-card__media"><img class="product-image" src="./assets/CoolerMaster.png"
                   alt="Elite Liquid desktop" /></div>
@@ -171,14 +174,15 @@
               <div class="product-card__actions"><label class="compare-check"><input type="checkbox"
                     data-compare /><span></span>Compare</label><a class="btn btn-primary btn-sm"
                   href="product.html">View product</a></div>
- </article>
+            </article>
             <article class="product-card">
               <div class="product-card__media"><img class="product-image" src="./assets/PS5.png"
                   alt="Nova Pro desktop" /></div>
               <div class="product-card__body">
                 <p class="product-card__eyebrow">Components</p>
                 <h3>PlayStation 5 Slim Disc Console</h3>
-                <p class="product-card__desc">Discover a deeper gaming experience with support for haptic feedback, adaptive triggers, and 3D Audio technology.</p>
+                <p class="product-card__desc">Discover a deeper gaming experience with support for haptic feedback,
+                  adaptive triggers, and 3D Audio technology.</p>
                 <div class="product-card__price">$649.99</div>
                 <div class="rating">★★★★★ <span>143</span></div>
               </div>
@@ -202,7 +206,8 @@
             </article>
           </div>
           <div class="comparison-tray" hidden>
-            <div class="comparison-previews"><img src="./assets/MSIKatana.png" alt="MSI Katana 15 Gaming Laptop" /><img src="./assets/CoolerMaster.png" alt="Cooler Master Elite Liquid 240" /></div><strong
+            <div class="comparison-previews"><img src="./assets/MSIKatana.png" alt="MSI Katana 15 Gaming Laptop" /><img
+                src="./assets/CoolerMaster.png" alt="Cooler Master Elite Liquid 240" /></div><strong
               class="compare-message">2 product selected</strong><button class="btn btn-primary btn-sm" type="button"
               data-compare-now>Compare now</button><button class="text-button" type="button" data-clear-compare>Clear
               selection</button>
@@ -211,7 +216,7 @@
         </section>
       </div>
     </section>
-<div class="filter-drawer" aria-hidden="true">
+    <div class="filter-drawer" aria-hidden="true">
       <div class="filter-drawer__backdrop" data-filter-close></div>
       <aside class="filter-drawer__panel">
         <div class="filter-content">
