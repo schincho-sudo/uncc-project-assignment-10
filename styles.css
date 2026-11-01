@@ -2236,6 +2236,112 @@ h2 {
   color: var(--blue);
 }
 
+.live-empty-state h2 {
+  margin-bottom: 7px;
+  color: var(--ink);
+  font-size: 20px;
+}
+
+.live-empty-state p {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.results-grid.live-results-updated {
+  animation: live-result-in 220ms var(--ease);
+}
+
+.btn:disabled,
+.filter-apply:disabled {
+  cursor: wait;
+  opacity: 0.78;
+}
+
+.btn.is-loading {
+  pointer-events: none;
+}
+
+.live-submit-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -6px 0 0;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
+  animation: live-result-in 180ms var(--ease);
+}
+
+@keyframes live-suggestion-in {
+  from {
+    opacity: 0;
+    transform: translateY(-5px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes live-result-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .desktop-search .live-suggestions {
+    min-width: 360px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-suggestions,
+  .live-empty-state,
+  .results-grid.live-results-updated,
+  .live-submit-status {
+    animation: none;
+  }
+}
+
+/* Assignment 11: full-page skeletons before page navigation */
+.page-loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  overflow-y: auto;
+  background: var(--canvas);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms var(--ease);
+}
+
+.page-loading-overlay.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.page-loading__content {
+  min-height: 100%;
+  padding-top: 68px;
+  padding-bottom: 60px;
+  animation: live-result-in 200ms var(--ease);
+}
+
+.page-loading__heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 28px;
+}
+
 .page-loading__product-layout {
   display: grid;
   gap: 28px;
