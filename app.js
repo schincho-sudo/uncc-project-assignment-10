@@ -611,3 +611,41 @@ document.addEventListener("click", function (event) {
     }, 520);
   }
 }, true);
+// Support form loading feedback
+// This listener keeps your current validation but adds a visible submitting state.
+if (supportForm) {
+  const assignment11SupportButton =
+    supportForm.querySelector("button[type='submit']");
+  const assignment11SupportStatus = document.createElement("p");
+
+  assignment11SupportStatus.className = "live-submit-status";
+  assignment11SupportStatus.hidden = true;
+  supportForm.appendChild(assignment11SupportStatus);
+
+  supportForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    let formIsValid = true;
+    supportForm.querySelectorAll("input, textarea").forEach(function (field) {
+      if (!validateField(field)) formIsValid = false;
+    });
+
+    if (formIsValid) {
+      assignment11SetButtonLoading(
+        assignment11SupportButton,
+        "Submitting..."
+      );
+      assignment11SupportStatus.hidden = false;
+      assignment11SupportStatus.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> ' +
+        'Sending your support request...';
+
+      setTimeout(function () {
+        document.querySelector("[data-support-view]").hidden = true;
+        document.querySelector("[data-success-view]").hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 850);
+    }
+  }, true);
+}
