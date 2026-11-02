@@ -2,6 +2,7 @@
 let cartCount = Number(sessionStorage.getItem("cartCount")) || 0;
 let darkMode = localStorage.getItem("theme") === "dark";
 let selectedProducts = 0;
+let extraProductsLoaded = false;
 
 const body = document.body;
 const menu = document.querySelector(".mobile-menu");
@@ -491,11 +492,18 @@ function assignment11UpdateSearchResults(query, showLoading) {
     let matchCount = 0;
 
     assignment11ResultsGrid.querySelectorAll(".product-card").forEach(function (card) {
-      const cardMatches = searchText === "" ||
-        card.textContent.toLowerCase().includes(searchText);
-      card.hidden = !cardMatches;
-      if (cardMatches) matchCount = matchCount + 1;
-    });
+  const cardMatches = searchText === "" ||
+    card.textContent.toLowerCase().includes(searchText);
+
+  const isExtraProduct = card.classList.contains("extra-product");
+  const canShow = !isExtraProduct || extraProductsLoaded || searchText !== "";
+
+  card.hidden = !(cardMatches && canShow);
+
+  if (!card.hidden) {
+    matchCount = matchCount + 1;
+  }
+});
 
     if (assignment11LoadingBox) assignment11LoadingBox.hidden = true;
     if (assignment11EmptyBox) assignment11EmptyBox.hidden = matchCount !== 0;
@@ -504,7 +512,10 @@ function assignment11UpdateSearchResults(query, showLoading) {
     assignment11ResultsArea.setAttribute("aria-busy", "false");
 
     const loadMoreButton = document.querySelector("[data-load-more]");
-    if (loadMoreButton) loadMoreButton.hidden = matchCount === 0;
+
+if (loadMoreButton) {
+  loadMoreButton.hidden = extraProductsLoaded || searchText !== "";
+}
 
     if (assignment11ResultsMeta) {
       if (matchCount === 0) {
@@ -561,17 +572,29 @@ document.addEventListener("click", function (event) {
   const addToCartButton = event.target.closest("[data-add-cart]");
 
   if (loadMoreButton) {
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    assignment11SetButtonLoading(loadMoreButton, "Loading...");
+  event.preventDefault();
+  event.stopImmediatePropagation();
 
-    setTimeout(function () {
-      assignment11ResetButton(loadMoreButton);
-      showToast("All prototype products are already shown.");
-    }, 650);
+  assignment11SetButtonLoading(loadMoreButton, "Loading...");
 
-    return;
-  }
+  setTimeout(function () {
+    extraProductsLoaded = true;
+
+    assignment11ResetButton(loadMoreButton);
+
+    const searchInput = document.querySelector(
+      "[data-search-form] input[name='query']"
+    );
+
+    const query = searchInput ? searchInput.value : "";
+
+    assignment11UpdateSearchResults(query, false);
+    showToast("All products loaded.");
+  }, 650);
+
+  return;
+}
+
 
   if (filterButton) {
     event.preventDefault();
