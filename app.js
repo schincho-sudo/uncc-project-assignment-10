@@ -649,3 +649,68 @@ if (supportForm) {
     }
   }, true);
 }
+// Assignment 11: Full-page skeletons before navigation
+function assignment11GetPageLoadingMarkup(pageType) {
+  if (pageType === "search") {
+    return '<div class="page-loading__heading">' +
+      '<span class="page-loading__spinner"></span>' +
+      '<div><h1>Loading search results...</h1>' +
+      '<p>Finding the best products for you.</p></div></div>' +
+      '<div class="page-loading__search-layout">' +
+      '<aside class="page-loading__filters">' +
+      '<b>FILTERS</b><span></span><span></span><span></span>' +
+      '<strong>BRAND</strong><i></i><i></i><i></i><i></i>' +
+      '<strong>PRICE RANGE</strong><i></i><i></i><i></i></aside>' +
+      '<div class="page-loading__cards">' +
+      '<div class="page-loading__card"></div>' +
+      '<div class="page-loading__card"></div>' +
+      '<div class="page-loading__card"></div>' +
+      '<div class="page-loading__card"></div>' +
+      '<div class="page-loading__card"></div>' +
+      '<div class="page-loading__card"></div></div></div>';
+  }
+
+  if (pageType === "product") {
+    return '<div class="page-loading__heading">' +
+      '<span class="page-loading__spinner"></span>' +
+      '<div><h1>Loading product details...</h1>' +
+      '<p>Getting product information ready.</p></div></div>' +
+      '<div class="page-loading__product-layout">' +
+      '<div class="page-loading__product-image"></div>' +
+      '<div class="page-loading__product-info">' +
+      '<span></span><h2></h2><p></p><p></p><b></b><i></i>' +
+      '<div></div><div></div></div></div>' +
+      '<div class="page-loading__specs">' +
+      '<span></span><span></span><span></span><span></span></div>';
+  }
+
+  return '<div class="page-loading__heading">' +
+    '<span class="page-loading__spinner"></span>' +
+    '<div><h1>Opening support...</h1>' +
+    '<p>Loading the support form for you.</p></div></div>' +
+    '<div class="page-loading__form">' +
+    '<label>NAME</label><span></span>' +
+    '<label>EMAIL</label><span></span>' +
+    '<label>MESSAGE</label><div></div><b></b></div>';
+}
+
+function assignment11StartPageLoading(url, pageType) {
+  if (document.querySelector(".page-loading-overlay")) return;
+
+  const overlay = document.createElement("div");
+  overlay.className = "page-loading-overlay";
+  overlay.setAttribute("role", "status");
+  overlay.setAttribute("aria-live", "polite");
+  overlay.innerHTML =
+    '<div class="page-loading__content shell">' +
+    assignment11GetPageLoadingMarkup(pageType) + "</div>";
+  document.body.appendChild(overlay);
+
+  requestAnimationFrame(function () {
+    overlay.classList.add("is-visible");
+  });
+
+  setTimeout(function () {
+    window.location.href = url;
+  }, 800);
+}
