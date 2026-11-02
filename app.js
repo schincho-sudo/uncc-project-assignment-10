@@ -1,4 +1,4 @@
-// Simple variables for this front-end prototype.
+// Track cart, theme, product selection, and Load More status
 let cartCount = Number(sessionStorage.getItem("cartCount")) || 0;
 let darkMode = localStorage.getItem("theme") === "dark";
 let selectedProducts = 0;
@@ -316,7 +316,7 @@ if (supportForm) {
   });
 }
 
-// Copy the confirmation number if the browser allows it.
+// Copy the confirmation number 
 document.querySelectorAll("[data-copy-confirmation]").forEach(function (button) {
   button.addEventListener("click", function () {
     navigator.clipboard.writeText("#123456");
@@ -324,7 +324,7 @@ document.querySelectorAll("[data-copy-confirmation]").forEach(function (button) 
   });
 });
 
-// This short list is only used for live search suggestions.
+// This short list is used for live search suggestions.
 const assignment11Products = [
   { title: "MSI Katana 15 Gaming Laptop", category: "Laptops", details: "Intel Core i7, RTX 4060, 16GB RAM" },
   { title: "Cooler Master Elite Liquid 240", category: "Components", details: "Quiet desktop cooling for gaming and streaming" },
@@ -569,7 +569,7 @@ if (assignment11ResultsGrid) {
     assignment11UpdateSearchResults("", false);
   }
 }
-// This listener captures the click first so your existing code above stays unchanged.
+// This listener captures the click first so the existing code above stays unchanged.
 document.addEventListener("click", function (event) {
   const loadMoreButton = event.target.closest("[data-load-more]");
   const filterButton = event.target.closest(".filter-apply");
@@ -638,7 +638,7 @@ document.addEventListener("click", function (event) {
   }
 }, true);
 // Support form loading feedback
-// This listener keeps your current validation but adds a visible submitting state.
+// This listener keeps the current validation but adds a visible submitting state.
 if (supportForm) {
   const assignment11SupportButton =
     supportForm.querySelector("button[type='submit']");
@@ -736,7 +736,7 @@ document.addEventListener("click", function (event) {
   }
 }, true);
 
-// Use the Search Results skeleton when a search form or category button is used.
+// Search Results skeleton when a search form or category button is used.
 document.addEventListener("submit", function (event) {
   const form = event.target.closest("[data-search-form]");
   if (!form) return;
