@@ -332,6 +332,10 @@ const assignment11Products = [
   { title: 'ASUS ROG Strix OLED 32" Monitor', category: "Monitors", details: "4K gaming display with a high refresh rate" },
   { title: "PlayStation 5 Slim Disc Console", category: "Gaming", details: "Console with haptic feedback and 3D audio" },
   { title: "MSI MAG Coreliquid A13 360 Black", category: "Components", details: "AIO cooling for custom desktop systems" },
+  { title: "Logitech G502 HERO High Performance Wired Gaming Mouse", category: "Computer peripherals", details: "Programmable RGB lighting" },
+  { title: "Razer BlackShark V2 HyperSpeed Wireless Gaming Headset", category: "Computer peripherals", details: "Hyperspeed Wireless technology. Enjoy high-performance gaming." },
+  { title: "Call of Duty: Modern Warfare 4", category: "Software", details: "Xbox Series X · War erupts on the Korean Peninsula as North Korea launches an invasion." },
+
 ];
 
 let assignment11SearchTimer;
