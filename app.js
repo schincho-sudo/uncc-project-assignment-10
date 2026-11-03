@@ -329,7 +329,7 @@ const assignment11Products = [
   { title: "MSI Katana 15 Gaming Laptop", category: "Laptops", details: "Intel Core i7, RTX 4060, 16GB RAM" },
   { title: "Cooler Master Elite Liquid 240", category: "Components", details: "Quiet desktop cooling for gaming and streaming" },
   { title: "ASUS Zenbook 14 Creator Laptop", category: "Laptops", details: "OLED display, AMD Ryzen 7, 16GB RAM" },
-  { title: 'ASUS ROG Strix OLED 32" Monitor', category: "Monitors", details: "4K gaming display with a high refresh rate" },
+  { title: 'ASUS ROG Strix OLED 32" 4K TrueBlack Glossy Tandem', category: "Monitors", details: "4K gaming display with a high refresh rate" },
   { title: "PlayStation 5 Slim Disc Console", category: "Gaming", details: "Console with haptic feedback and 3D audio" },
   { title: "MSI MAG Coreliquid A13 360 Black", category: "Components", details: "AIO cooling for custom desktop systems" },
   { title: "Logitech G502 HERO High Performance Wired Gaming Mouse", category: "Computer peripherals", details: "Programmable RGB lighting" },
@@ -371,7 +371,10 @@ function assignment11FindMatches(query) {
   if (searchText === "") return assignment11Products;
 
   return assignment11Products.filter(function (product) {
-    return product.title.toLowerCase().includes(searchText);
+    const productText =
+      product.title + " " + product.category + " " + product.details;
+
+    return productText.toLowerCase().includes(searchText);
   });
 }
 
@@ -495,9 +498,14 @@ function assignment11UpdateSearchResults(query, showLoading) {
     const searchText = query.trim().toLowerCase();
     let matchCount = 0;
 
-    assignment11ResultsGrid.querySelectorAll(".product-card").forEach(function (card) {
-  const cardMatches = searchText === "" ||
-    card.textContent.toLowerCase().includes(searchText);
+    const matches = assignment11FindMatches(query);
+
+assignment11ResultsGrid.querySelectorAll(".product-card").forEach(function (card) {
+  const cardTitle = card.querySelector("h3").textContent.toLowerCase();
+
+  const cardMatches = matches.some(function (product) {
+    return cardTitle.includes(product.title.toLowerCase());
+  });
 
   const isExtraProduct = card.classList.contains("extra-product");
   const canShow = !isExtraProduct || extraProductsLoaded || searchText !== "";
@@ -508,6 +516,7 @@ function assignment11UpdateSearchResults(query, showLoading) {
     matchCount = matchCount + 1;
   }
 });
+
 
     if (assignment11LoadingBox) assignment11LoadingBox.hidden = true;
     if (assignment11EmptyBox) assignment11EmptyBox.hidden = matchCount !== 0;
