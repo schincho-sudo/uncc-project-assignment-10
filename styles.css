@@ -2637,3 +2637,13 @@ align-items: start;
     transition: none;
   }
 }
+
+/* Reserve room for validation messages so Submit does not move on blur. */
+.support-form .field-message {
+  min-height: 18px;
+}
+
+.support-form .field-message[hidden] {
+  display: flex !important;
+  visibility: hidden;
+}
