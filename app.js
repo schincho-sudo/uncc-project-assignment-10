@@ -771,3 +771,52 @@ document.addEventListener("click", function (event) {
   event.stopImmediatePropagation();
   assignment11StartPageLoading("search.html", "search");
 }, true);
+
+// Assignment 12: Support form validation and user feedback.
+
+const assignment12Form = document.querySelector("[data-support-form]");
+let assignment12Submitting = false;
+
+function assignment12ValidateField(field) {
+  const value = field.value.trim();
+  let errorMessage = "";
+  let successMessage = "";
+
+  if (field.name === "name") {
+    if (value === "") {
+      errorMessage = "Please enter your full name.";
+    } else if (value.length < 2) {
+      errorMessage = "Your name must contain at least 2 characters.";
+    }
+    successMessage = "Name looks valid.";
+  }
+
+  if (field.name === "email") {
+    // Check for text before @, a domain, and a domain ending.
+    const emailFormat = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-zA-Z]{2,}$/;
+
+    if (value === "") {
+      errorMessage = "Please enter your email address.";
+    } else if (!emailFormat.test(value) || field.validity.typeMismatch) {
+      errorMessage = "Enter a valid email address, like name@example.com.";
+    }
+    successMessage = "Email looks valid.";
+  }
+
+  if (field.name === "message") {
+    if (value === "") {
+      errorMessage = "Please describe your issue or question.";
+    } else if (value.length < 15) {
+  const remaining = 15 - value.length;
+
+  errorMessage = "Please enter " + remaining + " more " +
+    (remaining === 1 ? "character." : "characters.");
+}
+    successMessage = "Message looks good.";
+  }
+
+  const isValid = errorMessage === "";
+  showFieldMessage(field, isValid, isValid ? successMessage : errorMessage);
+  field.setAttribute("aria-invalid", isValid ? "false" : "true");
+  return isValid;
+}
