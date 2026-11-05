@@ -820,3 +820,47 @@ function assignment12ValidateField(field) {
   field.setAttribute("aria-invalid", isValid ? "false" : "true");
   return isValid;
 }
+
+// Sort search results by price.
+const sortDropdown = document.querySelector("#sort");
+const sortingGrid = document.querySelector(".results-grid");
+
+if (sortDropdown && sortingGrid) {
+  // Remember the original product order.
+  const originalCards = Array.from(
+    sortingGrid.querySelectorAll(".product-card")
+  );
+
+  function getProductPrice(card) {
+    const priceText = card.querySelector(
+      ".product-card__price"
+    ).textContent;
+
+    // Remove dollar signs and commas before comparing prices.
+    return Number(priceText.replace(/[$,]/g, "").trim());
+  }
+
+  function sortProducts() {
+    const cardsToSort = originalCards.slice();
+
+    if (sortDropdown.value === "Price: low to high") {
+      cardsToSort.sort(function (a, b) {
+        return getProductPrice(a) - getProductPrice(b);
+      });
+    }
+
+    if (sortDropdown.value === "Price: high to low") {
+      cardsToSort.sort(function (a, b) {
+        return getProductPrice(b) - getProductPrice(a);
+      });
+    }
+
+    // Move the existing cards into the selected order.
+    cardsToSort.forEach(function (card) {
+      sortingGrid.appendChild(card);
+    });
+  }
+
+  sortDropdown.addEventListener("change", sortProducts);
+  sortProducts();
+}
