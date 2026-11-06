@@ -2647,3 +2647,86 @@ align-items: start;
   display: flex !important;
   visibility: hidden;
 }
+/* Small validation icons */
+.support-form .field-message i {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 12px;
+}
+
+
+/* Invalid fields */
+.support-form .form-field.is-error input,
+.support-form .form-field.is-error textarea {
+  border-color: var(--error);
+}
+
+
+.support-form .form-field.is-error .field-message {
+  color: var(--error);
+}
+
+
+/* Valid fields */
+.support-form .form-field.is-valid input,
+.support-form .form-field.is-valid textarea {
+  border-color: var(--success);
+}
+
+
+.support-form .form-field.is-valid .field-message {
+  color: var(--success);
+}
+
+
+/* Keep focus feedback consistent with validation */
+.support-form .form-field.is-error input:focus,
+.support-form .form-field.is-error textarea:focus {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--error) 15%, transparent);
+}
+
+
+.support-form .form-field.is-valid input:focus,
+.support-form .form-field.is-valid textarea:focus {
+  border-color: var(--success);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--success) 15%, transparent);
+}
+
+
+/* Submit button */
+.support-form .support-submit {
+  margin-top: 2px;
+  min-height: 46px;
+}
+
+
+/* Mobile layout */
+@media (max-width: 480px) {
+  .support-form {
+    padding: 20px 16px;
+    gap: 20px;
+  }
+
+
+  .support-form .field-message {
+    min-height: 36px;
+  }
+
+
+  .support-form .support-submit {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .support-form input,
+  .support-form textarea {
+    transition: none;
+  }
+}
