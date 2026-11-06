@@ -864,3 +864,281 @@ if (sortDropdown && sortingGrid) {
   sortDropdown.addEventListener("change", sortProducts);
   sortProducts();
 }
+/* ===================================
+   SEARCH RESULTS FILTERS
+   =================================== */
+
+const searchPage = document.querySelector(".page-search");
+
+if (searchPage) {
+  const grid = searchPage.querySelector(".results-grid");
+  const sidebar = searchPage.querySelector(".filters-panel");
+  const drawer = searchPage.querySelector(".filter-drawer");
+  const chips = searchPage.querySelector(".chips");
+  const cards = grid.querySelectorAll(".product-card");
+
+  const brands = [
+    "Cooler Master", "PlayStation", "Logitech", "Razer",
+    "ASUS", "Acer", "MSI", "Lenovo"
+  ];
+
+  function labelOf(input) {
+    return input.closest("label").textContent.replace(/\s+/g, " ").trim();
+  }
+
+  function groupOf(input) {
+    return input.closest(".filter-group").querySelector("h3").textContent.trim();
+  }
+
+  // Add extra brand options.
+  const brandGroup = sidebar.querySelector(".filter-group");
+  const moreButton = brandGroup.querySelector(".filter-more");
+
+  ["Cooler Master", "PlayStation", "Logitech", "Razer"].forEach(function (name) {
+    const option = document.createElement("label");
+    option.className = "filter-option filter-extra";
+    option.hidden = true;
+    option.innerHTML = '<input type="checkbox"><span></span>' + name;
+    moreButton.before(option);
+  });
+
+  // Copy desktop filters to the mobile drawer.
+  const mobile = drawer.querySelector(".filter-content");
+
+  mobile.querySelectorAll(".filter-group").forEach(function (group) {
+    group.remove();
+  });
+
+  sidebar.querySelectorAll(".filter-group").forEach(function (group) {
+    mobile.querySelector(".filter-apply").before(group.cloneNode(true));
+  });
+
+  // Start with no filters selected.
+  searchPage.querySelectorAll(".filter-option input").forEach(function (input) {
+    input.checked = false;
+  });
+
+  // Get selected filters from a group.
+  function selectedOptions(number) {
+    const group = sidebar.querySelectorAll(".filter-group")[number];
+    return Array.from(group.querySelectorAll("input:checked")).map(labelOf);
+  }
+
+  // Check whether a product matches a price range.
+  function priceMatches(price, range) {
+    if (range === "Under $500") return price < 500;
+    if (range === "$500 - $1000") return price >= 500 && price < 1000;
+    if (range === "$1000 - $1500") return price >= 1000 && price < 1500;
+    return range === "$1500+" && price >= 1500;
+  }
+
+  // Keep desktop and mobile checkboxes synchronized.
+  function setOption(changed, checked) {
+    searchPage.querySelectorAll(".filter-option input").forEach(function (input) {
+      if (groupOf(input) === groupOf(changed) &&
+          labelOf(input) === labelOf(changed)) {
+        input.checked = checked;
+      }
+    });
+  }
+
+  // Clear all filters.
+  function clearFilters() {
+    searchPage.querySelectorAll(".filter-option input").forEach(function (input) {
+      input.checked = false;
+    });
+
+    updateFilters();
+  }
+
+  // Add a Clear filters button to the empty state.
+  const empty = assignment11EmptyBox;
+  const clearButton = document.createElement("button");
+
+  clearButton.type = "button";
+  clearButton.className = "btn btn-secondary clear-filter-button";
+  clearButton.textContent = "Clear filters";
+  clearButton.addEventListener("click", clearFilters);
+
+  if (empty) empty.appendChild(clearButton);
+
+  // Main filtering function.
+  function updateFilters() {
+    const chosenBrands = selectedOptions(0);
+    const chosenPrices = selectedOptions(1);
+    const chosenGpus = selectedOptions(2);
+
+    const active = chosenBrands.length +
+                   chosenPrices.length +
+                   chosenGpus.length > 0;
+
+    const query = searchPage.querySelector("input[name='query']").value.trim();
+    const searchResults = assignment11FindMatches(query);
+
+    let count = 0;
+
+    cards.forEach(function (card) {
+      const title = card.querySelector("h3").textContent.trim().toLowerCase();
+      const description = card.querySelector(".product-card__desc").textContent.toLowerCase();
+      const price = Number(
+        card.querySelector(".product-card__price").textContent.replace(/[$,]/g, "")
+      );
+
+      // Find the brand.
+      const brand = brands.find(function (name) {
+        return title.startsWith(name.toLowerCase());
+      });
+
+      // Find the GPU.
+      let gpu = "";
+
+      if (description.includes("rtx")) gpu = "NVIDIA RTX";
+      else if (description.includes("amd radeon")) gpu = "AMD Radeon";
+      else if (description.includes("intel arc")) gpu = "Intel Arc";
+
+      // Check the search and selected filters.
+      const searchOK = searchResults.some(function (item) {
+        return title.includes(item.title.toLowerCase());
+      });
+
+      const brandOK = !chosenBrands.length || chosenBrands.includes(brand);
+      const gpuOK = !chosenGpus.length || chosenGpus.includes(gpu);
+
+      const priceOK = !chosenPrices.length || chosenPrices.some(function (range) {
+        return priceMatches(price, range);
+      });
+
+      const loaded = active || query !== "" || extraProductsLoaded ||
+                     !card.classList.contains("extra-product");
+
+      // Show only matching products.
+      card.hidden = !(searchOK && brandOK && priceOK && gpuOK && loaded);
+
+      if (!card.hidden) {
+        count++;
+      } else {
+        const compare = card.querySelector("[data-compare]");
+        if (compare) compare.checked = false;
+      }
+    });
+
+    // Update the comparison tray.
+    selectedProducts = searchPage.querySelectorAll("[data-compare]:checked").length;
+
+    if (comparisonTray) comparisonTray.hidden = selectedProducts === 0;
+
+    if (compareMessage) {
+      compareMessage.textContent = selectedProducts +
+        (selectedProducts === 1 ? " product selected" : " products selected");
+    }
+
+    // Update the product count and empty state.
+    grid.hidden = count === 0;
+
+    if (assignment11LoadingBox) assignment11LoadingBox.hidden = true;
+    if (assignment11ResultsArea) {
+      assignment11ResultsArea.setAttribute("aria-busy", "false");
+    }
+
+    if (empty) {
+      empty.hidden = count !== 0;
+      empty.querySelector("h2").textContent =
+        active ? "No products match these filters" : "No results found";
+
+      empty.querySelector("p").textContent =
+        active ? "Try removing a filter to see more products." :
+        "Try a different search.";
+
+      clearButton.hidden = !active;
+    }
+
+    assignment11ResultsMeta.textContent = count +
+      (count === 1 ? " product found" : " products found") +
+      (query ? ' for "' + query + '"' : "");
+
+    searchPage.querySelector("[data-load-more]").hidden =
+      active || extraProductsLoaded || query !== "";
+
+    // Create removable filter chips.
+    chips.replaceChildren();
+
+    sidebar.querySelectorAll(".filter-option input:checked").forEach(function (input) {
+      const chip = document.createElement("button");
+
+      chip.type = "button";
+      chip.className = "chip";
+      chip.textContent = labelOf(input) + " x";
+
+      chip.addEventListener("click", function () {
+        setOption(input, false);
+        updateFilters();
+      });
+
+      chips.appendChild(chip);
+    });
+
+    chips.hidden = !active;
+
+    if (active) {
+      const clear = document.createElement("button");
+
+      clear.type = "button";
+      clear.className = "chip chip-clear";
+      clear.textContent = "Clear all";
+      clear.addEventListener("click", clearFilters);
+
+      chips.appendChild(clear);
+    }
+
+    // Reuse the existing product fade animation.
+    grid.classList.remove("live-results-updated");
+    void grid.offsetWidth;
+    grid.classList.add("live-results-updated");
+  }
+
+  // Update products when a checkbox changes.
+  searchPage.addEventListener("change", function (event) {
+    if (!event.target.matches(".filter-option input")) return;
+
+    clearTimeout(assignment11SearchTimer);
+    setOption(event.target, event.target.checked);
+    updateFilters();
+  });
+
+  // Make See more and See less work.
+  searchPage.addEventListener("click", function (event) {
+    const button = event.target.closest(".filter-more");
+    if (!button) return;
+
+    const open = button.textContent.includes("See more");
+
+    button.closest(".filter-group").querySelectorAll(".filter-extra").forEach(function (option) {
+      option.hidden = !open;
+    });
+
+    button.textContent = open ? "See less -" : "See more +";
+  });
+
+  // Keep the original live search and Load More working.
+  const originalSearch = assignment11UpdateSearchResults;
+  let searchTimer;
+
+  assignment11UpdateSearchResults = function (query, loading) {
+    originalSearch(query, loading);
+    clearTimeout(searchTimer);
+
+    if (loading) {
+      searchTimer = setTimeout(updateFilters, 450);
+    } else {
+      updateFilters();
+    }
+  };
+
+  // Show the correct results when the page opens.
+  if (new URLSearchParams(window.location.search).get("query")) {
+    setTimeout(updateFilters, 470);
+  } else {
+    updateFilters();
+  }
+}
+
