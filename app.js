@@ -1141,4 +1141,12 @@ if (searchPage) {
     updateFilters();
   }
 }
+if (assignment12Form) {
+  const fields = assignment12Form.querySelectorAll("input, textarea");
+  const submitButton = assignment12Form.querySelector("button[type='submit']");
+  const supportView = document.querySelector("[data-support-view]");
+  const successView = document.querySelector("[data-success-view]");
+  const submitStatus = assignment12Form.querySelector(".live-submit-status");
 
+  // The original blur listeners now use the improved validation rules too.
+  validateField = assignment12ValidateField;
