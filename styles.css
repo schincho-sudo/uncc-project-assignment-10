@@ -2730,3 +2730,67 @@ align-items: start;
     transition: none;
   }
 }
+/* Main form spacing */
+.support-form {
+  gap: 22px;
+  padding: 28px;
+}
+
+
+/* Keep field content aligned */
+.support-form .form-field {
+  min-width: 0;
+}
+
+
+/* Labels */
+.support-form .form-field label {
+  margin-bottom: 8px;
+}
+
+
+/* Input fields */
+.support-form .form-field input {
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 8px;
+}
+
+
+/* Message textarea */
+.support-form .form-field textarea {
+  min-height: 125px;
+  padding: 13px 14px;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
+
+/* Hide the extra instructions to match the cleaner form */
+.support-form .form-hint {
+  display: none;
+}
+
+
+/* Inline error and success messages */
+.support-form .field-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  min-height: 18px;
+  margin: 7px 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+
+/* Reserve feedback space before a message appears */
+.support-form .field-message[hidden] {
+  display: flex !important;
+  visibility: hidden;
+}
+
+
+
