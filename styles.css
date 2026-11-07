@@ -2793,4 +2793,21 @@ align-items: start;
 }
 
 
+/* Keep the original spacing when no filters are selected. */
+
+@media (min-width: 768px) {
+  .page-search .chips[hidden] {
+    display: flex !important;
+    visibility: hidden;
+    min-height: 34px;
+    pointer-events: none;
+  }
+}
+
+/* Spacing for the empty-state button. */
+
+.page-search .clear-filter-button {
+  margin-top: 16px;
+}
+
 
