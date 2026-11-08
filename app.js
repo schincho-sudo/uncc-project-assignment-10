@@ -1150,3 +1150,47 @@ if (assignment12Form) {
 
   // The original blur listeners now use the improved validation rules too.
   validateField = assignment12ValidateField;
+  fields.forEach(function (field) {
+    const messageBox = field.closest(".form-field").querySelector(".field-message");
+    const hint = document.createElement("p");
+
+    hint.className = "form-hint";
+    hint.id = field.id + "-hint";
+    messageBox.id = field.id + "-feedback";
+    messageBox.setAttribute("aria-live", "polite");
+    messageBox.setAttribute("aria-atomic", "true");
+
+    field.required = true;
+    field.setAttribute("aria-describedby", hint.id + " " + messageBox.id);
+
+    if (field.name === "name") {
+      hint.textContent = "Enter your name using at least 2 characters.";
+      field.minLength = 2;
+      field.autocomplete = "name";
+    }
+
+    if (field.name === "email") {
+      hint.textContent = "Use a complete email address, like name@example.com.";
+      field.autocomplete = "email";
+    }
+
+    if (field.name === "message") {
+      hint.textContent = "Describe your issue or question in at least 10 characters.";
+      field.minLength = 10;
+    }
+
+    field.insertAdjacentElement("afterend", hint);
+
+    // Update validation feedback immediately while typing.
+    field.addEventListener("input", function () {
+      assignment12ValidateField(field);
+    });
+
+    // Also check the field when the user leaves it.
+    field.addEventListener("blur", function () {
+      assignment12ValidateField(field);
+    });
+  });
+
+  submitStatus.setAttribute("role", "status");
+  submitStatus.setAttribute("aria-live", "polite");
