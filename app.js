@@ -1194,3 +1194,37 @@ if (assignment12Form) {
 
   submitStatus.setAttribute("role", "status");
   submitStatus.setAttribute("aria-live", "polite");
+    // Handle Support submissions before the older form listeners run.
+  // Other forms, including product search, keep their existing behavior.
+  document.addEventListener("submit", function (event) {
+    if (event.target !== assignment12Form) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    if (assignment12Submitting || supportView.hidden) return;
+
+    let firstInvalidField = null;
+
+    fields.forEach(function (field) {
+      if (!assignment12ValidateField(field) && firstInvalidField === null) {
+        firstInvalidField = field;
+      }
+    });
+
+    if (firstInvalidField) {
+      firstInvalidField.focus();
+      return;
+    }
+
+    assignment12Submitting = true;
+    assignment12Form.setAttribute("aria-busy", "true");
+
+    assignment11SetButtonLoading(submitButton, "Submitting...");
+    submitStatus.textContent = "Submitting your support request...";
+    submitStatus.hidden = false;
+
+    // Keep the validated information unchanged during simulated submission.
+    fields.forEach(function (field) {
+      field.readOnly = true;
+    });
