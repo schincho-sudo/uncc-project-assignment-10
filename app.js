@@ -1228,3 +1228,31 @@ if (assignment12Form) {
     fields.forEach(function (field) {
       field.readOnly = true;
     });
+        setTimeout(function () {
+      supportView.hidden = true;
+      successView.hidden = false;
+      submitStatus.hidden = true;
+
+      assignment12Form.setAttribute("aria-busy", "false");
+      assignment11ResetButton(submitButton);
+      assignment12Submitting = false;
+
+      fields.forEach(function (field) {
+        field.readOnly = false;
+      });
+
+      const heading = successView.querySelector("h1");
+      heading.setAttribute("tabindex", "-1");
+      heading.focus({ preventScroll: true });
+
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      window.scrollTo({
+        top: 0,
+        behavior: reducedMotion ? "auto" : "smooth"
+      });
+    }, 850);
+  }, true);
+}
