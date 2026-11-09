@@ -404,9 +404,23 @@ function assignment11ShowSuggestions(suggestionBox, query) {
       "<span><strong>" + product.title + "</strong><small>" +
       product.category + " · " + product.details + "</small></span>";
 
-    suggestion.addEventListener("click", function () {
-      assignment11StartPageLoading("search.html?query=" + encodeURIComponent(product.title), "search");
-    });
+    // Keep the dropdown open until the click finishes.
+suggestion.addEventListener("mousedown", function (event) {
+  if (event.button === 0) event.preventDefault();
+});
+
+suggestion.addEventListener("click", function () {
+  document.querySelectorAll("[data-search-form] input[name='query']").forEach(function (input) {
+    input.value = product.title;
+  });
+
+  suggestionBox.hidden = true;
+
+  assignment11StartPageLoading(
+    "search.html?query=" + encodeURIComponent(product.title),
+    "search"
+  );
+});
 
     suggestionBox.appendChild(suggestion);
   });
