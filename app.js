@@ -1270,3 +1270,14 @@ if (assignment12Form) {
     }, 850);
   }, true);
 }
+
+// Clear navigation loading states when returning with Back or Forward.
+window.addEventListener("pageshow", function () {
+  document.querySelectorAll(".page-loading-overlay").forEach(function (overlay) {
+    overlay.remove();
+  });
+
+  document.querySelectorAll('[data-assignment11-loading="true"]').forEach(function (button) {
+    assignment11ResetButton(button);
+  });
+});
