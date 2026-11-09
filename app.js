@@ -1175,8 +1175,8 @@ if (assignment12Form) {
     }
 
     if (field.name === "message") {
-      hint.textContent = "Describe your issue or question in at least 10 characters.";
-      field.minLength = 10;
+      hint.textContent = "Describe your issue or question in at least 15 characters.";
+      field.minLength = 15;
     }
 
     field.insertAdjacentElement("afterend", hint);
