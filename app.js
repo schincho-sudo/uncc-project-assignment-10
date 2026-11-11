@@ -637,26 +637,44 @@ document.addEventListener("click", function (event) {
     return;
   }
 
-  if (addToCartButton) {
+    if (addToCartButton) {
     event.preventDefault();
     event.stopImmediatePropagation();
+
+    if (addToCartButton.disabled) return;
+
+    const quantityInput = document.querySelector("#quantity");
+
+    if (quantityInput && !quantityInput.reportValidity()) {
+      return;
+    }
+
+    const quantity = quantityInput
+      ? Number(quantityInput.value)
+      : 1;
+
     assignment11SetButtonLoading(addToCartButton, "Adding...");
 
     setTimeout(function () {
-      cartCount = cartCount + 1;
+      cartCount = cartCount + quantity;
       sessionStorage.setItem("cartCount", cartCount);
       updateCartCount();
+
       assignment11ResetButton(addToCartButton);
 
+      const message =
+        quantity + (quantity === 1 ? " item" : " items") +
+        " added to cart.";
+
       const feedback = document.querySelector(".cart-feedback");
+
       if (feedback) {
-        feedback.innerHTML =
-          '<i class="fa-solid fa-check"></i> Cart (' +
-          cartCount + ") updated";
+        feedback.textContent =
+          message + " Cart total: " + cartCount + ".";
         feedback.hidden = false;
       }
 
-      showToast("Added to cart.");
+      showToast(message);
     }, 520);
   }
 }, true);
