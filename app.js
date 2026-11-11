@@ -225,10 +225,24 @@ document.querySelectorAll("[data-load-more]").forEach(function (button) {
 // Product gallery and product information tabs.
 document.querySelectorAll(".gallery-thumb").forEach(function (thumb) {
   thumb.addEventListener("click", function () {
-    document.querySelectorAll(".gallery-thumb").forEach(function (item) {
+    const gallery = thumb.closest(".gallery");
+    const mainImage = gallery.querySelector(".gallery-main-image");
+    const thumbnailImage = thumb.querySelector("img");
+
+    if (!mainImage || !thumbnailImage) return;
+
+    // Display the clicked thumbnail as the large image.
+    mainImage.src = thumbnailImage.src;
+    mainImage.alt = thumbnailImage.alt;
+
+    // Highlight the selected thumbnail.
+    gallery.querySelectorAll(".gallery-thumb").forEach(function (item) {
       item.classList.remove("is-selected");
+      item.setAttribute("aria-pressed", "false");
     });
+
     thumb.classList.add("is-selected");
+    thumb.setAttribute("aria-pressed", "true");
   });
 });
 
