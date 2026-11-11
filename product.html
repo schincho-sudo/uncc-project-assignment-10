@@ -95,12 +95,17 @@
               <p>School, gaming, and multitasking</p>
             </div>
           </div>
-          <div class="purchase-row"><label>Quantity<select id="quantity">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-              </select></label><button class="btn btn-primary add-cart" type="button" data-add-cart><i
-                class="fa-solid fa-cart-shopping"></i> Add to cart</button></div>
+          <div class="purchase-row">
+            <label for="quantity">
+              Quantity
+              <input id="quantity" name="quantity" type="number" min="1" step="1" value="1" required>
+            </label>
+
+            <button class="btn btn-primary add-cart" type="button" data-add-cart>
+              <i class="fa-solid fa-cart-shopping"></i>
+              Add to cart
+            </button>
+          </div>
           <div class="cart-feedback" hidden><i class="fa-solid fa-check"></i> Cart updated</div>
         </div>
       </div>
