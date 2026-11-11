@@ -1370,13 +1370,14 @@ h2 {
   font-weight: 700;
 }
 
-.purchase-row select {
+.purchase-row input {
   height: 44px;
   padding: 0 8px;
   border: 1px solid var(--line-strong);
   border-radius: 7px;
   background: var(--surface);
   color: var(--ink);
+  width: 100%
 }
 
 .add-cart {
