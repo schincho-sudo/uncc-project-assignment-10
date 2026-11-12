@@ -2652,7 +2652,7 @@ align-items: start;
 .support-form .field-message i {
   flex-shrink: 0;
   margin-top: 2px;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 
@@ -2777,10 +2777,10 @@ align-items: start;
 .support-form .field-message {
   display: flex;
   align-items: flex-start;
-  gap: 7px;
-  min-height: 18px;
-  margin: 7px 0 0;
-  font-size: 12px;
+  gap: 8px;
+  min-height: 24px;
+  margin: 10px 0 0;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
   overflow-wrap: anywhere;
