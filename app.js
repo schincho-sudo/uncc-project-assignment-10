@@ -349,7 +349,9 @@ const assignment11Products = [
   { title: "Logitech G502 HERO High Performance Wired Gaming Mouse", category: "Computer peripherals", details: "Programmable RGB lighting" },
   { title: "Razer BlackShark V2 HyperSpeed Wireless Gaming Headset", category: "Computer peripherals", details: "Hyperspeed Wireless technology. Enjoy high-performance gaming." },
   { title: "Call of Duty: Modern Warfare 4", category: "Software", details: "Xbox Series X · War erupts on the Korean Peninsula as North Korea launches an invasion." },
-
+  { title: "Lenovo LOQ 15ARP10 Gaming Laptop", category: "Laptops", details: '15.6" FHD display, AMD Ryzen 7, NVIDIA GeForce RTX 4050'},
+  { title: "Logitech G G325 LIGHTSPEED Wireless Gaming Headset", category: "Computer peripherals", details: "Multi-Platform Compatibility - Works seamlessly with PC, Mac."},
+  { title: 'Acer Aspire Go 15, 15.6" Full HD IPS Display, AMD Ryzen', category: "Laptops", details: "Lithium Ion Battery, Up to 9.5-hour battery life."},
 ];
 
 let assignment11SearchTimer;
