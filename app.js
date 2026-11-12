@@ -1315,3 +1315,108 @@ window.addEventListener("pageshow", function () {
     assignment11ResetButton(button);
   });
 });
+
+// Checkout popup
+(function () {
+  const popup = document.querySelector("#checkout");
+  let busy = false;
+
+  // Open checkout from the cart link on any page.
+  window.addEventListener("click", function (event) {
+    if (!event.target.closest(".cart-link")) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    if (popup) {
+      openCheckout();
+    } else {
+      window.location.href = "product.html#checkout";
+    }
+  }, true);
+
+  if (!popup) return;
+
+  const content = document.querySelector("#checkout-content");
+  const closeButton = document.querySelector("#close-checkout");
+
+  const names = [
+    "name", "email", "address", "city", "state",
+    "zip", "cardname", "card", "expiry", "cvv"
+  ];
+
+  const labels = [
+    "Full name", "Email address", "Street address", "City",
+    "State", "ZIP code", "Name on card", "Demo card number",
+    "Expiration date", "Security code"
+  ];
+
+  const hints = [
+    "Taylor Davis", "taylor@example.com", "123 Example Street",
+    "Charlotte", "NC", "28202", "Taylor Davis",
+    "4242 4242 4242 4242", "MM/YY", "123"
+  ];
+
+  const autocomplete = [
+    "name", "email", "street-address", "address-level2",
+    "address-level1", "postal-code", "off", "off", "off", "off"
+  ];
+
+  function readCart() {
+    const number = Number(sessionStorage.getItem("cartCount"));
+    if (Number.isSafeInteger(number) && number > 0) return number;
+    return 0;
+  }
+
+  function saveCart(number) {
+    cartCount = number;
+    sessionStorage.setItem("cartCount", number);
+    updateCartCount();
+  }
+
+  function money(quantity) {
+    return (quantity * 49999 / 100).toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD"
+    });
+  }
+
+  closeButton.addEventListener("click", function () {
+    if (!busy) popup.close();
+  });
+
+  popup.addEventListener("cancel", function (event) {
+    if (busy) event.preventDefault();
+  });
+
+  function createFields(start, end) {
+    let html = "";
+
+    for (let i = start; i < end; i++) {
+      const type = names[i] === "email" ? "email" : "text";
+
+      html += `
+        <div class="co-field">
+          <label for="co-${names[i]}">${labels[i]} *</label>
+          <input
+            id="co-${names[i]}"
+            name="${names[i]}"
+            type="${type}"
+            placeholder="${hints[i]}"
+            autocomplete="${autocomplete[i]}"
+            aria-describedby="error-${names[i]}"
+            required>
+          <p id="error-${names[i]}"
+             class="co-error" aria-live="polite" hidden></p>
+        </div>`;
+    }
+
+    return html;
+  }
+
+  function validate(input) {
+    const value = input.value.trim();
+    const name = input.name;
+    let error = "";
+
+    
