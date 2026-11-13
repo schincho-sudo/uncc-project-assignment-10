@@ -830,12 +830,15 @@ function assignment12ValidateField(field) {
   let errorMessage = "";
   let successMessage = "";
 
-  if (field.name === "name") {
+    if (field.name === "name") {
     if (value === "") {
       errorMessage = "Please enter your full name.";
+    } else if (!/^[\p{L}\p{M} ]+$/u.test(value)) {
+      errorMessage = "Use letters and spaces only.";
     } else if (value.length < 2) {
       errorMessage = "Your name must contain at least 2 characters.";
     }
+
     successMessage = "Name looks valid.";
   }
 
@@ -1420,8 +1423,13 @@ window.addEventListener("pageshow", function () {
     let error = "";
 
     if (!value) {
-      error = "This field is required.";
-    } else if (
+  error = "This field is required.";
+} else if (
+  name === "name" &&
+  !/^[\p{L}\p{M} ]+$/u.test(value)
+) {
+  error = "Use letters and spaces only.";
+} else if (
       (name === "name" || name === "cardname" || name === "city") &&
       value.length < 2
     ) {
