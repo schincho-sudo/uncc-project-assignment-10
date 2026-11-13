@@ -40,6 +40,8 @@ function updateCartCount() {
 
 // Turn dark mode on or off.
 function updateThemeButtons() {
+  document.documentElement.dataset.theme = darkMode ? "dark" : "light";
+
   const themeButtons = document.querySelectorAll("[data-theme-toggle]");
 
   themeButtons.forEach(function (button) {
@@ -53,18 +55,24 @@ function updateThemeButtons() {
 
     if (icon) {
       icon.innerHTML = darkMode
-        ? '<i class="fa-regular fa-moon"></i>'
-        : '<i class="fa-regular fa-sun"></i>';
+        ? '<i class="fa-regular fa-moon" aria-hidden="true"></i>'
+        : '<i class="fa-regular fa-sun" aria-hidden="true"></i>';
     }
 
     if (label) {
-      label.textContent = "Dark mode";
-    }
+      label.textContent = darkMode ? "Dark mode: On" : "Dark mode: Off";
+      button.setAttribute("aria-label", label.textContent);
+      button.setAttribute("aria-pressed", String(darkMode));
+    } else {
+      const action = darkMode
+        ? "Switch to light mode"
+        : "Switch to dark mode";
 
-    if (!label) {
       button.innerHTML = darkMode
-        ? '<i class="fa-regular fa-sun"></i> Switch to light mode'
-        : '<i class="fa-regular fa-moon"></i> Switch to dark mode';
+        ? '<i class="fa-regular fa-sun" aria-hidden="true"></i> ' + action
+        : '<i class="fa-regular fa-moon" aria-hidden="true"></i> ' + action;
+
+      button.setAttribute("aria-label", action);
     }
   });
 }
@@ -82,22 +90,49 @@ document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
 // Mobile hamburger menu.
 function openMenu() {
   if (!menu || !menuButton) return;
+
   menu.classList.add("is-open");
   menu.setAttribute("aria-hidden", "false");
+
   menuButton.setAttribute("aria-label", "Close navigation");
   menuButton.setAttribute("aria-expanded", "true");
   menuButton.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+
   body.classList.add("menu-is-open");
+
+  const headerHeight = document.querySelector(".site-header")
+    .getBoundingClientRect().bottom;
+
+  document.documentElement.style.setProperty(
+    "--mobile-menu-top",
+    Math.max(0, headerHeight) + "px"
+  );
+
+  document.querySelector("main").inert = true;
+  document.querySelector("footer").inert = true;
+
+  const firstLink = menu.querySelector("a");
+  if (firstLink) firstLink.focus();
 }
 
 function closeMenu() {
   if (!menu || !menuButton) return;
+
+  const wasOpen = menu.classList.contains("is-open");
+
   menu.classList.remove("is-open");
   menu.setAttribute("aria-hidden", "true");
+
   menuButton.setAttribute("aria-label", "Open navigation");
   menuButton.setAttribute("aria-expanded", "false");
   menuButton.innerHTML = '<i class="fa-solid fa-bars"></i>';
+
   body.classList.remove("menu-is-open");
+
+  document.querySelector("main").inert = false;
+  document.querySelector("footer").inert = false;
+
+  if (wasOpen) menuButton.focus();
 }
 
 if (menuButton) {
@@ -184,13 +219,25 @@ function openFilters() {
   if (filterDrawer) {
     filterDrawer.classList.add("is-open");
     filterDrawer.setAttribute("aria-hidden", "false");
+
+    const panel = filterDrawer.querySelector(".filter-drawer__panel");
+    panel.setAttribute("role", "dialog");
+    panel.setAttribute("aria-label", "Product filters");
+
+    const close = filterDrawer.querySelector("button[data-filter-close]");
+    if (close) close.focus();
   }
 }
 
 function closeFilters() {
   if (filterDrawer) {
+    const wasOpen = filterDrawer.classList.contains("is-open");
+
     filterDrawer.classList.remove("is-open");
     filterDrawer.setAttribute("aria-hidden", "true");
+
+    const trigger = document.querySelector("[data-filter-open]");
+    if (wasOpen && trigger) trigger.focus();
   }
 }
 
@@ -349,9 +396,9 @@ const assignment11Products = [
   { title: "Logitech G502 HERO High Performance Wired Gaming Mouse", category: "Computer peripherals", details: "Programmable RGB lighting" },
   { title: "Razer BlackShark V2 HyperSpeed Wireless Gaming Headset", category: "Computer peripherals", details: "Hyperspeed Wireless technology. Enjoy high-performance gaming." },
   { title: "Call of Duty: Modern Warfare 4", category: "Software", details: "Xbox Series X · War erupts on the Korean Peninsula as North Korea launches an invasion." },
-  { title: "Lenovo LOQ 15ARP10 Gaming Laptop", category: "Laptops", details: '15.6" FHD display, AMD Ryzen 7, NVIDIA GeForce RTX 4050'},
-  { title: "Logitech G G325 LIGHTSPEED Wireless Gaming Headset", category: "Computer peripherals", details: "Multi-Platform Compatibility - Works seamlessly with PC, Mac."},
-  { title: 'Acer Aspire Go 15, 15.6" Full HD IPS Display, AMD Ryzen', category: "Laptops", details: "Lithium Ion Battery, Up to 9.5-hour battery life."},
+  { title: "Lenovo LOQ 15ARP10 Gaming Laptop", category: "Laptops", details: '15.6" FHD display, AMD Ryzen 7, NVIDIA GeForce RTX 4050' },
+  { title: "Logitech G G325 LIGHTSPEED Wireless Gaming Headset", category: "Computer peripherals", details: "Multi-Platform Compatibility - Works seamlessly with PC, Mac." },
+  { title: 'Acer Aspire Go 15, 15.6" Full HD IPS Display, AMD Ryzen', category: "Laptops", details: "Lithium Ion Battery, Up to 9.5-hour battery life." },
 ];
 
 let assignment11SearchTimer;
@@ -421,22 +468,22 @@ function assignment11ShowSuggestions(suggestionBox, query) {
       product.category + " · " + product.details + "</small></span>";
 
     // Keep the dropdown open until the click finishes.
-suggestion.addEventListener("mousedown", function (event) {
-  if (event.button === 0) event.preventDefault();
-});
+    suggestion.addEventListener("mousedown", function (event) {
+      if (event.button === 0) event.preventDefault();
+    });
 
-suggestion.addEventListener("click", function () {
-  document.querySelectorAll("[data-search-form] input[name='query']").forEach(function (input) {
-    input.value = product.title;
-  });
+    suggestion.addEventListener("click", function () {
+      document.querySelectorAll("[data-search-form] input[name='query']").forEach(function (input) {
+        input.value = product.title;
+      });
 
-  suggestionBox.hidden = true;
+      suggestionBox.hidden = true;
 
-  assignment11StartPageLoading(
-    "search.html?query=" + encodeURIComponent(product.title),
-    "search"
-  );
-});
+      assignment11StartPageLoading(
+        "search.html?query=" + encodeURIComponent(product.title),
+        "search"
+      );
+    });
 
     suggestionBox.appendChild(suggestion);
   });
@@ -530,22 +577,22 @@ function assignment11UpdateSearchResults(query, showLoading) {
 
     const matches = assignment11FindMatches(query);
 
-assignment11ResultsGrid.querySelectorAll(".product-card").forEach(function (card) {
-  const cardTitle = card.querySelector("h3").textContent.toLowerCase();
+    assignment11ResultsGrid.querySelectorAll(".product-card").forEach(function (card) {
+      const cardTitle = card.querySelector("h3").textContent.toLowerCase();
 
-  const cardMatches = matches.some(function (product) {
-    return cardTitle.includes(product.title.toLowerCase());
-  });
+      const cardMatches = matches.some(function (product) {
+        return cardTitle.includes(product.title.toLowerCase());
+      });
 
-  const isExtraProduct = card.classList.contains("extra-product");
-  const canShow = !isExtraProduct || extraProductsLoaded || searchText !== "";
+      const isExtraProduct = card.classList.contains("extra-product");
+      const canShow = !isExtraProduct || extraProductsLoaded || searchText !== "";
 
-  card.hidden = !(cardMatches && canShow);
+      card.hidden = !(cardMatches && canShow);
 
-  if (!card.hidden) {
-    matchCount = matchCount + 1;
-  }
-});
+      if (!card.hidden) {
+        matchCount = matchCount + 1;
+      }
+    });
 
 
     if (assignment11LoadingBox) assignment11LoadingBox.hidden = true;
@@ -556,9 +603,9 @@ assignment11ResultsGrid.querySelectorAll(".product-card").forEach(function (card
 
     const loadMoreButton = document.querySelector("[data-load-more]");
 
-if (loadMoreButton) {
-  loadMoreButton.hidden = extraProductsLoaded || searchText !== "";
-}
+    if (loadMoreButton) {
+      loadMoreButton.hidden = extraProductsLoaded || searchText !== "";
+    }
 
     if (assignment11ResultsMeta) {
       if (matchCount === 0) {
@@ -615,28 +662,28 @@ document.addEventListener("click", function (event) {
   const addToCartButton = event.target.closest("[data-add-cart]");
 
   if (loadMoreButton) {
-  event.preventDefault();
-  event.stopImmediatePropagation();
+    event.preventDefault();
+    event.stopImmediatePropagation();
 
-  assignment11SetButtonLoading(loadMoreButton, "Loading...");
+    assignment11SetButtonLoading(loadMoreButton, "Loading...");
 
-  setTimeout(function () {
-    extraProductsLoaded = true;
+    setTimeout(function () {
+      extraProductsLoaded = true;
 
-    assignment11ResetButton(loadMoreButton);
+      assignment11ResetButton(loadMoreButton);
 
-    const searchInput = document.querySelector(
-      "[data-search-form] input[name='query']"
-    );
+      const searchInput = document.querySelector(
+        "[data-search-form] input[name='query']"
+      );
 
-    const query = searchInput ? searchInput.value : "";
+      const query = searchInput ? searchInput.value : "";
 
-    assignment11UpdateSearchResults(query, false);
-    showToast("All products loaded.");
-  }, 650);
+      assignment11UpdateSearchResults(query, false);
+      showToast("All products loaded.");
+    }, 650);
 
-  return;
-}
+    return;
+  }
 
 
   if (filterButton) {
@@ -653,7 +700,7 @@ document.addEventListener("click", function (event) {
     return;
   }
 
-    if (addToCartButton) {
+  if (addToCartButton) {
     event.preventDefault();
     event.stopImmediatePropagation();
 
@@ -830,7 +877,7 @@ function assignment12ValidateField(field) {
   let errorMessage = "";
   let successMessage = "";
 
-    if (field.name === "name") {
+  if (field.name === "name") {
     if (value === "") {
       errorMessage = "Please enter your full name.";
     } else if (!/^[\p{L}\p{M} ]+$/u.test(value)) {
@@ -858,11 +905,11 @@ function assignment12ValidateField(field) {
     if (value === "") {
       errorMessage = "Please describe your issue or question.";
     } else if (value.length < 15) {
-  const remaining = 15 - value.length;
+      const remaining = 15 - value.length;
 
-  errorMessage = "Please enter " + remaining + " more " +
-    (remaining === 1 ? "character." : "characters.");
-}
+      errorMessage = "Please enter " + remaining + " more " +
+        (remaining === 1 ? "character." : "characters.");
+    }
     successMessage = "Message looks good.";
   }
 
@@ -987,7 +1034,7 @@ if (searchPage) {
   function setOption(changed, checked) {
     searchPage.querySelectorAll(".filter-option input").forEach(function (input) {
       if (groupOf(input) === groupOf(changed) &&
-          labelOf(input) === labelOf(changed)) {
+        labelOf(input) === labelOf(changed)) {
         input.checked = checked;
       }
     });
@@ -1020,8 +1067,8 @@ if (searchPage) {
     const chosenGpus = selectedOptions(2);
 
     const active = chosenBrands.length +
-                   chosenPrices.length +
-                   chosenGpus.length > 0;
+      chosenPrices.length +
+      chosenGpus.length > 0;
 
     const query = searchPage.querySelector("input[name='query']").value.trim();
     const searchResults = assignment11FindMatches(query);
@@ -1060,7 +1107,7 @@ if (searchPage) {
       });
 
       const loaded = active || query !== "" || extraProductsLoaded ||
-                     !card.classList.contains("extra-product");
+        !card.classList.contains("extra-product");
 
       // Show only matching products.
       card.hidden = !(searchOK && brandOK && priceOK && gpuOK && loaded);
@@ -1098,7 +1145,7 @@ if (searchPage) {
 
       empty.querySelector("p").textContent =
         active ? "Try removing a filter to see more products." :
-        "Try a different search.";
+          "Try a different search.";
 
       clearButton.hidden = !active;
     }
@@ -1245,7 +1292,7 @@ if (assignment12Form) {
 
   submitStatus.setAttribute("role", "status");
   submitStatus.setAttribute("aria-live", "polite");
-    // Handle Support submissions before the older form listeners run.
+  // Handle Support submissions before the older form listeners run.
   // Other forms, including product search, keep their existing behavior.
   document.addEventListener("submit", function (event) {
     if (event.target !== assignment12Form) return;
@@ -1279,7 +1326,7 @@ if (assignment12Form) {
     fields.forEach(function (field) {
       field.readOnly = true;
     });
-        setTimeout(function () {
+    setTimeout(function () {
       supportView.hidden = true;
       successView.hidden = false;
       submitStatus.hidden = true;
@@ -1310,6 +1357,8 @@ if (assignment12Form) {
 
 // Clear navigation loading states when returning with Back or Forward.
 window.addEventListener("pageshow", function () {
+  closeMenu();
+  closeFilters();
   document.querySelectorAll(".page-loading-overlay").forEach(function (overlay) {
     overlay.remove();
   });
@@ -1423,13 +1472,13 @@ window.addEventListener("pageshow", function () {
     let error = "";
 
     if (!value) {
-  error = "This field is required.";
-} else if (
-  name === "name" &&
-  !/^[\p{L}\p{M} ]+$/u.test(value)
-) {
-  error = "Use letters and spaces only.";
-} else if (
+      error = "This field is required.";
+    } else if (
+      name === "name" &&
+      !/^[\p{L}\p{M} ]+$/u.test(value)
+    ) {
+      error = "Use letters and spaces only.";
+    } else if (
       (name === "name" || name === "cardname" || name === "city") &&
       value.length < 2
     ) {
@@ -1550,7 +1599,7 @@ window.addEventListener("pageshow", function () {
           Continue shopping
         </button>
       </form>`;
-const form = document.querySelector("#co-form");
+    const form = document.querySelector("#co-form");
     const inputs = form.querySelectorAll(".co-grid input");
     const quantityInput = document.querySelector("#co-quantity");
     const submit = document.querySelector("#co-submit");
