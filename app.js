@@ -1542,3 +1542,133 @@ window.addEventListener("pageshow", function () {
           Continue shopping
         </button>
       </form>`;
+const form = document.querySelector("#co-form");
+    const inputs = form.querySelectorAll(".co-grid input");
+    const quantityInput = document.querySelector("#co-quantity");
+    const submit = document.querySelector("#co-submit");
+    const continueButton = document.querySelector("#co-continue");
+
+    const mainImage = document.querySelector(".gallery-main-image");
+    const image = document.querySelector("#co-image");
+
+    if (mainImage) {
+      image.src = mainImage.currentSrc || mainImage.src;
+    }
+
+    image.addEventListener("error", function () {
+      image.hidden = true;
+    });
+
+    continueButton.addEventListener("click", function () {
+      if (!busy) popup.close();
+    });
+
+    function updateTotal(save) {
+      const number = Number(quantityInput.value);
+      const valid = quantityInput.validity.valid &&
+        Number.isInteger(number) && number >= 1 && number <= 999;
+
+      const error = document.querySelector("#co-quantity-error");
+      error.textContent = "Enter a whole number from 1 to 999.";
+      error.hidden = valid;
+
+      quantityInput.setAttribute("aria-invalid", valid ? "false" : "true");
+
+      document.querySelector("#co-total").textContent =
+        valid ? money(number) : "—";
+
+      if (valid && save) saveCart(number);
+      return valid;
+    }
+
+    quantityInput.addEventListener("input", function () {
+      updateTotal(true);
+    });
+
+    updateTotal(false);
+
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener("blur", function () {
+        this.dataset.touched = "true";
+        validate(this);
+      });
+
+      inputs[i].addEventListener("input", function () {
+        if (this.dataset.touched === "true") validate(this);
+      });
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (busy) return;
+
+      let firstInvalid = null;
+
+      for (let i = 0; i < inputs.length; i++) {
+        inputs[i].dataset.touched = "true";
+
+        if (!validate(inputs[i]) && !firstInvalid) {
+          firstInvalid = inputs[i];
+        }
+      }
+
+      if (!updateTotal(false) && !firstInvalid) {
+        firstInvalid = quantityInput;
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      busy = true;
+      const ordered = Number(quantityInput.value);
+
+      submit.disabled = true;
+      closeButton.disabled = true;
+      continueButton.disabled = true;
+      quantityInput.disabled = true;
+
+      for (let i = 0; i < inputs.length; i++) {
+        inputs[i].disabled = true;
+      }
+
+      form.setAttribute("aria-busy", "true");
+      submit.textContent = "Placing order…";
+
+      setTimeout(function () {
+        saveCart(0);
+
+        content.innerHTML = `
+          <div class="co-success">
+            <div class="co-success-icon" aria-hidden="true">✓</div>
+            <h2 id="checkout-title" tabindex="-1">Order confirmed</h2>
+            <p>${ordered} × MSI Katana 15 Gaming Laptop</p>
+
+            <p class="co-success-total">
+              Total: <strong>${money(ordered)}</strong>
+            </p>
+
+            <p class="co-hint">
+              This was a demo. No payment was processed or email sent.
+              Your cart is now empty.
+            </p>
+
+            <a href="index.html" class="co-button">Return to home →</a>
+          </div>`;
+
+        busy = false;
+        closeButton.disabled = false;
+        document.querySelector("#checkout-title").focus();
+      }, 700);
+    });
+
+    popup.showModal();
+  }
+
+  if (location.hash === "#checkout") openCheckout();
+
+  window.addEventListener("hashchange", function () {
+    if (location.hash === "#checkout") openCheckout();
+  });
+})();
