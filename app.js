@@ -1419,4 +1419,126 @@ window.addEventListener("pageshow", function () {
     const name = input.name;
     let error = "";
 
-    
+    if (!value) {
+      error = "This field is required.";
+    } else if (
+      (name === "name" || name === "cardname" || name === "city") &&
+      value.length < 2
+    ) {
+      error = "Enter at least 2 characters.";
+    } else if (
+      name === "email" &&
+      (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value) ||
+        input.validity.typeMismatch)
+    ) {
+      error = "Enter a valid email, like name@example.com.";
+    } else if (name === "address" && value.length < 5) {
+      error = "Enter your complete street address.";
+    } else if (name === "state") {
+      const states = (
+        "AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA " +
+        "ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR " +
+        "PA RI SC SD TN TX UT VT VA WA WV WI WY"
+      ).split(" ");
+
+      if (!states.includes(value.toUpperCase())) {
+        error = "Enter a valid state abbreviation, like NC.";
+      }
+    } else if (name === "zip" && !/^\d{5}(-\d{4})?$/.test(value)) {
+      error = "Enter a valid ZIP code, like 28202.";
+    } else if (
+      name === "card" &&
+      value.replace(/\s/g, "") !== "4242424242424242"
+    ) {
+      error = "Use the demo card: 4242 4242 4242 4242.";
+    } else if (name === "cvv" && !/^\d{3,4}$/.test(value)) {
+      error = "Enter a 3- or 4-digit security code.";
+    } else if (name === "expiry") {
+      if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(value)) {
+        error = "Use MM/YY, like 12/30.";
+      } else {
+        const month = Number(value.slice(0, 2));
+        const year = 2000 + Number(value.slice(3));
+
+        if (new Date(year, month, 1) <= new Date()) {
+          error = "Enter a current or future expiration date.";
+        }
+      }
+    }
+
+    const feedback = document.querySelector("#error-" + name);
+    feedback.textContent = error;
+    feedback.hidden = error === "";
+    input.setAttribute("aria-invalid", error ? "true" : "false");
+
+    return error === "";
+  }
+
+  function openCheckout() {
+    if (busy || popup.open) return;
+
+    const quantity = readCart();
+
+    if (!quantity) {
+      content.innerHTML = `
+        <div class="co-success">
+          <h2 id="checkout-title">Your cart is empty</h2>
+          <p>Add a product to begin checkout.</p>
+        </div>`;
+      popup.showModal();
+      return;
+    }
+
+    content.innerHTML = `
+      <h2 id="checkout-title">Checkout</h2>
+      <p class="co-intro">Demo checkout — no payment is processed.</p>
+
+      <form id="co-form" novalidate>
+        <h3 class="co-heading">Contact & shipping</h3>
+        <p class="co-hint">All fields are required. US shipping only.</p>
+        <div class="co-grid">${createFields(0, 6)}</div>
+
+        <h3 class="co-heading">Payment details</h3>
+        <p class="co-hint">
+          Use sample details only. Card: 4242 4242 4242 4242.
+        </p>
+        <div class="co-grid">${createFields(6, 10)}</div>
+
+        <section class="co-summary" aria-label="Order summary">
+          <h3>Your order</h3>
+
+          <div class="co-item">
+            <img id="co-image" src="./assets/MSIKatana.png"
+                 alt="MSI Katana 15 Gaming Laptop">
+
+            <div class="co-product">
+              <strong>MSI Katana 15 Gaming Laptop</strong>
+              <p>$499.99 each · Free shipping</p>
+              <p>Tax not applied in demo</p>
+            </div>
+
+            <div class="co-field co-quantity">
+              <label for="co-quantity">Quantity</label>
+              <input id="co-quantity" type="number"
+                min="1" max="999" step="1" value="${quantity}"
+                aria-describedby="co-quantity-error" required>
+            </div>
+          </div>
+
+ <p id="co-quantity-error"
+             class="co-error" aria-live="polite" hidden></p>
+
+          <div class="co-total" aria-live="polite">
+            <span>Order total</span>
+            <strong id="co-total"></strong>
+          </div>
+        </section>
+
+        <button id="co-submit" class="co-button" type="submit">
+          Place demo order →
+        </button>
+
+        <button id="co-continue" class="co-continue" type="button">
+          Continue shopping
+        </button>
+      </form>`;
