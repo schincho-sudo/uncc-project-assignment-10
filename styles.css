@@ -61,7 +61,7 @@ body {
   background: var(--canvas);
   color: var(--ink);
   font-family: "inter", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.45;
   transition: background-color 180ms var(--ease), color 180ms var(--ease);
 }
@@ -217,7 +217,7 @@ img {
   gap: 7px;
   min-width: 0;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 19px;
+  font-size: 1.1875rem;
   font-weight: 700;
   letter-spacing: -1px;
   color: var(--navy);
@@ -292,7 +292,7 @@ img {
 
 .theme-label {
   display: none;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 700;
 }
 
@@ -338,7 +338,7 @@ img {
   padding: 8px;
   color: var(--ink);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .account-link.desktop-only {
@@ -358,7 +358,7 @@ img {
   border-radius: 99px;
   background: var(--orange);
   color: #fff;
-  font-size: 10px;
+  font-size: 0.625rem;
 }
 
 .mobile-search {
@@ -417,7 +417,7 @@ img {
   padding: 0 16px;
   border-radius: 7px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.875rem;
   text-align: center;
   transition: transform 150ms var(--ease), background-color 150ms var(--ease), box-shadow 150ms var(--ease);
 }
@@ -449,7 +449,7 @@ img {
   min-height: 36px;
   padding: 0 11px;
   border-radius: 6px;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .mobile-menu {
@@ -497,7 +497,7 @@ img {
 .mobile-menu__panel p {
   margin: 0 10px 11px;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -512,7 +512,7 @@ img {
   padding: 0 10px;
   border-bottom: 1px solid var(--line);
   color: var(--ink);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -568,12 +568,12 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(29px, 7vw, 48px);
+  font-size: clamp(1.8125rem, 7vw, 3rem);
   line-height: 1.04;
 }
 
 h2 {
-  font-size: clamp(22px, 5vw, 30px);
+  font-size: clamp(1.375rem, 5vw, 1.875rem);
   line-height: 1.12;
 }
 
@@ -581,7 +581,7 @@ h2 {
   display: block;
   margin-bottom: 6px;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -608,7 +608,7 @@ h2 {
   background: transparent;
   color: var(--blue);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.875rem;
   white-space: nowrap;
 }
 
@@ -669,13 +669,13 @@ h2 {
   border: 1px solid rgba(255, 255, 255, .36);
   border-radius: 99px;
   background: rgba(255, 255, 255, .11);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
 .hero h1 {
   margin-bottom: 10px;
-  font-size: clamp(35px, 9.5vw, 64px);
+  font-size: clamp(2.1875rem, 9.5vw, 4rem);
 }
 
 .hero h1 em {
@@ -686,7 +686,7 @@ h2 {
 .hero p {
   margin-bottom: 20px;
   color: rgba(255, 255, 255, .88);
-  font-size: 15px;
+  font-size: 0.9375rem;
 }
 
 .featured-section {
@@ -754,7 +754,7 @@ h2 {
   border-radius: 4px;
   background: var(--blue-soft);
   color: var(--blue);
-  font-size: 10px;
+  font-size: 0.625rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: .045em;
@@ -768,13 +768,13 @@ h2 {
 .product-card__eyebrow {
   margin-bottom: 4px;
   color: var(--blue);
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 700;
 }
 
 .product-card h3 {
   margin-bottom: 7px;
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.18;
 }
 
@@ -782,7 +782,7 @@ h2 {
   display: -webkit-box;
   margin-bottom: 10px;
   color: var(--ink-soft);
-  font-size: 13px;
+  font-size: 0.8125rem;
   line-height: 1.35;
   overflow: hidden;
   -webkit-line-clamp: 2;
@@ -792,13 +792,13 @@ h2 {
 .product-card__price {
   margin-bottom: 6px;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
 .rating {
   color: var(--orange);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 1px;
 }
 
@@ -821,7 +821,7 @@ h2 {
   align-items: center;
   gap: 6px;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: 0.75rem;
   white-space: nowrap;
 }
 
@@ -855,7 +855,7 @@ h2 {
 .filter-option input:checked+span::after {
   content: "✓";
   color: #fff;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 800;
 }
 
@@ -882,7 +882,7 @@ h2 {
 .results-meta {
   margin-bottom: 0;
   color: var(--ink-soft);
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .sort-control {
@@ -890,7 +890,7 @@ h2 {
   align-items: center;
   gap: 8px;
   color: var(--ink-soft);
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 700;
 }
 
@@ -922,7 +922,7 @@ h2 {
   border-radius: 7px;
   background: var(--surface);
   color: var(--ink);
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
@@ -934,7 +934,7 @@ h2 {
   justify-content: space-between;
   padding-left: 10px;
   color: var(--ink-soft);
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 700;
 }
 
@@ -962,12 +962,12 @@ h2 {
   border-radius: 6px;
   background: var(--blue-soft);
   color: var(--ink);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
 .chip span {
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1;
 }
 
@@ -1005,7 +1005,7 @@ h2 {
   padding-bottom: 13px;
   border-bottom: 1px solid var(--line);
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 0.8125rem;
   letter-spacing: .07em;
 }
 
@@ -1020,7 +1020,7 @@ h2 {
 
 .filter-group h3 {
   margin-bottom: 11px;
-  font-size: 13px;
+  font-size: 0.8125rem;
   text-transform: uppercase;
 }
 
@@ -1031,14 +1031,14 @@ h2 {
   gap: 9px;
   margin: 10px 0;
   color: var(--ink-soft);
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 .filter-more {
   padding: 3px 0;
   background: transparent;
   color: var(--blue);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
@@ -1109,7 +1109,7 @@ h2 {
 .comparison-tray strong {
   flex: 1;
   min-width: 130px;
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 .comparison-previews {
@@ -1212,7 +1212,7 @@ h2 {
   margin-bottom: 20px;
   color: var(--blue);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .product-layout {
@@ -1284,7 +1284,7 @@ h2 {
   max-width: 640px;
   margin-bottom: 12px;
   color: var(--ink-soft);
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .product-info>.rating {
@@ -1294,7 +1294,7 @@ h2 {
 .product-price {
   margin: 8px 0 22px;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 38px;
+  font-size: 2.375rem;
   font-weight: 700;
   letter-spacing: -.05em;
 }
@@ -1306,7 +1306,7 @@ h2 {
   margin-bottom: 13px;
   color: var(--success);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .stock-status>span {
@@ -1346,13 +1346,13 @@ h2 {
   display: block;
   margin-bottom: 2px;
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: .06em;
 }
 
 .good-for p {
   margin: 0;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
@@ -1366,7 +1366,7 @@ h2 {
 .purchase-row label {
   display: grid;
   gap: 5px;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 700;
 }
 
@@ -1395,7 +1395,7 @@ h2 {
   background: var(--success-bg);
   color: var(--success);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .product-details {
@@ -1417,7 +1417,7 @@ h2 {
   background: var(--surface);
   color: var(--ink);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 .product-tabs button.is-active {
@@ -1441,7 +1441,7 @@ h2 {
   align-items: start;
   padding: 14px;
   border-bottom: 1px solid var(--line);
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .spec-row:last-child {
@@ -1456,7 +1456,7 @@ h2 {
 .spec-row>span {
   grid-column: 2;
   color: var(--ink-soft);
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 /* Support form */
@@ -1480,7 +1480,7 @@ h2 {
 
 .form-intro>span:not(.eyebrow-dot) {
   color: var(--blue);
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 700;
 }
 
@@ -1514,7 +1514,7 @@ h2 {
 .form-field label {
   display: block;
   margin-bottom: 7px;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: .06em;
@@ -1567,7 +1567,7 @@ h2 {
   align-items: center;
   gap: 5px;
   margin: 6px 0 0;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
@@ -1633,7 +1633,7 @@ h2 {
 
 .confirmation-number span {
   color: var(--ink-soft);
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -1641,7 +1641,7 @@ h2 {
 .confirmation-number strong {
   grid-row: 2;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .confirmation-number button {
@@ -1667,7 +1667,7 @@ h2 {
   gap: 7px;
   margin: 10px 0;
   color: var(--ink-soft);
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 .success-card li svg,
@@ -1687,7 +1687,7 @@ h2 {
   border-top: 1px solid var(--line);
   background: var(--blue-soft);
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .site-footer .shell {
@@ -1716,7 +1716,7 @@ h2 {
   background: var(--surface);
   color: var(--ink);
   box-shadow: var(--shadow);
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 700;
   animation: toast-in 220ms var(--ease);
 }
@@ -1821,7 +1821,7 @@ h2 {
 
   .brand {
     min-width: 128px;
-    font-size: 21px;
+    font-size: 1.3125rem;
   }
 
   .header-actions {
@@ -1859,7 +1859,7 @@ h2 {
     gap: 7px;
     padding: 0 12px;
     color: var(--ink);
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 700;
   }
 
@@ -2039,7 +2039,7 @@ h2 {
   }
 
   .product-card h3 {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .product-card__actions {
@@ -2078,7 +2078,7 @@ h2 {
   }
 
   .product-info>h1 {
-    font-size: 42px;
+    font-size: 2.625rem;
   }
 
   .product-details {
@@ -2176,13 +2176,13 @@ h2 {
 
 .live-suggestion strong {
   margin-bottom: 2px;
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 .live-suggestion small {
   overflow: hidden;
   color: var(--ink-soft);
-  font-size: 11px;
+  font-size: 0.6875rem;
   line-height: 1.3;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2195,7 +2195,7 @@ h2 {
   margin: 0;
   padding: 13px 10px;
   color: var(--ink-soft);
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 700;
 }
 
@@ -2220,7 +2220,7 @@ h2 {
 }
 
 .live-search-loading .loading-heading h2 {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .live-empty-state {
@@ -2249,12 +2249,12 @@ h2 {
 .live-empty-state h2 {
   margin-bottom: 7px;
   color: var(--ink);
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .live-empty-state p {
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .results-grid.live-results-updated {
@@ -2277,7 +2277,7 @@ h2 {
   gap: 8px;
   margin: -6px 0 0;
   color: var(--blue);
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 700;
   animation: live-result-in 180ms var(--ease);
 }
@@ -2354,7 +2354,7 @@ h2 {
 
 .page-loading__heading h1 {
   margin: 0 0 2px;
-  font-size: clamp(24px, 4vw, 34px);
+  font-size: clamp(1.5rem, 4vw, 2.125rem);
 }
 
 .page-loading__heading p {
@@ -2390,7 +2390,7 @@ h2 {
   display: block;
   margin: 16px 0 9px;
   color: var(--ink);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: .06em;
 }
 
@@ -2559,7 +2559,7 @@ h2 {
   display: block;
   margin: 17px 0 7px;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: .06em;
 }
@@ -2652,7 +2652,7 @@ align-items: start;
 .support-form .field-message i {
   flex-shrink: 0;
   margin-top: 2px;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 
@@ -2780,7 +2780,7 @@ align-items: start;
   gap: 8px;
   min-height: 24px;
   margin: 10px 0 0;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.5;
   overflow-wrap: anywhere;
@@ -2858,13 +2858,13 @@ align-items: start;
   border-radius: 50%;
   background: var(--surface-muted, #f3f6fa);
   color: var(--ink, #10223c);
-  font-size: 30px;
+  font-size: 1.875rem;
   cursor: pointer;
 }
 
 #checkout #checkout-title {
   margin: 0 44px 10px 0;
-  font-size: 34px;
+  font-size: 2.125rem;
   line-height: 1.2;
   letter-spacing: -1px;
 }
@@ -2877,19 +2877,19 @@ align-items: start;
 
 #checkout .co-intro {
   margin: 0 0 36px;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 #checkout .co-hint {
   margin: -4px 0 20px;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 #checkout .co-heading {
   margin: 30px 0 20px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--line, #dbe2ec);
-  font-size: 22px;
+  font-size: 1.375rem;
 }
 
 #checkout .co-grid {
@@ -2905,7 +2905,7 @@ align-items: start;
 #checkout label {
   display: block;
   margin-bottom: 9px;
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 600;
 }
 
@@ -2919,7 +2919,7 @@ align-items: start;
   background: var(--surface, white);
   color: var(--ink, #10223c);
   font: inherit;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 #checkout input::placeholder {
@@ -2939,7 +2939,7 @@ align-items: start;
 #checkout .co-error {
   margin: 8px 0 0;
   color: var(--error, #d92d20);
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
@@ -2955,7 +2955,7 @@ align-items: start;
 
 #checkout .co-summary h3 {
   margin: 0 0 24px;
-  font-size: 22px;
+  font-size: 1.375rem;
 }
 
 #checkout .co-item {
@@ -2978,14 +2978,14 @@ align-items: start;
 }
 
 #checkout .co-product strong {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
 #checkout .co-product p {
   margin: 6px 0 0;
   color: var(--ink-soft, #68778c);
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.5;
 }
 
@@ -3001,11 +3001,11 @@ align-items: start;
   margin-top: 24px;
   padding-top: 22px;
   border-top: 1px solid var(--line, #dbe2ec);
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 #checkout .co-total strong {
-  font-size: 26px;
+  font-size: 1.625rem;
 }
 
 #checkout .co-button {
@@ -3018,7 +3018,7 @@ align-items: start;
   background: #ff7715;
   color: white;
   font: inherit;
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-weight: 700;
   text-align: center;
   text-decoration: none;
@@ -3042,7 +3042,7 @@ align-items: start;
   background: transparent;
   color: var(--ink-soft, #68778c);
   font: inherit;
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 600;
   cursor: pointer;
 }
@@ -3070,7 +3070,7 @@ align-items: start;
   border-radius: 50%;
   background: #e8f7ed;
   color: #15803d;
-  font-size: 36px;
+  font-size: 2.25rem;
 }
 
 #checkout .co-success #checkout-title {
@@ -3085,7 +3085,7 @@ align-items: start;
   padding: 18px;
   border-radius: 8px;
   background: var(--surface-muted, #f3f6fa);
-  font-size: 21px;
+  font-size: 1.3125rem;
 }
 
 #checkout .co-success .co-button {
@@ -3107,7 +3107,7 @@ body:has(#checkout[open]) {
   }
 
   #checkout #checkout-title {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 
   #checkout .co-grid {
