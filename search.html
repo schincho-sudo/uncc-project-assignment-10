@@ -11,12 +11,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="./styles.css" />
+  <script>
+    // Apply the saved theme before displaying the page.
+    try {
+      document.documentElement.dataset.theme =
+        localStorage.getItem("theme") === "dark" ? "dark" : "light";
+    } catch (error) {
+      document.documentElement.dataset.theme = "light";
+    }
+  </script>
 </head>
 
 <body class="page-search">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
-    <div class="header-main shell"><button class="hamburger" type="button" data-menu-toggle aria-label="Open navigation"
+    <div class="header-main shell"><button class="hamburger" type="button" data-menu-toggle aria-controls="mobile-navigation" aria-label="Open navigation"
         aria-expanded="false"><i class="fa-solid fa-bars"></i></button><a class="brand" href="index.html"
         aria-label="Newegg home">
         <img class="brand-logo" src="./assets/NeweggLogo.png" alt="Newegg" />
@@ -54,7 +63,7 @@
             class="fa-solid fa-plus"></i><span>More</span></a>
       </div>
     </nav>
-    <div class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu" id="mobile-navigation" aria-hidden="true"></div>
       <div class="mobile-menu__backdrop" data-menu-close></div>
       <nav class="mobile-menu__panel" aria-label="Mobile navigation">
         <p>Explore</p><a class="mobile-nav-link" href="index.html"><i
@@ -277,7 +286,7 @@
             </article>
             <article class="product-card extra-product" hidden>
               <div class="product-card__media">
-                <img class="product-image" src="./assets/Lenovo.png" alt="Lenovo LOQ 15ARP10 Gaming Laptop" />
+                <img class="product-image" src="./assets/lenovo.png" alt="Lenovo LOQ 15ARP10 Gaming Laptop" />
               </div>
 
               <div class="product-card__body">
