@@ -1729,3 +1729,85 @@ window.addEventListener("pageshow", function () {
     if (location.hash === "#checkout") openCheckout();
   });
 })();
+// Assignment 13: keyboard access and clearer control feedback.
+
+// Keep each suggestion list usable with arrows, Enter, Escape, and a trackpad.
+document.querySelectorAll("[data-search-form] input[name='query']").forEach(function (input) {
+  const box = input.closest(".search-input-wrap").querySelector(".live-suggestions");
+  if (!box) return;
+
+  box.id = input.id + "-suggestions";
+  box.setAttribute("aria-label", "Product suggestions");
+  input.setAttribute("role", "combobox");
+  input.setAttribute("aria-autocomplete", "list");
+  input.setAttribute("aria-haspopup", "listbox");
+  input.setAttribute("aria-controls", box.id);
+  input.setAttribute("aria-expanded", "false");
+  input.autocomplete = "off";
+
+  function updateSuggestions() {
+    input.removeAttribute("aria-activedescendant");
+    box.querySelectorAll(".live-suggestion").forEach(function (button, index) {
+      button.id = box.id + "-" + index;
+      button.setAttribute("role", "option");
+      button.setAttribute("aria-selected", "false");
+      button.tabIndex = -1;
+    });
+    const empty = box.querySelector(".live-suggestion-empty");
+    if (empty) {
+      empty.setAttribute("role", "option");
+      empty.setAttribute("aria-disabled", "true");
+    }
+    input.setAttribute("aria-expanded", String(!box.hidden));
+  }
+
+  input.addEventListener("input", updateSuggestions);
+  input.addEventListener("focus", updateSuggestions);
+
+  input.addEventListener("keydown", function (event) {
+    const options = Array.from(box.querySelectorAll(".live-suggestion"));
+    let selected = options.findIndex(function (option) {
+      return option.getAttribute("aria-selected") === "true";
+    });
+
+    if (event.key === "Escape") {
+      box.hidden = true;
+      input.setAttribute("aria-expanded", "false");
+      input.removeAttribute("aria-activedescendant");
+    }
+
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      if (!options.length) return;
+      event.preventDefault();
+      box.hidden = false;
+      selected = event.key === "ArrowDown"
+        ? (selected + 1) % options.length
+        : (selected <= 0 ? options.length : selected) - 1;
+
+      options.forEach(function (option, index) {
+        option.setAttribute("aria-selected", String(index === selected));
+      });
+      input.setAttribute("aria-expanded", "true");
+      input.setAttribute("aria-activedescendant", options[selected].id);
+      options[selected].scrollIntoView({ block: "nearest" });
+    }
+
+    if (event.key === "Enter" && !box.hidden && selected >= 0) {
+      event.preventDefault();
+      options[selected].click();
+    }
+
+    if (event.key === "Tab") {
+      box.hidden = true;
+      input.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  box.addEventListener("click", function () {
+    input.setAttribute("aria-expanded", "false");
+    input.removeAttribute("aria-activedescendant");
+  });
+  input.addEventListener("blur", function () {
+    input.setAttribute("aria-expanded", "false");
+  });
+});
