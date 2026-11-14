@@ -3140,3 +3140,144 @@ body:has(#checkout[open]) {
     max-width: 120px;
   }
 }
+
+:root {
+  --focus: #246bcb;
+  --orange-text: #b54708;
+  --on-blue: #ffffff;
+  --on-success: #ffffff;
+  color-scheme: light;
+}
+
+
+:root[data-theme="dark"],
+body.dark-mode {
+  --focus: #84adff;
+  --orange-text: #ff9e58;
+  --on-blue: #101828;
+  --on-success: #101828;
+  color-scheme: dark;
+}
+
+
+/* Respect the reader's default font size. */
+html {
+  font-size: 100%;
+  overflow-x: visible;
+}
+
+
+body {
+  min-width: 0;
+  overflow-x: visible;
+}
+
+
+/* Deep navy labels keep the existing orange buttons accessible. */
+.btn-primary,
+.skip-link,
+.cart-link b,
+#checkout .co-button {
+  color: #101828;
+}
+
+
+.rating,
+.form-intro p b,
+.form-field label b,
+.theme-icon {
+  color: var(--orange-text);
+}
+
+
+.footer-note {
+  opacity: 1;
+}
+
+
+.good-for>span {
+  color: var(--blue);
+}
+
+
+.success-mark {
+  color: var(--on-success);
+}
+
+
+#checkout .co-success-icon {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+
+.compare-check input:checked+span::after,
+.filter-option input:checked+span::after {
+  color: var(--on-blue);
+}
+
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--ink-soft);
+  opacity: 1;
+}
+
+
+/* Focus must remain visible on both themes and on white photographs. */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.search-input-wrap input:focus-visible,
+.support-form .form-field input:focus-visible,
+.support-form .form-field textarea:focus-visible,
+.live-suggestion:focus-visible,
+#checkout input:focus-visible,
+#checkout button:focus-visible,
+#checkout a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+
+.compare-check input:focus-visible+span,
+.filter-option input:focus-visible+span {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+
+.gallery-thumb:focus-visible {
+  outline-color: #246bcb;
+  outline-offset: -3px;
+}
+
+
+/* Product photographs are not inverted; the surrounding wells are themed. */
+body.dark-mode .product-card__media,
+body.dark-mode .gallery-main,
+body.dark-mode .gallery-thumb {
+  background: var(--surface-muted);
+}
+
+
+/* Text-containing controls can grow instead of clipping larger letters. */
+.search-input-wrap input,
+.form-field input,
+.support-form .form-field input,
+.purchase-row input,
+.sort-control select {
+  height: auto;
+  min-height: 2.75rem;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+
+.theme-control {
+  height: auto;
+  min-height: 2.625rem;
+}
+
