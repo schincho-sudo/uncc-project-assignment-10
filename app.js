@@ -1886,3 +1886,14 @@ window.addEventListener("resize", function () {
     closeFilters();
   }
 });
+// Indicate the selected product-information button to assistive technology.
+document.querySelectorAll("[data-product-tab]").forEach(function (button) {
+  button.setAttribute("aria-pressed",
+    String(button.classList.contains("is-active")));
+  button.addEventListener("click", function () {
+    document.querySelectorAll("[data-product-tab]").forEach(function (item) {
+      item.setAttribute("aria-pressed",
+        String(item.classList.contains("is-active")));
+    });
+  });
+});
