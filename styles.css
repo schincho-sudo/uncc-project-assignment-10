@@ -3281,3 +3281,106 @@ body.dark-mode .gallery-thumb {
   min-height: 2.625rem;
 }
 
+.btn {
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+
+.btn-sm {
+  padding-top: .4em;
+  padding-bottom: .4em;
+}
+
+
+.header-main,
+.header-actions,
+.nav-inner,
+.product-card__actions,
+.section-heading,
+.search-page__top,
+.mobile-filter-row,
+.stock-status,
+#checkout .co-total {
+  flex-wrap: wrap;
+}
+
+
+.header-main {
+  padding-block: 8px;
+}
+
+
+.desktop-search {
+  min-width: 12rem;
+}
+
+
+.header-actions {
+  max-width: 100%;
+}
+
+
+.nav-link {
+  min-height: 3.25rem;
+}
+
+
+.theme-control,
+.compare-check,
+.text-link,
+.text-button {
+  white-space: normal;
+}
+
+
+.home-main,
+.product-info,
+.good-for>div,
+.section-heading>div,
+.search-page__top>div,
+.spec-row>span {
+  min-width: 0;
+}
+
+
+.product-card h3,
+.product-subtitle,
+.good-for p,
+.spec-row>span,
+#checkout .co-product,
+#checkout .co-total {
+  overflow-wrap: anywhere;
+}
+
+
+/* Keep complete descriptions and suggestion details available at larger sizes. */
+.product-card__desc {
+  display: block;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+}
+
+
+.live-suggestion small {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+
+.live-suggestion {
+  scroll-margin-block: 12px;
+}
+
+
+.live-suggestions {
+  max-height: min(22rem, 55vh);
+}
+
+
+.search-input-wrap .live-suggestions i {
+  position: static;
+  left: auto;
+}
+
