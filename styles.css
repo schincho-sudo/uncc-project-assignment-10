@@ -3384,3 +3384,103 @@ body.dark-mode .gallery-thumb {
   left: auto;
 }
 
+/* The mobile drawer follows the actual header height, even with enlarged text. */
+.mobile-menu__panel {
+  top: var(--mobile-menu-top, 124px);
+}
+
+.mobile-menu__backdrop {
+  inset: var(--mobile-menu-top, 124px) 0 0;
+}
+
+/* Stable feedback space scales with the reader's text size too. */
+.support-form .field-message {
+  min-height: 1.5em;
+}
+
+.support-form .field-message[hidden] {
+  visibility: hidden;
+}
+
+.cart-feedback {
+  padding: .5em;
+  text-align: center;
+}
+
+.toast {
+  overflow-wrap: anywhere;
+}
+
+#checkout {
+  max-width: calc(100% - 28px);
+}
+
+#checkout .co-item {
+  flex-wrap: wrap;
+}
+
+#checkout #checkout-title {
+  overflow-wrap: anywhere;
+}
+
+#checkout .co-product {
+  min-width: min(100%, 12rem);
+}
+
+#checkout .co-quantity {
+  max-width: 100%;
+}
+
+#close-checkout {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+@media (min-width: 600px) {
+
+  .featured-grid,
+  .results-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .desktop-search {
+    display: none !important;
+  }
+
+  .account-link.desktop-only {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 0;
+  }
+
+  .theme-control {
+    gap: 4px;
+    padding-inline: 3px;
+  }
+
+  .switch {
+    flex-shrink: 0;
+  }
+
+  .mobile-sort {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .support-form .field-message {
+    min-height: 3em;
+  }
+
+  .purchase-row {
+    grid-template-columns: minmax(5rem, .4fr) minmax(0, 1fr);
+  }
+
+  .spec-row {
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+  }
+}
