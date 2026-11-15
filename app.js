@@ -1849,3 +1849,40 @@ document.querySelectorAll(".results-meta, .compare-message, .cart-feedback").for
 // The skip link moves keyboard focus straight to the main content.
 const mainContent = document.querySelector("main");
 if (mainContent) mainContent.tabIndex = -1;
+// Keep keyboard focus inside an open mobile drawer.
+document.addEventListener("keydown", function (event) {
+  const activeMenu = menu && menu.classList.contains("is-open");
+  const activeFilters = filterDrawer && filterDrawer.classList.contains("is-open");
+  if (!activeMenu && !activeFilters) return;
+
+  if (event.key === "Escape") {
+    if (activeFilters) closeFilters();
+    return;
+  }
+  if (event.key !== "Tab") return;
+
+  const panel = activeMenu ? menu : filterDrawer;
+  const controls = Array.from(panel.querySelectorAll("a[href], button, input, select"))
+    .filter(function (control) {
+      return control.getClientRects().length && !control.disabled;
+    });
+  if (activeMenu) controls.unshift(menuButton);
+  if (!controls.length) return;
+
+  const first = controls[0];
+  const last = controls[controls.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+});
+
+window.addEventListener("resize", function () {
+  if (window.innerWidth >= 768) {
+    closeMenu();
+    closeFilters();
+  }
+});
