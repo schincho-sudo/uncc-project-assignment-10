@@ -1811,3 +1811,41 @@ document.querySelectorAll("[data-search-form] input[name='query']").forEach(func
     input.setAttribute("aria-expanded", "false");
   });
 });
+// Decorative icons do not need to be read aloud.
+document.querySelectorAll("i.fa-solid, i.fa-regular").forEach(function (icon) {
+  icon.setAttribute("aria-hidden", "true");
+});
+
+// Distinguish repeated product actions and announce ratings clearly.
+document.querySelectorAll(".product-card").forEach(function (card) {
+  const title = card.querySelector("h3").textContent.trim();
+  const compare = card.querySelector("[data-compare]");
+  const link = card.querySelector(".product-card__actions a");
+  if (compare) compare.setAttribute("aria-label", "Compare " + title);
+  if (link) link.setAttribute("aria-label", "View product: " + title);
+});
+
+document.querySelectorAll(".rating").forEach(function (rating) {
+  if (!rating.hasAttribute("aria-label")) {
+    const stars = (rating.textContent.match(/★/g) || []).length;
+    const reviews = rating.querySelector("span");
+    rating.setAttribute("aria-label", stars + " out of 5 stars" +
+      (reviews ? ", " + reviews.textContent.trim() + " reviews" : ""));
+  }
+  rating.setAttribute("role", "img");
+});
+
+document.querySelectorAll(".gallery-thumb").forEach(function (button, index) {
+  button.setAttribute("aria-label", "Show product image " + (index + 1));
+  button.setAttribute("aria-pressed",
+    String(button.classList.contains("is-selected")));
+});
+
+document.querySelectorAll(".results-meta, .compare-message, .cart-feedback").forEach(function (message) {
+  message.setAttribute("role", "status");
+  message.setAttribute("aria-live", "polite");
+});
+
+// The skip link moves keyboard focus straight to the main content.
+const mainContent = document.querySelector("main");
+if (mainContent) mainContent.tabIndex = -1;
