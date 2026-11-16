@@ -3484,3 +3484,49 @@ body.dark-mode .gallery-thumb {
     grid-template-columns: 1.5rem minmax(0, 1fr);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.live-suggestion[aria-selected="true"] {
+  background: var(--blue-soft);
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
+/* Clear control boundaries and focus rings in both themes. */
+:root {
+  --line-strong: #667085;
+}
+
+:root[data-theme="dark"],
+body.dark-mode {
+  --line-strong: #98a2b3;
+}
+
+.gallery-thumb:focus-visible {
+  outline: 3px solid #246bcb;
+  outline-offset: -3px;
+  box-shadow: 0 0 0 3px #ffffff;
+}
+
+/* Keep readable hero text even over a bright part of the illustration. */
+.hero::before {
+  background: linear-gradient(90deg, rgba(4, 13, 37, .96) 0%, rgba(4, 13, 37, .8) 60%, rgba(4, 13, 37, .08) 100%);
+}
+
+@media (max-width: 767px) {
+  .hero::before {
+    background: rgba(4, 13, 37, .78);
+  }
+}
