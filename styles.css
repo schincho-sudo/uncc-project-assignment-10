@@ -14,7 +14,7 @@
   --orange-dark: #d95f07;
   --success: #157a47;
   --success-bg: #ecfdf3;
-  --error: #d92d20;
+  --error: #b42318;
   --error-bg: #fff1f0;
   --shadow: 0 14px 34px rgba(16, 24, 40, 0.08);
   --shadow-soft: 0 6px 18px rgba(16, 24, 40, 0.06);
@@ -2933,12 +2933,12 @@ align-items: start;
 }
 
 #checkout input[aria-invalid="true"] {
-  border-color: var(--error, #d92d20);
+  border-color: var(--error, #B42318);
 }
 
 #checkout .co-error {
   margin: 8px 0 0;
-  color: var(--error, #d92d20);
+  color: var(--error, #B42318);
   font-size: 0.9375rem;
   line-height: 1.5;
   overflow-wrap: anywhere;
