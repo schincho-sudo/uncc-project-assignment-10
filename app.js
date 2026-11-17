@@ -1399,7 +1399,7 @@ window.addEventListener("pageshow", function () {
 
   const labels = [
     "Full name", "Email address", "Street address", "City",
-    "State", "ZIP code", "Name on card", "Demo card number",
+    "State", "ZIP code", "Name on card", "Card number",
     "Expiration date", "Security code"
   ];
 
@@ -1505,9 +1505,9 @@ window.addEventListener("pageshow", function () {
       error = "Enter a valid ZIP code, like 28202.";
     } else if (
       name === "card" &&
-      value.replace(/\s/g, "") !== "4242424242424242"
+      !/^\d{13,19}$/.test(value.replace(/\s/g, ""))
     ) {
-      error = "Use the demo card: 4242 4242 4242 4242.";
+      error = "Enter a card number containing 13–19 digits.";
     } else if (name === "cvv" && !/^\d{3,4}$/.test(value)) {
       error = "Enter a 3- or 4-digit security code.";
     } else if (name === "expiry") {
@@ -1548,7 +1548,6 @@ window.addEventListener("pageshow", function () {
 
     content.innerHTML = `
       <h2 id="checkout-title">Checkout</h2>
-      <p class="co-intro">Demo checkout — no payment is processed.</p>
 
       <form id="co-form" novalidate>
         <h3 class="co-heading">Contact & shipping</h3>
@@ -1556,9 +1555,7 @@ window.addEventListener("pageshow", function () {
         <div class="co-grid">${createFields(0, 6)}</div>
 
         <h3 class="co-heading">Payment details</h3>
-        <p class="co-hint">
-          Use sample details only. Card: 4242 4242 4242 4242.
-        </p>
+        
         <div class="co-grid">${createFields(6, 10)}</div>
 
         <section class="co-summary" aria-label="Order summary">
@@ -1592,7 +1589,7 @@ window.addEventListener("pageshow", function () {
         </section>
 
         <button id="co-submit" class="co-button" type="submit">
-          Place demo order →
+          Place order →
         </button>
 
         <button id="co-continue" class="co-continue" type="button">
@@ -1698,18 +1695,16 @@ window.addEventListener("pageshow", function () {
 
         content.innerHTML = `
           <div class="co-success">
-            <div class="co-success-icon" aria-hidden="true">✓</div>
+            <div class="success-mark" aria-hidden="true">
+  <i class="fa-solid fa-check"></i>
+</div>
             <h2 id="checkout-title" tabindex="-1">Order confirmed</h2>
             <p>${ordered} × MSI Katana 15 Gaming Laptop</p>
 
             <p class="co-success-total">
               Total: <strong>${money(ordered)}</strong>
             </p>
-
-            <p class="co-hint">
-              This was a demo. No payment was processed or email sent.
-              Your cart is now empty.
-            </p>
+            
 
             <a href="index.html" class="co-button">Return to home →</a>
           </div>`;
@@ -1897,3 +1892,18 @@ document.querySelectorAll("[data-product-tab]").forEach(function (button) {
     });
   });
 });
+
+// Automatically format the expiration date as MM/YY.
+document.addEventListener("input", function (event) {
+  if (event.target.id !== "co-expiry") return;
+
+  const input = event.target;
+  const digits = input.value.replace(/\D/g, "").slice(0, 4);
+  const deleting = event.inputType?.startsWith("delete");
+
+  if (digits.length > 2 || (digits.length === 2 && !deleting)) {
+    input.value = digits.slice(0, 2) + "/" + digits.slice(2);
+  } else {
+    input.value = digits;
+  }
+}, true);
