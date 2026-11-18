@@ -1907,3 +1907,262 @@ document.addEventListener("input", function (event) {
     input.value = digits;
   }
 }, true);
+
+// Homepage promotional carousel.
+(function () {
+  const carousel = document.querySelector("[data-promo-carousel]");
+  if (!carousel) return;
+
+  const track = carousel.querySelector(".promo-track");
+  const slides = carousel.querySelectorAll(".promo-slide");
+  const dots = carousel.querySelectorAll("[data-promo-dot]");
+  const previous = carousel.querySelector("[data-promo-prev]");
+  const next = carousel.querySelector("[data-promo-next]");
+  const pauseButton = carousel.querySelector("[data-promo-pause]");
+  const status = carousel.querySelector("[data-promo-status]");
+  const viewport = carousel.querySelector(".promo-viewport");
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  let currentSlide = 0;
+  let timer = null;
+  let hovering = false;
+  let paused = reducedMotion.matches;
+  let touchStart = null;
+  // Duplicate the first slide for a seamless forward loop.
+const firstSlideCopy = slides[0].cloneNode(true);
+firstSlideCopy.inert = true;
+firstSlideCopy.setAttribute("aria-hidden", "true");
+track.appendChild(firstSlideCopy);
+let wrapping = false;
+
+
+// Fit the mobile carousel to the active slide.
+function fitMobileSlide() {
+  if (window.innerWidth < 768) {
+    viewport.style.height = slides[currentSlide].offsetHeight + "px";
+  } else {
+    viewport.style.height = "";
+  }
+}
+
+// Update the height when the browser size changes.
+window.addEventListener("resize", fitMobileSlide);
+
+// Update again after banner images finish loading.
+carousel.querySelectorAll("img").forEach(function (image) {
+  image.addEventListener("load", fitMobileSlide);
+});
+
+// Update after the website fonts finish loading.
+if (document.fonts) {
+  document.fonts.ready.then(fitMobileSlide);
+}
+
+  function stopTimer() {
+    clearTimeout(timer);
+    timer = null;
+  }
+
+  function updatePauseButton() {
+    pauseButton.setAttribute(
+      "aria-label",
+      paused ? "Start automatic promotions" : "Pause automatic promotions"
+    );
+
+    pauseButton.innerHTML = paused
+      ? '<i class="fa-solid fa-play" aria-hidden="true"></i>'
+      : '<i class="fa-solid fa-pause" aria-hidden="true"></i>';
+  }
+
+  function startTimer() {
+    stopTimer();
+
+    if (
+      paused ||
+      hovering ||
+      document.hidden ||
+      slides[currentSlide].contains(document.activeElement)
+    ) {
+      return;
+    }
+
+    timer = setTimeout(function () {
+      showSlide(currentSlide + 1, false);
+      startTimer();
+    }, 5000);
+  }
+
+  function showSlide(index, announce) {
+  if (wrapping) return;
+
+  const movingPastEnd = index >= slides.length;
+  currentSlide = (index + slides.length) % slides.length;
+
+  slides.forEach(function (slide, slideIndex) {
+    const active = slideIndex === currentSlide;
+    slide.inert = !active;
+    slide.setAttribute("aria-hidden", String(!active));
+  });
+
+  dots.forEach(function (dot, dotIndex) {
+    dot.setAttribute(
+      "aria-pressed",
+      String(dotIndex === currentSlide)
+    );
+  });
+
+  if (announce) {
+    status.textContent =
+      slides[currentSlide].getAttribute("aria-label");
+  }
+
+  fitMobileSlide();
+
+  if (movingPastEnd && !reducedMotion.matches) {
+    wrapping = true;
+
+    // Continue forward to the duplicate first slide.
+    track.style.transform =
+      "translateX(-" + slides.length * 100 + "%)";
+
+    function finishLoop(event) {
+      if (
+        event &&
+        (event.target !== track || event.propertyName !== "transform")
+      ) {
+        return;
+      }
+
+      clearTimeout(fallback);
+      track.removeEventListener("transitionend", finishLoop);
+
+      // Jump to the identical real first slide without animation.
+      track.style.transition = "none";
+      track.style.transform = "translateX(0)";
+
+      // Apply the reset before restoring the CSS transition.
+      void track.offsetWidth;
+      track.style.transition = "";
+
+      wrapping = false;
+    }
+
+    track.addEventListener("transitionend", finishLoop);
+    const fallback = setTimeout(finishLoop, 650);
+  } else {
+    track.style.transform =
+      "translateX(-" + currentSlide * 100 + "%)";
+  }
+}
+
+  function navigate(index) {
+    showSlide(index, true);
+    startTimer();
+  }
+
+  previous.addEventListener("click", function () {
+    navigate(currentSlide - 1);
+  });
+
+  next.addEventListener("click", function () {
+    navigate(currentSlide + 1);
+  });
+
+  dots.forEach(function (dot) {
+    dot.addEventListener("click", function () {
+      navigate(Number(dot.dataset.promoDot));
+    });
+  });
+
+  pauseButton.addEventListener("click", function () {
+    paused = !paused;
+    updatePauseButton();
+    startTimer();
+  });
+
+  carousel.addEventListener("mouseenter", function () {
+    hovering = true;
+    stopTimer();
+  });
+
+  carousel.addEventListener("mouseleave", function () {
+    hovering = false;
+    startTimer();
+  });
+
+  // Stop rotation when someone navigates with the keyboard.
+  // They can explicitly restart it using the play button.
+  carousel.addEventListener("focusin", function (event) {
+    stopTimer();
+
+    if (event.target.matches(":focus-visible")) {
+      paused = true;
+      updatePauseButton();
+    }
+  });
+
+  carousel.addEventListener("focusout", function () {
+    setTimeout(startTimer, 0);
+  });
+
+  document.addEventListener("visibilitychange", startTimer);
+
+  reducedMotion.addEventListener("change", function (event) {
+    if (event.matches) {
+      paused = true;
+      updatePauseButton();
+      stopTimer();
+    }
+  });
+
+  viewport.addEventListener("touchstart", function (event) {
+    stopTimer();
+
+    if (event.touches.length !== 1) {
+      touchStart = null;
+      return;
+    }
+
+    touchStart = {
+      x: event.touches[0].clientX,
+      y: event.touches[0].clientY
+    };
+  }, { passive: true });
+
+  viewport.addEventListener("touchend", function (event) {
+    if (touchStart && event.changedTouches.length) {
+      const distanceX =
+        event.changedTouches[0].clientX - touchStart.x;
+      const distanceY =
+        event.changedTouches[0].clientY - touchStart.y;
+
+      if (
+        Math.abs(distanceX) > 50 &&
+        Math.abs(distanceX) > Math.abs(distanceY)
+      ) {
+        const direction = distanceX < 0 ? 1 : -1;
+
+        if (slides[currentSlide].contains(document.activeElement)) {
+          (direction === 1 ? next : previous).focus({
+            preventScroll: true
+          });
+        }
+
+        navigate(currentSlide + direction);
+      }
+    }
+
+    touchStart = null;
+    startTimer();
+  }, { passive: true });
+
+  viewport.addEventListener("touchcancel", function () {
+    touchStart = null;
+    startTimer();
+  }, { passive: true });
+
+  updatePauseButton();
+  startTimer();
+})();

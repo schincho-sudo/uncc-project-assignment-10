@@ -3578,3 +3578,285 @@ body.dark-mode {
     color: var(--blue);
   }
 }
+
+/* Homepage promotional carousel */
+.promo-carousel {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: .875rem;
+  background: #080e19;
+  color: #ffffff;
+  box-shadow: 0 .75rem 2rem rgba(16, 24, 40, .12);
+}
+
+.promo-viewport {
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+}
+
+.promo-track {
+  display: flex;
+  align-items: stretch;
+  transition: transform .5s ease;
+}
+
+.promo-slide {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 0 0 100%;
+  min-width: 0;
+  min-height: 22rem;
+  aspect-ratio: 2.4 / 1;
+  box-sizing: border-box;
+}
+
+.promo-slide--tech {
+  padding: 2rem 5rem 4rem;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 13, 37, .97),
+      rgba(4, 13, 37, .85) 55%,
+      rgba(4, 13, 37, .15)
+    ),
+    url("./assets/hero-tech.png") center / cover;
+}
+
+.promo-copy {
+  width: 100%;
+  max-width: 33rem;
+  min-width: 0;
+}
+
+.promo-copy h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -.04em;
+  overflow-wrap: anywhere;
+}
+
+.promo-copy h1 span {
+  color: #ffad70;
+}
+
+.promo-copy p {
+  max-width: 28rem;
+  margin: 1rem 0 1.5rem;
+  color: #e2e8f0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.promo-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  max-width: 100%;
+  min-height: 2.75rem;
+  padding: .75rem 1.125rem;
+  border-radius: .5rem;
+  background: #f97316;
+  color: #101828;
+  font-size: .9375rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.promo-button:hover {
+  background: #ffad70;
+  color: #101828;
+}
+
+.promo-slide--banner {
+  padding: 0;
+  background: #080e19;
+}
+
+.promo-banner-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+}
+
+.promo-banner-link img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  object-fit: contain;
+}
+
+.promo-mobile-copy {
+  display: none;
+}
+
+/* Desktop arrows with dots and pause grouped at the bottom. */
+.promo-controls {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: .25rem;
+  padding: .75rem;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.promo-controls button {
+  pointer-events: auto;
+}
+
+.promo-arrow {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 4rem;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: .5rem;
+  background: rgba(0, 0, 0, .55);
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.promo-arrow--prev {
+  left: .75rem;
+}
+
+.promo-arrow--next {
+  right: .75rem;
+}
+
+.promo-arrow:hover {
+  background: rgba(0, 0, 0, .85);
+  border-color: #ffffff;
+}
+
+.promo-dots {
+  display: flex;
+  gap: 0;
+  pointer-events: auto;
+}
+
+.promo-dot {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: .375rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.promo-dot::before {
+  content: "";
+  width: .375rem;
+  height: .375rem;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, .9);
+}
+
+.promo-dot[aria-pressed="true"]::before {
+  width: 1rem;
+  background: #ffad70;
+}
+
+.promo-pause {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: .375rem;
+  background: transparent;
+  color: #ffffff;
+  font-size: .75rem;
+  cursor: pointer;
+  text-shadow: 0 0 3px rgba(0, 0, 0, .9);
+}
+
+.promo-pause:hover {
+  background: rgba(0, 0, 0, .25);
+}
+
+.promo-carousel a:focus-visible,
+.promo-carousel button:focus-visible {
+  outline: 3px solid #84adff;
+  outline-offset: -4px;
+}
+
+/* Mobile: full banners, no controls, and the first Shop now button. */
+@media (max-width: 767px) {
+  .promo-track {
+    align-items: flex-start;
+  }
+
+  .promo-slide {
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+
+  .promo-slide--tech {
+    min-height: 180px;
+    padding: 1.25rem;
+    background:
+      linear-gradient(rgba(4, 13, 37, .9), rgba(4, 13, 37, .9)),
+      url("./assets/hero-tech.png");
+    background-color: #071633;
+    background-size: 100% 100%, contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .promo-copy h1 {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+
+  .promo-copy p {
+    margin: .75rem 0 1rem;
+    font-size: .875rem;
+    line-height: 1.5;
+  }
+
+  .promo-slide--banner {
+    display: block;
+  }
+
+  .promo-banner-link {
+    display: block;
+    height: auto;
+  }
+
+  .promo-banner-link img {
+    height: auto;
+  }
+
+  .promo-controls {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-track {
+    transition: none;
+  }
+}

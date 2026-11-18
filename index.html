@@ -102,24 +102,106 @@
       </aside>
 
       <div class="home-main">
-        <section class="hero" style="--hero-image: url('./assets/hero-tech.png')">
-          <div class="hero__content">
-            <h1>
-              New tech,
+        <section class="promo-carousel" data-promo-carousel
+  aria-label="Featured promotions" aria-roledescription="carousel">
 
-              <em>built for you.</em>
-            </h1>
+  <div class="promo-viewport">
+    <div class="promo-track">
 
-            <p>
-              Discover performance-ready laptops, components,
-              and everyday essentials.
-            </p>
+      <div class="promo-slide promo-slide--tech"
+        role="group" aria-roledescription="slide"
+        aria-label="1 of 3: New technology">
 
-            <a class="btn btn-primary" href="search.html">
-              Shop now <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-        </section>
+        <div class="promo-copy">
+          <h1>New tech,<br><span>built for you.</span></h1>
+
+          <p>
+            Discover performance-ready laptops, components,
+            and everyday essentials.
+          </p>
+
+          <a class="promo-button" href="search.html">
+            Shop now
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="promo-slide promo-slide--banner"
+  role="group" aria-roledescription="slide"
+  aria-label="2 of 3: Made for gaming"
+  aria-hidden="true" inert>
+
+  <a class="promo-banner-link" href="search.html">
+    <img src="./assets/banner2.png" width="1880" height="780"
+      alt="Made for gaming. Shop PCs, consoles, monitors, games, and accessories." />
+  </a>
+
+  <div class="promo-mobile-copy">
+    <h2>Made for gaming</h2>
+    <p>PCs, consoles, monitors, and accessories for your setup.</p>
+    <a class="promo-button" href="search.html">
+      Shop gaming
+      <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+
+<div class="promo-slide promo-slide--banner"
+  role="group" aria-roledescription="slide"
+  aria-label="3 of 3: ASUS laptop promotion"
+  aria-hidden="true" inert>
+
+  <a class="promo-banner-link" href="search.html">
+    <img src="./assets/banner3.png" width="943" height="387"
+      alt="Top gifts. Top deals. Give ASUS. Explore ASUS laptop offers." />
+  </a>
+
+  <div class="promo-mobile-copy">
+    <h2>Top gifts. Top deals.</h2>
+    <p>Explore ASUS laptops for your next upgrade.</p>
+    <a class="promo-button" href="search.html">
+      Shop ASUS
+      <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+
+  <div class="promo-controls">
+    <button class="promo-arrow promo-arrow--prev" type="button"
+      data-promo-prev aria-label="Previous promotion">
+      <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+    </button>
+
+    <button class="promo-arrow promo-arrow--next" type="button"
+      data-promo-next aria-label="Next promotion">
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+
+    <div class="promo-dots" role="group" aria-label="Choose a promotion">
+      <button class="promo-dot" type="button" data-promo-dot="0"
+        aria-label="Show promotion 1" aria-pressed="true"></button>
+
+      <button class="promo-dot" type="button" data-promo-dot="1"
+        aria-label="Show promotion 2" aria-pressed="false"></button>
+
+      <button class="promo-dot" type="button" data-promo-dot="2"
+        aria-label="Show promotion 3" aria-pressed="false"></button>
+    </div>
+
+    <button class="promo-pause" type="button"
+      data-promo-pause aria-label="Pause automatic promotions">
+      <i class="fa-solid fa-pause" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <p class="sr-only" data-promo-status role="status"
+    aria-live="polite" aria-atomic="true"></p>
+</section>
 
         <section class="featured-section">
           <div class="section-heading">
