@@ -232,7 +232,7 @@ img {
 
 @media (min-width: 768px) {
   .brand-logo {
-    width: 145px;
+    width: 180px;
   }
 }
 
@@ -1816,8 +1816,10 @@ h2 {
   }
 
   .header-main {
-    gap: 19px;
-  }
+  justify-content: flex-start;
+  gap: 24px;
+  min-height: 84px;
+}
 
   .brand {
     min-width: 128px;
@@ -1825,16 +1827,31 @@ h2 {
   }
 
   .header-actions {
-    gap: 9px;
-  }
+  gap: 28px;
+}
+
+.header-actions .theme-control {
+  gap: 8px;
+  padding: 0 4px;
+}
+
+.header-actions .switch {
+  flex-shrink: 0;
+}
 
   .theme-label {
     display: inline;
+    font-size: .9375rem;
   }
+
+  .header-actions .cart-link {
+  font-size: 1rem;
+}
 
   .desktop-search {
     flex: 1;
-    max-width: 530px;
+    max-width: 720px;
+    margin-inline: auto;
   }
 
   .search-form .btn {
@@ -1842,7 +1859,7 @@ h2 {
   }
 
   .desktop-nav {
-    min-height: 52px;
+    min-height: 3.5rem;
     border-top: 1px solid var(--line);
   }
 
@@ -1859,7 +1876,7 @@ h2 {
     gap: 7px;
     padding: 0 12px;
     color: var(--ink);
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 700;
   }
 
@@ -1972,8 +1989,29 @@ h2 {
 
 @media (min-width: 1024px) {
   .shell {
-    width: min(100% - 88px, 1240px);
-  }
+  width: min(100% - 88px, 1240px);
+}
+
+/* Wider homepage with consistent outer margins. */
+.page-home .shell {
+  width: min(100% - 64px, 1420px);
+}
+
+.page-search .shell {
+  width: min(100% - 64px, 1440px);
+}
+
+/* Same header width across all pages. */
+.site-header .shell {
+  width: min(100% - 64px, 1420px);
+}
+
+.page-home .featured-section {
+  padding-top: 28px;
+}
+.page-search .results-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+}
 
   .category-rail {
     display: block;
@@ -1983,11 +2021,13 @@ h2 {
   }
 
   .home-grid {
-    display: grid;
-    grid-template-columns: 225px minmax(0, 1fr);
-    gap: 30px;
-    padding-block: 42px 55px;
-  }
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  align-items: start;
+  gap: 24px;
+  padding-block: 28px 40px;
+}
+
 
   .category-rail .section-kicker {
     margin: 6px 7px 15px;
@@ -3437,12 +3477,15 @@ body.dark-mode .gallery-thumb {
 }
 
 @media (min-width: 600px) {
+  .featured-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
 
-  .featured-grid,
   .results-grid {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
   }
 }
+
 
 @media (max-width: 767px) {
   .desktop-search {
@@ -3859,4 +3902,18 @@ body.dark-mode {
   .promo-track {
     transition: none;
   }
+}
+
+/* Clean logo without a surrounding box. */
+.site-header .brand,
+.site-header .brand-logo {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.site-header .brand-logo {
+  display: block;
+  height: auto;
+  object-fit: contain;
 }
