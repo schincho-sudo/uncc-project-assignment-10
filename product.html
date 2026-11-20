@@ -54,24 +54,25 @@
         <a class="nav-link" href="index.html"><span>Categories</span></a>
         <a class="nav-link is-active" href="search.html"><i class="fa-solid fa-arrow-trend-up"></i><span>New &amp;
             Trending</span></a>
-        <a class="nav-link" href="search.html"><i class="fa-solid fa-store" aria-hidden="true"></i><span>Shop All</span></a>
+        <a class="nav-link" href="search.html"><i class="fa-solid fa-store" aria-hidden="true"></i><span>Shop
+            All</span></a>
         <a class="nav-link" href="support.html"><i class="fa-solid fa-headset"></i><span>Support</span></a>
       </div>
     </nav>
     <div class="mobile-menu" id="mobile-navigation" aria-hidden="true">
-    <div class="mobile-menu__backdrop" data-menu-close></div>
-    <nav class="mobile-menu__panel" aria-label="Mobile navigation">
-      <p>Explore</p><a class="mobile-nav-link" href="index.html"><i class="fa-solid fa-display"></i><span>Home</span><i
-          class="fa-solid fa-arrow-right"></i></a><a class="mobile-nav-link is-active" href="search.html"><i
-          class="fa-solid fa-arrow-trend-up"></i><span>New &amp;
-          Trending</span><i class="fa-solid fa-arrow-right"></i></a><a class="mobile-nav-link" href="search.html"><i
-          class="fa-solid fa-store"></i><span>Shop All</span><i class="fa-solid fa-arrow-right"></i></a><a
-        class="mobile-nav-link" href="support.html"><i class="fa-solid fa-headset"></i><span>Support</span><i
-          class="fa-solid fa-arrow-right"></i></a>
-      <button class="mobile-menu__theme" type="button" data-theme-toggle><i class="fa-regular fa-moon"></i> Switch to
-        dark
-        mode</button>
-    </nav>
+      <div class="mobile-menu__backdrop" data-menu-close></div>
+      <nav class="mobile-menu__panel" aria-label="Mobile navigation">
+        <p>Explore</p><a class="mobile-nav-link" href="index.html"><i
+            class="fa-solid fa-display"></i><span>Home</span><i class="fa-solid fa-arrow-right"></i></a><a
+          class="mobile-nav-link is-active" href="search.html"><i class="fa-solid fa-arrow-trend-up"></i><span>New &amp;
+            Trending</span><i class="fa-solid fa-arrow-right"></i></a><a class="mobile-nav-link" href="search.html"><i
+            class="fa-solid fa-store"></i><span>Shop All</span><i class="fa-solid fa-arrow-right"></i></a><a
+          class="mobile-nav-link" href="support.html"><i class="fa-solid fa-headset"></i><span>Support</span><i
+            class="fa-solid fa-arrow-right"></i></a>
+        <button class="mobile-menu__theme" type="button" data-theme-toggle><i class="fa-regular fa-moon"></i> Switch to
+          dark
+          mode</button>
+      </nav>
     </div>
   </header>
 
@@ -116,24 +117,83 @@
           <div class="cart-feedback" hidden><i class="fa-solid fa-check"></i> Cart updated</div>
         </div>
       </div>
-      <section class="product-details">
+      <section class="product-details" aria-labelledby="product-information-title">
         <div class="section-heading">
-          <div><span class="section-kicker">Product information</span>
-            <h2>Everything at a glance</h2>
+          <div>
+            <span class="section-kicker">Product information</span>
+            <h2 id="product-information-title">Everything at a glance</h2>
           </div>
         </div>
-        <div class="product-tabs"><button type="button" data-product-tab>Overview</button><button type="button"
-            class="is-active" data-product-tab>Key Specs</button><button type="button" data-product-tab>Full
-            Specs</button><button type="button" data-product-tab>Recommended</button></div>
-        <div class="specs-panel">
-          <div class="spec-row"><i class="fa-solid fa-microchip"></i><strong>Processor</strong><span>Handles everyday
-              tasks and demanding games</span></div>
-          <div class="spec-row"><i class="fa-solid fa-display"></i><strong>Graphics</strong><span>Powers high frame
-              rates and realistic visuals</span></div>
-          <div class="spec-row"><i class="fa-solid fa-memory"></i><strong>Memory</strong><span>Runs multiple programs
-              smoothly</span></div>
-          <div class="spec-row"><i class="fa-solid fa-box"></i><strong>Storage</strong><span>Stores files, games, and
-              apps</span></div>
+
+        <div class="product-tabs" role="tablist" aria-label="Product information">
+          <button id="tab-overview" type="button" role="tab" data-product-tab aria-controls="panel-overview"
+            aria-selected="false" tabindex="-1">
+            Overview
+          </button>
+
+          <button id="tab-key-specs" type="button" role="tab" data-product-tab class="is-active"
+            aria-controls="panel-key-specs" aria-selected="true" tabindex="0">
+            Key Specs
+          </button>
+
+          <button id="tab-full-specs" type="button" role="tab" data-product-tab aria-controls="panel-full-specs"
+            aria-selected="false" tabindex="-1">
+            Full Specs
+          </button>
+        </div>
+
+        <div id="panel-overview" class="specs-panel" role="tabpanel" aria-labelledby="tab-overview" tabindex="0" hidden>
+          <p data-product-overview>
+            15.6" FHD 144 Hz | Intel Core i7 | RTX 4060 | 16GB RAM
+          </p>
+        </div>
+
+        <div id="panel-key-specs" class="specs-panel" role="tabpanel" aria-labelledby="tab-key-specs" tabindex="0">
+          <div class="spec-row">
+            <i class="fa-solid fa-microchip" aria-hidden="true"></i>
+            <strong>Processor</strong>
+            <span>Handles everyday tasks and demanding games</span>
+          </div>
+
+          <div class="spec-row">
+            <i class="fa-solid fa-display" aria-hidden="true"></i>
+            <strong>Graphics</strong>
+            <span>Powers high frame rates and realistic visuals</span>
+          </div>
+
+          <div class="spec-row">
+            <i class="fa-solid fa-memory" aria-hidden="true"></i>
+            <strong>Memory</strong>
+            <span>Runs multiple programs smoothly</span>
+          </div>
+
+          <div class="spec-row">
+            <i class="fa-solid fa-box" aria-hidden="true"></i>
+            <strong>Storage</strong>
+            <span>Stores files, games, and apps</span>
+          </div>
+        </div>
+
+        <div id="panel-full-specs" class="specs-panel" role="tabpanel" aria-labelledby="tab-full-specs" tabindex="0"
+          hidden>
+          <p data-product-full-specs>
+            15.6" FHD 144 Hz | Intel Core i7 | RTX 4060 | 16GB RAM
+          </p>
+          <p>Additional specifications are not available in this prototype.</p>
+        </div>
+      </section>
+
+      <section class="related-products" aria-labelledby="related-products-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="related-products-title">Related products</h2>
+            <p>Explore similar items and accessories.</p>
+          </div>
+        </div>
+
+        <div class="related-products__grid">
+
+          
         </div>
       </section>
     </section>

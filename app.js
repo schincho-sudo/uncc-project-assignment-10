@@ -293,14 +293,6 @@ document.querySelectorAll(".gallery-thumb").forEach(function (thumb) {
   });
 });
 
-document.querySelectorAll("[data-product-tab]").forEach(function (tab) {
-  tab.addEventListener("click", function () {
-    document.querySelectorAll("[data-product-tab]").forEach(function (item) {
-      item.classList.remove("is-active");
-    });
-    tab.classList.add("is-active");
-  });
-});
 
 // Add to Cart feedback on the product page.
 document.querySelectorAll("[data-add-cart]").forEach(function (button) {
@@ -387,19 +379,592 @@ document.querySelectorAll("[data-copy-confirmation]").forEach(function (button) 
 
 // This short list is used for live search suggestions.
 const assignment11Products = [
-  { title: "MSI Katana 15 Gaming Laptop", category: "Laptops", details: "Intel Core i7, RTX 4060, 16GB RAM" },
-  { title: "Cooler Master Elite Liquid 240", category: "Components", details: "Quiet desktop cooling for gaming and streaming" },
-  { title: "ASUS Zenbook 14 Creator Laptop", category: "Laptops", details: "OLED display, AMD Ryzen 7, 16GB RAM" },
-  { title: 'ASUS ROG Strix OLED 32" 4K TrueBlack Glossy Tandem', category: "Monitors", details: "4K gaming display with a high refresh rate" },
-  { title: "PlayStation 5 Slim Disc Console", category: "Gaming", details: "Console with haptic feedback and 3D audio" },
-  { title: "MSI MAG Coreliquid A13 360 Black", category: "Components", details: "AIO cooling for custom desktop systems" },
-  { title: "Logitech G502 HERO High Performance Wired Gaming Mouse", category: "Computer peripherals", details: "Programmable RGB lighting" },
-  { title: "Razer BlackShark V2 HyperSpeed Wireless Gaming Headset", category: "Computer peripherals", details: "Hyperspeed Wireless technology. Enjoy high-performance gaming." },
-  { title: "Call of Duty: Modern Warfare 4", category: "Software", details: "Xbox Series X · War erupts on the Korean Peninsula as North Korea launches an invasion." },
-  { title: "Lenovo LOQ 15ARP10 Gaming Laptop", category: "Laptops", details: '15.6" FHD display, AMD Ryzen 7, NVIDIA GeForce RTX 4050' },
-  { title: "Logitech G G325 LIGHTSPEED Wireless Gaming Headset", category: "Computer peripherals", details: "Multi-Platform Compatibility - Works seamlessly with PC, Mac." },
-  { title: 'Acer Aspire Go 15, 15.6" Full HD IPS Display, AMD Ryzen', category: "Laptops", details: "Lithium Ion Battery, Up to 9.5-hour battery life." },
+    {
+    id: "msikatana",
+    title: "MSI Katana 15 Gaming Laptop",
+    category: "Laptops",
+    details: '15.6" Full HD 144Hz · Intel Core i7 · RTX 4060 · 16GB RAM',
+    price: 499.99,
+    stars: 5,
+    reviews: 892,
+    image: "MSIKatana.png",
+    goodFor: "School, PC gaming, and multitasking",
+    overview: "Dedicated graphics and a high-refresh screen for PC gaming and everyday work. Performance depends on the game, settings, and power mode.",
+    specs: [
+      ["Screen", "15.6-inch Full HD, 144Hz — smoother motion when games supply matching frames."],
+      ["Processor", "Intel Core i7 — supports everyday work and multitasking."],
+      ["Graphics", "RTX 4060 Laptop GPU — dedicated graphics for supported games and creative apps."],
+      ["Memory", "16GB RAM — working room for multiple apps and browser tabs."],
+      ["Storage", "1TB SSD in the researched reference — space for apps, files, and games."]
+    ],
+    fullSpecs: [
+      ["Reference model", "B13VFK-1264US: Core i7-13620H, 16GB DDR5, RTX 4060, and 1TB SSD."],
+      ["Connections", "B13V family: USB, HDMI, Ethernet, Wi-Fi 6, and Bluetooth. Confirm the exact unit."]
+    ],
+    note: "Reference configuration: B13VFK-1264US. The exact catalog SKU needs confirmation.",
+    related: ["asuszenbook", "lenovo", "acer"]
+  },
+  {
+    id: "coolermaster",
+    title: "Cooler Master Elite Liquid 240",
+    category: "PC Cooling",
+    details: "240mm CPU liquid cooler · Two 120mm fans · ARGB lighting",
+    price: 999.99,
+    stars: 5,
+    reviews: 29,
+    image: "CoolerMaster.png",
+    photo: "CoolerMasterReference.png",
+    goodFor: "Desktop CPU cooling",
+    overview: "A cooling component for a compatible desktop build, not a complete computer. Check your CPU socket and case clearance before choosing it.",
+    specs: [
+      ["Cooler type", "CPU liquid cooler — uses a radiator-and-pump loop; not a desktop PC."],
+      ["Radiator and fans", "240mm radiator and two 120mm fans — check mounting space and clearance."],
+      ["CPU sockets", "Intel LGA 1851/1700 and AMD AM5/AM4 — confirm support for your board."],
+      ["Setup", "Pre-installed bracket and thermal paste — fewer preparation steps."],
+      ["Lighting", "Addressable RGB — requires compatible lighting connections."]
+    ],
+    fullSpecs: [
+      ["Pump and tubing", "Family specification: dual-chamber pump and 400mm tubing for radiator routing."],
+      ["Fit check", "Check radiator and fan thickness, socket mounting, and the installation manual."]
+    ],
+    note: "Proposed Black variant photo. Exact color/SKU needs confirmation; the price is sample data.",
+    related: ["msimag"]
+  },
+  {
+    id: "asuszenbook",
+    title: "ASUS Zenbook 14 Creator Laptop",
+    category: "Laptops",
+    details: "UM3402 reference · 14-inch OLED · Ryzen 7 · 16GB RAM",
+    price: 299.99,
+    stars: 5,
+    reviews: 298,
+    image: "AsusZenbook.png",
+    photo: "ZenbookReference.png",
+    goodFor: "Portable everyday and creative work",
+    overview: "This UM3402 reference combines a detailed OLED screen with an everyday-work configuration. Integrated graphics are not a dedicated gaming GPU.",
+    specs: [
+      ["Screen", "14-inch 2.8K OLED touchscreen — detailed viewing and a taller workspace."],
+      ["Processor", "Ryzen 7 5825U — supports everyday multitasking."],
+      ["Graphics", "Integrated AMD Radeon — suited to everyday work, not a dedicated gaming GPU."],
+      ["Memory and storage", "16GB memory and 1TB SSD — working room and local file space."],
+      ["Connections", "USB-C, USB-A, HDMI, and microSD — connect common accessories."]
+    ],
+    fullSpecs: [
+      ["Battery capacity", "75Wh in the reference listing — a capacity figure, not a runtime promise."],
+      ["Wireless", "Wi-Fi 6E and Bluetooth 5.2 in the reference; supported equipment and region matter."]
+    ],
+    note: "Reference configuration: UM3402. Confirm the exact catalog SKU.",
+    related: ["acer", "lenovo", "msikatana"]
+  },
+  {
+    id: "asusrog",
+    title: 'ASUS ROG Strix OLED 32" 4K TrueBlack Glossy Tandem',
+    category: "Monitors",
+    details: "4K OLED · Dual mode: 4K/240Hz or Full HD/480Hz · Glossy finish",
+    price: 699.99,
+    stars: 5,
+    reviews: 229,
+    image: "AsusRog.png",
+    goodFor: "Detailed gaming and high-refresh play",
+    overview: "Choose between a detailed 4K mode and a higher-refresh Full HD mode. These are display capabilities, not promised game frame rates.",
+    specs: [
+      ["Screen", "31.5-inch / 32-inch-class 4K OLED — detailed images and deep blacks."],
+      ["Refresh modes", "Up to 4K/240Hz or Full HD/480Hz — choose detail or a higher refresh mode."],
+      ["Finish", "Glossy screen — consider reflections in a bright room."],
+      ["Video inputs", "HDMI 2.1 and DisplayPort 1.4 — connect supported source devices."],
+      ["OLED care", "Pixel-cleaning tools help reduce static-image risk; they do not guarantee no burn-in."]
+    ],
+    fullSpecs: [
+      ["Mode requirements", "Your device, cable, input, and game must support the desired resolution and refresh mode."],
+      ["Model check", "Confirm XG32UCWMG versus XG32UQWMS before using model-specific HDR or USB features."]
+    ],
+    note: "Exact monitor model to confirm. A console may not support every advertised refresh mode.",
+    related: ["msikatana", "ps5", "logitechg502"]
+  },
+    {
+    id: "ps5",
+    title: "PlayStation 5 Slim Disc Console",
+    category: "Game consoles",
+    details: "Slim Disc edition · 1TB SSD reference · DualSense controller",
+    price: 649.99,
+    stars: 5,
+    reviews: 143,
+    image: "PS5.png",
+    goodFor: "Disc games and living-room play",
+    overview: "The disc edition supports compatible physical games and movie discs as well as downloads. Confirm the exact model, region, and seller bundle.",
+    specs: [
+      ["Disc support", "Supported PS5/PS4 games and movie discs — physical-media flexibility."],
+      ["Storage", "Nominal 1TB SSD in the reference — usable space is lower after system software."],
+      ["Controller", "One DualSense in the reference package — confirm bundle contents."],
+      ["Display", "4K/HDR and up to 120Hz output — needs supported games, display, and setup."],
+      ["Audio", "Tempest 3D AudioTech — supported content and audio setup are required."]
+    ],
+    fullSpecs: [
+      ["Setup", "Confirm included cables, horizontal feet, and accessories with the seller."],
+      ["Stand", "The vertical stand is separate in the referenced package; check the intended setup."]
+    ],
+    note: "Exact model, bundle, and region to confirm. The Xbox/Windows game in this catalog is not a PS5 game.",
+    related: ["asusrog", "headphones"]
+  },
+  {
+    id: "msimag",
+    title: "MSI MAG Coreliquid A13 360 Black",
+    category: "PC Cooling",
+    details: "360mm CPU liquid cooler · Three PWM fans · ARGB lighting",
+    price: 89.99,
+    stars: 5,
+    reviews: 76,
+    image: "MSIMag.png",
+    goodFor: "Desktop CPU cooling in cases with suitable space",
+    overview: "A desktop CPU cooler with a 360mm radiator. Check the complete radiator-and-fan clearance; it is not a laptop accessory or GPU cooler.",
+    specs: [
+      ["Radiator", "360mm format — your case needs a suitable mount and clearance."],
+      ["Fans", "Three 120mm PWM fans — adjustable speed with compatible control."],
+      ["CPU sockets", "Intel LGA 1700/1851 and AMD AM4/AM5 — check your motherboard socket."],
+      ["Cold plate", "Copper contact plate — transfers CPU heat into the liquid loop."],
+      ["Lighting", "5V 3-pin ARGB — do not connect to a 12V 4-pin RGB header."]
+    ],
+    fullSpecs: [
+      ["Radiator dimensions", "A13 360 family: about 394 × 119.6 × 27mm; fan thickness is additional."],
+      ["Tubing", "390mm tubing in the family specification — plan routing around your components."]
+    ],
+    note: "Black model CLA13360. Check the manual, socket area, and full radiator/fan clearance.",
+    related: ["coolermaster"]
+  },
+  {
+    id: "logitechg502",
+    title: "Logitech G502 HERO High Performance Wired Gaming Mouse",
+    category: "Computer peripherals",
+    details: "USB wired · 11 programmable buttons · Adjustable weights · LIGHTSYNC RGB",
+    price: 34.50,
+    stars: 5,
+    reviews: 76,
+    image: "LogitechG502.png",
+    goodFor: "Customizable gaming and everyday controls",
+    overview: "A wired mouse with configurable controls, weight tuning, and two scroll modes. It needs no battery charging or wireless pairing.",
+    specs: [
+      ["Connection", "USB wired — requires a suitable USB port and a cable during use."],
+      ["Sensor", "100–25,600 DPI — adjust pointer sensitivity; higher DPI does not guarantee better aim."],
+      ["Buttons", "11 programmable buttons — assign shortcuts through Logitech G HUB."],
+      ["Weight tuning", "Five removable 3.6g weights — adjust weight and balance."],
+      ["Scroll wheel", "Dual-mode scrolling — switch between stepped and fast scrolling."]
+    ],
+    fullSpecs: [
+      ["Model", "Wired G502 HERO, reference part 910-005469; not G502 LIGHTSPEED or G502 X."],
+      ["Lighting", "LIGHTSYNC RGB — optional cosmetic customization through Logitech software."]
+    ],
+    note: "Button customization uses Logitech G HUB. Check device and software support.",
+    related: ["headphones", "razerheadset"]
+  },
+  {
+    id: "razerheadset",
+    title: "Razer BlackShark V2 HyperSpeed Wireless Gaming Headset",
+    category: "Computer peripherals",
+    details: "2.4GHz wireless · Bluetooth · USB wired mode · Boom microphone",
+    price: 108.99,
+    stars: 5,
+    reviews: 639,
+    image: "RazerHeadset.png",
+    goodFor: "Wireless gaming and voice chat",
+    overview: "Several connection options let you choose a setup for a supported device. Check device compatibility rather than assuming every console works the same way.",
+    specs: [
+      ["Connections", "Wireless dongle, Bluetooth, or USB — choose a supported connection for your setup."],
+      ["Battery", "Manufacturer states up to 70 hours — actual runtime varies with use."],
+      ["Microphone", "Bendable boom mic — position it for voice chat."],
+      ["Weight", "280g for the researched offer — compare weight before choosing your fit."],
+      ["Ear cushions", "Memory foam — comfort and passive isolation depend on personal fit."]
+    ],
+    fullSpecs: [
+      ["Charging", "USB-C charging; fast-charge claims depend on manufacturer test conditions."],
+      ["Spatial audio", "THX software requires supported Windows software; it is not universal across consoles."]
+    ],
+    note: "White Edition image. Confirm the exact color SKU and connection support for your device.",
+    related: ["headphones", "logitechg502"]
+  },
+
+    {
+    id: "videogame",
+    title: "Call of Duty: Modern Warfare 4",
+    category: "Software",
+    details: "Xbox Series X|S and Windows · Standard edition · Digital code",
+    price: 69.99,
+    stars: 5,
+    reviews: 146,
+    image: "VideoGame.png",
+    goodFor: "Story missions and online matches on supported platforms",
+    overview: "A standard-edition digital-code reference for Xbox Series X|S and Windows. Check the redemption region, device, and online requirements; no physical disc is included.",
+    specs: [
+      ["Platform", "Xbox Series X|S and Windows — confirm your device; not Xbox One or PS5."],
+      ["Format", "Standard digital code — no physical disc included."],
+      ["Modes", "Campaign, Multiplayer, and DMZ — choose story or online play."],
+      ["Online access", "Activision account required; console multiplayer needs a separate subscription."],
+      ["Edition", "Base game — no Vault Edition bonuses implied."]
+    ],
+    fullSpecs: [
+      ["Reference listing", "Newegg item N82E16832701126, model G7Q-00461. Confirm redemption terms."],
+      ["Release date", "The researched sources conflict; the release date is not treated as confirmed here."]
+    ],
+    note: "Check region and account requirements. Related peripherals are browsing options, not Xbox compatibility claims.",
+    related: ["logitechg502", "razerheadset"]
+  },
+  {
+    id: "lenovo",
+    title: "Lenovo LOQ 15ARP10 Gaming Laptop",
+    category: "Laptops",
+    details: '15.6" Full HD 144Hz · Ryzen 7 170 · NVIDIA GeForce RTX 4050',
+    price: 1379.00,
+    stars: 4,
+    reviews: 737,
+    image: "lenovo.png",
+    goodFor: "PC gaming and multitasking",
+    overview: "A gaming-laptop family with dedicated RTX graphics and a high-refresh display. Confirm the seller's memory and storage configuration before comparing offers.",
+    specs: [
+      ["Processor", "Ryzen 7 170 — supports games and everyday multitasking."],
+      ["Graphics", "RTX 4050 Laptop GPU — dedicated graphics for supported games and creative apps."],
+      ["Screen", "15.6-inch Full HD, 144Hz — smoother motion when games supply matching frames."],
+      ["Connections", "Platform reference: Wi-Fi 6, Ethernet, HDMI, and USB — confirm exact ports."],
+      ["Memory and storage", "Capacity to confirm — seller offers differ; do not assume a particular RAM/SSD size."]
+    ],
+    fullSpecs: [
+      ["Variant check", "Confirm the exact seller item and machine type before using detailed platform specifications."],
+      ["Seller upgrades", "Some offers are seller-upgraded; check configuration and coverage separately."]
+    ],
+    note: "Exact RAM, storage, and ports need confirmation. No capacity is inferred from the picture.",
+    related: ["msikatana", "acer", "asuszenbook"]
+  },
+  {
+    id: "headphones",
+    title: "Logitech G G325 LIGHTSPEED Wireless Gaming Headset",
+    category: "Computer peripherals",
+    details: "LIGHTSPEED wireless · Bluetooth · Built-in microphone",
+    price: 79.99,
+    stars: 5,
+    reviews: 407,
+    image: "headphones.png",
+    goodFor: "Gaming and calls across supported devices",
+    overview: "A wireless headset with receiver and Bluetooth connection options. Its microphone is built into the headset; there is no external boom.",
+    specs: [
+      ["Wireless modes", "LIGHTSPEED receiver and Bluetooth — choose the connection for your setup."],
+      ["Platforms", "PC, PS5, and Switch support listed by Logitech — verify the connection mode."],
+      ["Microphone", "Built-in beamforming mic — voice chat without an external boom."],
+      ["Battery", "Manufacturer states 24+ hours — actual runtime varies."],
+      ["Weight", "212g — compare weight and fit before choosing."]
+    ],
+    fullSpecs: [
+      ["Padding", "Knit fabric and memory-foam earcups — comfort depends on fit and personal preference."],
+      ["Audio format", "24-bit audio listed — results depend on content, software, and connection."]
+    ],
+    note: "Platform support varies by connection. Microphone noise reduction is not active noise cancellation.",
+    related: ["razerheadset", "logitechg502"]
+  },
+  {
+    id: "acer",
+    title: 'Acer Aspire Go 15, 15.6" Full HD IPS Display, AMD Ryzen',
+    category: "Laptops",
+    details: "Ryzen 7 7730U · 32GB memory · 1TB SSD · Integrated AMD Radeon",
+    price: 929.00,
+    stars: 4,
+    reviews: 489,
+    image: "Acer.png",
+    goodFor: "Everyday work and multitasking",
+    overview: "A large everyday workspace with substantial memory for browsing and office apps. This AG15-42P-R3GM reference uses integrated graphics, not a dedicated gaming GPU.",
+    specs: [
+      ["Screen", "15.6-inch Full HD IPS, 60Hz — clear everyday viewing; non-touch."],
+      ["Processor", "Ryzen 7 7730U — supports office work and multitasking."],
+      ["Memory", "32GB DDR4 — working room for more tabs and apps."],
+      ["Storage", "1TB SSD — space for documents, applications, and media."],
+      ["Connections", "USB-C, USB-A, HDMI, and Ethernet — connect everyday accessories."]
+    ],
+    fullSpecs: [
+      ["Graphics", "Integrated AMD Radeon — assess graphics-heavy applications separately."],
+      ["Battery claim", "Up to 9.5 hours in a listed test; actual runtime varies with settings and use."]
+    ],
+    note: "Reference configuration: AG15-42P-R3GM. Other Aspire Go 15 variants differ.",
+    related: ["asuszenbook", "lenovo", "msikatana"]
+  }
 ];
+
+// Helpers for displaying product information.
+function findProduct(id) {
+  return assignment11Products.find(function (product) {
+    return product.id === id;
+  });
+}
+
+function productPhoto(product) {
+  return "./assets/" + (product.photo || product.image);
+}
+
+function formatPrice(price) {
+  return price.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD"
+  });
+}
+
+function escapeProductText(value) {
+  return String(value).replace(/[&<>"']/g, function (character) {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[character];
+  });
+}
+
+function productRating(product) {
+  return "★".repeat(product.stars) +
+    "☆".repeat(5 - product.stars) +
+    " <span>" + product.reviews + "</span>";
+}
+
+// Give each existing product card its correct information and link.
+function updateProductCard(card, product) {
+  card.dataset.productId = product.id;
+
+  const image = card.querySelector(".product-card__media img");
+  image.src = productPhoto(product);
+  image.alt = product.title;
+
+  card.querySelector("h3").textContent = product.title;
+  card.querySelector(".product-card__eyebrow").textContent = product.category;
+  card.querySelector(".product-card__desc").textContent = product.details;
+  card.querySelector(".product-card__price").textContent =
+    formatPrice(product.price);
+
+  const rating = card.querySelector(".rating");
+  rating.innerHTML = productRating(product);
+  rating.setAttribute("role", "img");
+  rating.setAttribute(
+    "aria-label",
+    "Sample rating: " + product.stars +
+    " out of 5 stars, " + product.reviews + " sample reviews"
+  );
+
+  const link = card.querySelector(".product-card__actions a");
+
+  if (link) {
+    link.href = "product.html?id=" + product.id;
+    link.setAttribute(
+      "aria-label",
+      "View " + product.title + " details"
+    );
+  }
+}
+
+// Identify each existing card using its image filename.
+document.querySelectorAll(".product-card").forEach(function (card) {
+  const image = card.querySelector(".product-card__media img");
+  if (!image) return;
+
+  const filename = image.getAttribute("src").split("/").pop();
+
+  const product = assignment11Products.find(function (item) {
+    return item.image === filename || item.photo === filename;
+  });
+
+  if (product) {
+    updateProductCard(card, product);
+  }
+});
+
+// Build a simple specifications table.
+function makeSpecsTable(rows, caption) {
+  return '<table class="product-spec-table">' +
+    '<caption class="sr-only">' + escapeProductText(caption) + '</caption>' +
+    '<thead><tr>' +
+    '<th scope="col">Feature</th>' +
+    '<th scope="col">What it means for you</th>' +
+    '</tr></thead><tbody>' +
+    rows.map(function (row) {
+      return '<tr>' +
+        '<th scope="row">' + escapeProductText(row[0]) + '</th>' +
+        '<td>' + escapeProductText(row[1]) + '</td>' +
+        '</tr>';
+    }).join("") +
+    '</tbody></table>';
+}
+
+// Build a related-product card using the same catalog.
+function relatedProductCard(product) {
+  return '<article class="product-card">' +
+    '<div class="product-card__media">' +
+    '<img class="product-image" src="' + productPhoto(product) +
+    '" alt="' + escapeProductText(product.title) + '" loading="lazy">' +
+    '</div>' +
+    '<div class="product-card__body">' +
+    '<p class="product-card__eyebrow">' +
+    escapeProductText(product.category) + '</p>' +
+    '<h3>' + escapeProductText(product.title) + '</h3>' +
+    '<p class="product-card__desc">' +
+    escapeProductText(product.details) + '</p>' +
+    '<div class="product-card__price">' +
+    formatPrice(product.price) + '</div>' +
+    '<div class="rating" role="img" aria-label="Sample rating: ' +
+    product.stars + ' out of 5 stars, ' + product.reviews +
+    ' sample reviews">' + productRating(product) + '</div>' +
+    '</div>' +
+    '<div class="product-card__actions">' +
+    '<a class="btn btn-primary" href="product.html?id=' +
+    product.id + '" aria-label="View ' +
+    escapeProductText(product.title) + ' details">View product</a>' +
+    '</div></article>';
+}
+
+// Display the selected product using the existing product.html layout.
+if (document.body.classList.contains("page-product")) {
+  const id = new URLSearchParams(location.search).get("id");
+  const product = findProduct(id === null ? "msikatana" : id);
+
+  const info = document.querySelector(".product-info");
+  const related = document.querySelector(".related-products");
+
+  if (!product) {
+    document.title = "Product not found | Newegg Redesign";
+    document.querySelector(".product-layout").hidden = true;
+    document.querySelector(".product-details").hidden = true;
+    related.hidden = true;
+
+    document.querySelector(".back-link").insertAdjacentHTML(
+      "afterend",
+      '<div class="product-not-found">' +
+      '<h1>Product not found</h1>' +
+      '<p>Use Back to search results to choose another item.</p>' +
+      '</div>'
+    );
+  } else {
+    document.title = product.title + " | Newegg Redesign";
+    document.querySelector('meta[name="description"]').content =
+      product.details;
+
+    info.querySelector(".section-kicker").textContent = product.category;
+    info.querySelector("h1").textContent = product.title;
+    info.querySelector(".product-subtitle").textContent = product.details;
+    info.querySelector(".product-price").textContent =
+      formatPrice(product.price);
+
+    const rating = info.querySelector(".rating");
+    rating.innerHTML = productRating(product);
+    rating.setAttribute("role", "img");
+    rating.setAttribute(
+      "aria-label",
+      "Sample rating: " + product.stars +
+      " out of 5 stars, " + product.reviews + " sample reviews"
+    );
+
+    info.querySelector(".good-for p").textContent = product.goodFor;
+
+    const stock = info.querySelector(".stock-status");
+    stock.className = "product-demo-note";
+    stock.textContent =
+      "Sample price and rating · Front-end demo. No real purchase is made.";
+
+    const addButton = info.querySelector("[data-add-cart]");
+    addButton.dataset.productId = product.id;
+    addButton.setAttribute(
+      "aria-label",
+      "Add " + product.title + " to the demo cart"
+    );
+
+    // Temporary: other products cannot be purchased until checkout is updated.
+    addButton.disabled = product.id !== "msikatana";
+
+    info.querySelector("#quantity").max = "999";
+
+    const mainImage = document.querySelector(".gallery-main-image");
+    mainImage.src = productPhoto(product);
+    mainImage.alt = product.title;
+
+    // Keep MSI's existing gallery. Other products use their own single photo.
+    document.querySelectorAll(".gallery-thumb").forEach(function (thumb, index) {
+      if (product.id !== "msikatana" && index > 0) {
+        thumb.remove();
+      } else if (index === 0) {
+        thumb.querySelector("img").src = productPhoto(product);
+        thumb.querySelector("img").alt = product.title;
+      }
+    });
+
+    document.querySelector("[data-product-overview]").textContent =
+      product.overview;
+
+    document.querySelector("#panel-key-specs").innerHTML =
+      makeSpecsTable(product.specs, product.title + " key specifications");
+
+    document.querySelector("#panel-full-specs").innerHTML =
+      makeSpecsTable(product.fullSpecs, product.title + " additional specifications");
+
+    const note = document.createElement("p");
+    note.className = "product-spec-note";
+    note.textContent = product.note;
+    document.querySelector(".product-details").appendChild(note);
+
+    const recommended = [];
+
+    product.related.forEach(function (relatedId) {
+      const item = findProduct(relatedId);
+
+      if (item && item.id !== product.id && !recommended.includes(item)) {
+        recommended.push(item);
+      }
+    });
+
+    related.hidden = recommended.length === 0;
+    related.querySelector(".related-products__grid").innerHTML =
+      recommended.slice(0, 3).map(relatedProductCard).join("");
+  }
+}
+
+// Switch product-information tabs.
+const productTabs = Array.from(
+  document.querySelectorAll("[data-product-tab]")
+);
+
+function activateProductTab(button) {
+  productTabs.forEach(function (tab) {
+    const active = tab === button;
+
+    tab.classList.toggle("is-active", active);
+    tab.setAttribute("aria-selected", String(active));
+    tab.tabIndex = active ? 0 : -1;
+
+    const panel = document.getElementById(
+      tab.getAttribute("aria-controls")
+    );
+
+    panel.hidden = !active;
+  });
+}
+
+productTabs.forEach(function (tab, index) {
+  tab.addEventListener("click", function () {
+    activateProductTab(tab);
+  });
+
+  tab.addEventListener("keydown", function (event) {
+    let next = index;
+
+    if (event.key === "ArrowRight") {
+      next = (index + 1) % productTabs.length;
+    } else if (event.key === "ArrowLeft") {
+      next = (index + productTabs.length - 1) % productTabs.length;
+    } else if (event.key === "Home") {
+      next = 0;
+    } else if (event.key === "End") {
+      next = productTabs.length - 1;
+    } else {
+      return;
+    }
+
+    event.preventDefault();
+    activateProductTab(productTabs[next]);
+    productTabs[next].focus();
+  });
+});
+
+
 
 let assignment11SearchTimer;
 
@@ -581,7 +1146,7 @@ function assignment11UpdateSearchResults(query, showLoading) {
       const cardTitle = card.querySelector("h3").textContent.toLowerCase();
 
       const cardMatches = matches.some(function (product) {
-        return cardTitle.includes(product.title.toLowerCase());
+        return card.dataset.productId === product.id;
       });
 
       const isExtraProduct = card.classList.contains("extra-product");
@@ -1096,7 +1661,7 @@ if (searchPage) {
 
       // Check the search and selected filters.
       const searchOK = searchResults.some(function (item) {
-        return title.includes(item.title.toLowerCase());
+        return card.dataset.productId === item.id;
       });
 
       const brandOK = !chosenBrands.length || chosenBrands.includes(brand);
@@ -1602,12 +2167,7 @@ window.addEventListener("pageshow", function () {
     const submit = document.querySelector("#co-submit");
     const continueButton = document.querySelector("#co-continue");
 
-    const mainImage = document.querySelector(".gallery-main-image");
     const image = document.querySelector("#co-image");
-
-    if (mainImage) {
-      image.src = mainImage.currentSrc || mainImage.src;
-    }
 
     image.addEventListener("error", function () {
       image.hidden = true;
@@ -1881,17 +2441,7 @@ window.addEventListener("resize", function () {
     closeFilters();
   }
 });
-// Indicate the selected product-information button to assistive technology.
-document.querySelectorAll("[data-product-tab]").forEach(function (button) {
-  button.setAttribute("aria-pressed",
-    String(button.classList.contains("is-active")));
-  button.addEventListener("click", function () {
-    document.querySelectorAll("[data-product-tab]").forEach(function (item) {
-      item.setAttribute("aria-pressed",
-        String(item.classList.contains("is-active")));
-    });
-  });
-});
+
 
 // Automatically format the expiration date as MM/YY.
 document.addEventListener("input", function (event) {
@@ -2166,3 +2716,10 @@ if (document.fonts) {
   updatePauseButton();
   startTimer();
 })();
+
+// Related product buttons are placeholders for this demo.
+document.querySelectorAll("[data-related-demo]").forEach(function (button) {
+  button.addEventListener("click", function () {
+    showToast("Product details are not available in this demo.");
+  });
+});
