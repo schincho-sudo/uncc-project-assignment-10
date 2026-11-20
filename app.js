@@ -379,7 +379,7 @@ document.querySelectorAll("[data-copy-confirmation]").forEach(function (button) 
 
 // This short list is used for live search suggestions.
 const assignment11Products = [
-    {
+  {
     id: "msikatana",
     title: "MSI Katana 15 Gaming Laptop",
     category: "Laptops",
@@ -389,19 +389,60 @@ const assignment11Products = [
     reviews: 892,
     image: "MSIKatana.png",
     goodFor: "School, PC gaming, and multitasking",
-    overview: "Dedicated graphics and a high-refresh screen for PC gaming and everyday work. Performance depends on the game, settings, and power mode.",
+    overview: "From coursework to game time. The MSI Katana 15 brings everyday productivity and PC gaming together, giving you one laptop for assignments, entertainment, and supported creative projects ",
+
+    benefits: [
+      {
+        title: "Play and create:",
+        text: "Dedicated NVIDIA RTX 4060 laptop graphics power PC games and help accelerate supported creative applications, including video-editing tools."
+      },
+      {
+        title: "Follow fast-moving action:",
+        text: "The 15.6-inch Full HD display supports refresh rates up to 144Hz for smoother-looking movement when your game runs at higher frame rates."
+      },
+      {
+        title: "Keep your projects and everyday apps together:",
+        text: "An Intel Core i7 processor and 16GB of memory support multitasking, while a 1TB SSD provides storage for coursework, applications, and games."
+      }
+    ],
+
     specs: [
-      ["Screen", "15.6-inch Full HD, 144Hz — smoother motion when games supply matching frames."],
-      ["Processor", "Intel Core i7 — supports everyday work and multitasking."],
-      ["Graphics", "RTX 4060 Laptop GPU — dedicated graphics for supported games and creative apps."],
-      ["Memory", "16GB RAM — working room for multiple apps and browser tabs."],
-      ["Storage", "1TB SSD in the researched reference — space for apps, files, and games."]
+      [
+        "15.6-inch Full HD IPS display, 144Hz",
+        "Full HD keeps text and images clear. IPS helps colors stay consistent when viewed at an angle. The 144Hz refresh rate makes movement look smoother when your game can keep up."
+      ],
+      [
+        "Intel Core i7-13620H processor",
+        "The main chip that runs your software. It handles everyday work and more demanding tasks such as editing video or running several applications together."
+      ],
+      [
+        "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "A separate graphics chip for games, 3D visuals, and supported creative software."
+      ],
+      [
+        "16GB DDR5 RAM",
+        "Your laptop’s temporary workspace. It lets you keep multiple apps and tabs open."
+      ],
+      [
+        "1TB SSD",
+        "Stores your games, apps and files, while helping the laptop start and load programs quickly."
+      ]
     ],
+
     fullSpecs: [
-      ["Reference model", "B13VFK-1264US: Core i7-13620H, 16GB DDR5, RTX 4060, and 1TB SSD."],
-      ["Connections", "B13V family: USB, HDMI, Ethernet, Wi-Fi 6, and Bluetooth. Confirm the exact unit."]
+      ["Product family", "MSI Katana 15"],
+      ["Product type", "Gaming laptop"],
+      ["Processor", "Intel Core i7-13620H"],
+      ["Graphics", "NVIDIA GeForce RTX 4060 Laptop GPU"],
+      ["Display size", "15.6 inches"],
+      ["Display resolution", "Full HD, 1920 × 1080"],
+      ["Refresh rate", "144Hz"],
+      ["Installed memory", "16GB DDR5"],
+      ["Storage", "1TB SSD"]
     ],
-    note: "Reference configuration: B13VFK-1264US. The exact catalog SKU needs confirmation.",
+
+
+
     related: ["asuszenbook", "lenovo", "acer"]
   },
   {
@@ -415,19 +456,58 @@ const assignment11Products = [
     image: "CoolerMaster.png",
     photo: "CoolerMasterReference.png",
     goodFor: "Desktop CPU cooling",
-    overview: "A cooling component for a compatible desktop build, not a complete computer. Check your CPU socket and case clearance before choosing it.",
+
+    overview: "The Elite Liquid 240 uses a liquid-cooling system, radiator, and fans to move heat away from your desktop processor, with customizable lighting to complement your build. ",
+    benefits: [
+      {
+        title: "Move heat away from your CPU:",
+        text: "Liquid carries heat from the processor to the radiator, where the fans release it into the surrounding air."
+      },
+      {
+        title: "Match your setup's style.",
+        text: "Adjust the lighting on the pump and fans using compatible lighting controls."
+      },
+      {
+        title: "Check the fit before you buy.",
+        text: "Addressable RGB on the pump and fans lets you customize appearance with compatible lighting connections or a controller."
+      }
+    ],
+
     specs: [
-      ["Cooler type", "CPU liquid cooler — uses a radiator-and-pump loop; not a desktop PC."],
-      ["Radiator and fans", "240mm radiator and two 120mm fans — check mounting space and clearance."],
-      ["CPU sockets", "Intel LGA 1851/1700 and AMD AM5/AM4 — confirm support for your board."],
-      ["Setup", "Pre-installed bracket and thermal paste — fewer preparation steps."],
-      ["Lighting", "Addressable RGB — requires compatible lighting connections."]
+      [
+        "240mm all-in-one CPU liquid cooler",
+        "Carries heat away from your processor to help keep temperatures under control during gaming and demanding tasks."
+      ],
+      [
+        "Two 120mm fans",
+        "Push air through the radiator to release heat. Check that your case has room for both the radiator and its attached fans."
+      ],
+      [
+        "Intel LGA 1851/1700 and AMD AM5/AM4 support",
+        "Works across several Intel and AMD platforms, giving you more flexibility when building or upgrading your PC.."
+      ],
+      [
+        "Pre-installed Intel/AMD mounting bracket",
+        "Saves setup time by arriving with the mounting bracket already attached"
+      ],
+      [
+        "Pre-applied CryoFuze thermal paste",
+        "Comes with thermal paste already applied for the first installation, so you don’t need to apply it separately"
+      ],
+
     ],
+
     fullSpecs: [
-      ["Pump and tubing", "Family specification: dual-chamber pump and 400mm tubing for radiator routing."],
-      ["Fit check", "Check radiator and fan thickness, socket mounting, and the installation manual."]
+      ["Brand", "Cooler Master"],
+      ["Product family", "Elite Liquid 240"],
+      ["Product type", "All-in-one CPU liquid cooler"],
+      ["Radiator size class", "240mm"],
+      ["Included fans", "2 × 120mm"],
+      ["Lighting", "Addressable RGB on pump and fans"],
+      ["Intel socket support", "LGA 1851, LGA 1700"],
     ],
-    note: "Proposed Black variant photo. Exact color/SKU needs confirmation; the price is sample data.",
+
+
     related: ["msimag"]
   },
   {
@@ -441,19 +521,59 @@ const assignment11Products = [
     image: "AsusZenbook.png",
     photo: "ZenbookReference.png",
     goodFor: "Portable everyday and creative work",
-    overview: "This UM3402 reference combines a detailed OLED screen with an everyday-work configuration. Integrated graphics are not a dedicated gaming GPU.",
+    overview: "For everyday work and light creative projects, this Zenbook 14 reference combines a detailed OLED screen with memory and storage for your apps and files.",
+
+    benefits: [
+      {
+        title: "See the details that matter:",
+        text: "The 2.8K OLED display makes text and images look sharp, with deep blacks and strong contrast for viewing photos and videos."
+      },
+      {
+        title: "Keep your workflow moving.",
+        text: "A Ryzen 7 processor and 16GB of memory let you move between documents, browser tabs, and supported creative apps."
+      },
+      {
+        title: "Keep your files within reach.",
+        text: "A 1TB SSD gives you space for applications, photos, and projects, with fast access when it’s time to get back to work."
+      }
+    ],
+
     specs: [
-      ["Screen", "14-inch 2.8K OLED touchscreen — detailed viewing and a taller workspace."],
-      ["Processor", "Ryzen 7 5825U — supports everyday multitasking."],
-      ["Graphics", "Integrated AMD Radeon — suited to everyday work, not a dedicated gaming GPU."],
-      ["Memory and storage", "16GB memory and 1TB SSD — working room and local file space."],
-      ["Connections", "USB-C, USB-A, HDMI, and microSD — connect common accessories."]
+      [
+        "14-inch 2.8K OLED touchscreen",
+        "See sharp text, rich colors, and deep blacks, with touch controls for tapping and scrolling directly on the screen."
+      ],
+      [
+        "AMD Ryzen 7 5825U processor",
+        "Runs everyday applications and supports multitasking across work and creative tools."
+      ],
+      [
+        "16GB LPDDR4X RAM",
+        "Keep documents, browser tabs, and other apps open together without constantly closing one to use another."
+      ],
+      [
+        "1TB SSD",
+        "Store your projects, photos, and applications, with fast access to files and shorter loading times than a traditional hard drive."
+      ],
+      [
+        "Integrated AMD Radeon graphics",
+        "Supports streaming, everyday photo editing, and lighter games without a separate graphics card."
+      ]
     ],
+
     fullSpecs: [
-      ["Battery capacity", "75Wh in the reference listing — a capacity figure, not a runtime promise."],
-      ["Wireless", "Wi-Fi 6E and Bluetooth 5.2 in the reference; supported equipment and region matter."]
+      ["Brand", "ASUS"],
+      ["Product family", "Zenbook 14"],
+      ["Product type", "Laptop"],
+      ["Processor", "AMD Ryzen 7 5825U"],
+      ["Graphics", "Integrated AMD Radeon graphics"],
+      ["Display size", "14 inches"],
+      ["Display technology", "OLED"],
+      ["Display resolution", "2.8K"],
     ],
-    note: "Reference configuration: UM3402. Confirm the exact catalog SKU.",
+
+
+
     related: ["acer", "lenovo", "msikatana"]
   },
   {
@@ -466,22 +586,59 @@ const assignment11Products = [
     reviews: 229,
     image: "AsusRog.png",
     goodFor: "Detailed gaming and high-refresh play",
-    overview: "Choose between a detailed 4K mode and a higher-refresh Full HD mode. These are display capabilities, not promised game frame rates.",
+    overview: "Enjoy a large 32-inch OLED display that lets you switch between detailed 4K gaming and a faster Full HD mode for competitive play.",
+
+    benefits: [
+      {
+        title: "See more detail in your games:",
+        text: "4K resolution brings out fine details, while OLED’s deep blacks give dark scenes stronger contrast."
+      },
+      {
+        title: "Match the screen to your game:",
+        text: "Choose 4K at up to 240Hz for detailed visuals, or Full HD at up to 480Hz when smoother motion is your priority."
+      },
+      {
+        title: "Connect your gaming setup:",
+        text: "HDMI and DisplayPort give you options for connecting compatible computers and consoles."
+      }
+    ],
+
     specs: [
-      ["Screen", "31.5-inch / 32-inch-class 4K OLED — detailed images and deep blacks."],
-      ["Refresh modes", "Up to 4K/240Hz or Full HD/480Hz — choose detail or a higher refresh mode."],
-      ["Finish", "Glossy screen — consider reflections in a bright room."],
-      ["Video inputs", "HDMI 2.1 and DisplayPort 1.4 — connect supported source devices."],
-      ["OLED care", "Pixel-cleaning tools help reduce static-image risk; they do not guarantee no burn-in."]
+      [
+        "32-inch-class 4K OLED screen",
+        "See fine details across a large screen, with deep blacks that give movies and games stronger contrast."
+      ],
+      [
+        "Dual mode: 4K/240Hz or Full HD/480Hz",
+        "Choose sharper detail at 4K or faster screen updates at Full HD for fast-paced games. Actual smoothness depends on your computer and game settings."
+      ],
+      [
+        "TrueBlack Glossy finish",
+        "Gives images a glossy, vivid appearance, though bright lights and windows may create visible reflections."
+      ],
+      [
+        "HDMI 2.1 and DisplayPort 1.4",
+        "Connect compatible PCs and consoles. Available resolutions and refresh rates depend on the device and cable."
+      ]
     ],
+
+
     fullSpecs: [
-      ["Mode requirements", "Your device, cable, input, and game must support the desired resolution and refresh mode."],
-      ["Model check", "Confirm XG32UCWMG versus XG32UQWMS before using model-specific HDR or USB features."]
+      ["Screen diagonal", "31.5 inches — 32-inch class"],
+      ["Panel technology", "OLED"],
+      ["Native resolution", "3840 × 2160"],
+      ["Maximum 4K refresh rate", "240Hz"],
+      ["Maximum Full HD refresh rate", "480Hz"],
+      ["Screen finish", "TrueBlack Glossy"],
+      ["HDMI input standard", "HDMI 2.1"],
+      ["DisplayPort input standard", "DisplayPort 1.4"]
     ],
-    note: "Exact monitor model to confirm. A console may not support every advertised refresh mode.",
+
+
+
     related: ["msikatana", "ps5", "logitechg502"]
   },
-    {
+  {
     id: "ps5",
     title: "PlayStation 5 Slim Disc Console",
     category: "Game consoles",
@@ -491,19 +648,54 @@ const assignment11Products = [
     reviews: 143,
     image: "PS5.png",
     goodFor: "Disc games and living-room play",
-    overview: "The disc edition supports compatible physical games and movie discs as well as downloads. Confirm the exact model, region, and seller bundle.",
+    overview: "Enjoy physical games and digital downloads on one console. The PlayStation 5 Slim Disc Edition combines fast loading, immersive controller feedback, and detailed visuals in a compact design.",
+
+    benefits: [
+      {
+        title: "Play your collection, your way:",
+        text: "Choose game discs or digital downloads, with support for PS5 titles and most PS4 games."
+      },
+      {
+        title: "Spend less time waiting:",
+        text: "High-speed SSD storage helps supported games load quickly, getting you back into the action sooner."
+      },
+      {
+        title: "Feel more of the action:",
+        text: "The DualSense controller adds detailed vibrations and changing trigger resistance in supported games, bringing sensations like rough terrain or drawing a bow into your hands."
+      }
+    ],
+
+
     specs: [
-      ["Disc support", "Supported PS5/PS4 games and movie discs — physical-media flexibility."],
-      ["Storage", "Nominal 1TB SSD in the reference — usable space is lower after system software."],
-      ["Controller", "One DualSense in the reference package — confirm bundle contents."],
-      ["Display", "4K/HDR and up to 120Hz output — needs supported games, display, and setup."],
-      ["Audio", "Tempest 3D AudioTech — supported content and audio setup are required."]
+      [
+        "Ultra HD Blu-ray disc drive",
+        "Play PS5 discs and supported PS4 discs, giving you the option to buy, borrow, or collect physical games."
+      ],
+      [
+        "1TB SSD",
+        "Keep games installed and ready to launch, with fast loading in supported titles. Some storage is reserved for system software."
+      ],
+      [
+        "DualSense wireless controller",
+        "Feel details like impacts and changing trigger resistance, making supported games more immersive."
+      ],
+      [
+        "4K and HDR support",
+        "Enjoy sharp detail and a wider range of bright and dark tones in supported games on a compatible TV or monitor."
+      ]
     ],
+
+
     fullSpecs: [
-      ["Setup", "Confirm included cables, horizontal feet, and accessories with the seller."],
-      ["Stand", "The vertical stand is separate in the referenced package; check the intended setup."]
+      ["Console edition", "PS5 Slim Disc — reference edition"],
+      ["Nominal internal storage", "1TB SSD — reference configuration"],
+      ["Optical disc format", "Ultra HD Blu-ray"],
+      ["Supported video resolution", "Up to 4K in supported games and setups"],
+      ["Included controller", "One DualSense wireless controller — reference package"]
     ],
-    note: "Exact model, bundle, and region to confirm. The Xbox/Windows game in this catalog is not a PS5 game.",
+
+
+
     related: ["asusrog", "headphones"]
   },
   {
@@ -516,19 +708,53 @@ const assignment11Products = [
     reviews: 76,
     image: "MSIMag.png",
     goodFor: "Desktop CPU cooling in cases with suitable space",
-    overview: "A desktop CPU cooler with a 360mm radiator. Check the complete radiator-and-fan clearance; it is not a laptop accessory or GPU cooler.",
+    overview: "Keep your desktop processor cool while giving your build a coordinated look. The MSI MAG Coreliquid A13 360 Black pairs a large radiator with three adjustable-speed fans and customizable lighting.",
+
+    benefits: [
+      {
+        title: "Cooling for demanding sessions.",
+        text: "A 360mm radiator and three fans work together to carry heat away from your processor during gaming and other intensive tasks."
+      },
+      {
+        title: "Adjusts as your workload changes.",
+        text: "Compatible fan controls can increase airflow when your processor works harder and reduce fan speeds during lighter use."
+      },
+      {
+        title: "Make the lighting your own.",
+        text: "Customize the lighting with a compatible controller to match the colors and style of your setup."
+      }
+    ],
+
     specs: [
-      ["Radiator", "360mm format — your case needs a suitable mount and clearance."],
-      ["Fans", "Three 120mm PWM fans — adjustable speed with compatible control."],
-      ["CPU sockets", "Intel LGA 1700/1851 and AMD AM4/AM5 — check your motherboard socket."],
-      ["Cold plate", "Copper contact plate — transfers CPU heat into the liquid loop."],
-      ["Lighting", "5V 3-pin ARGB — do not connect to a 12V 4-pin RGB header."]
+      [
+        "360mm radiator",
+        "Spreads heat across a large cooling surface to help manage processor temperatures during demanding tasks."
+      ],
+      [
+        "Three 120mm PWM fans",
+        "Adjustable fan speeds provide more airflow during heavy workloads and can reduce noise during lighter use."
+      ],
+      [
+        "Intel LGA 1700/1851 and AMD AM4/AM5 support",
+        "Fits several Intel and AMD processor platforms, giving you flexibility when building or upgrading your desktop."
+      ],
+      [
+        "5V 3-pin ARGB lighting",
+        "Customize lighting colors and effects to coordinate with the rest of your setup using compatible lighting controls."
+      ]
     ],
+
+
     fullSpecs: [
-      ["Radiator dimensions", "A13 360 family: about 394 × 119.6 × 27mm; fan thickness is additional."],
-      ["Tubing", "390mm tubing in the family specification — plan routing around your components."]
+      ["Model number", "CLA13360"],
+      ["Color", "Black"],
+      ["Radiator dimensions", "Approximately 394 × 119.6 × 27mm"],
+      ["Tubing length", "390mm"],
+      ["Cold plate material", "Copper"]
     ],
-    note: "Black model CLA13360. Check the manual, socket area, and full radiator/fan clearance.",
+
+
+
     related: ["coolermaster"]
   },
   {
@@ -541,19 +767,54 @@ const assignment11Products = [
     reviews: 76,
     image: "LogitechG502.png",
     goodFor: "Customizable gaming and everyday controls",
-    overview: "A wired mouse with configurable controls, weight tuning, and two scroll modes. It needs no battery charging or wireless pairing.",
+
+    overview: "Put your favorite controls at your fingertips. The Logitech G502 HERO combines customizable buttons, adjustable weight, and versatile scrolling for gaming and everyday work.",
+
+    benefits: [
+      {
+        title: "Reach your shortcuts faster.",
+        text: "Assign frequently used actions to 11 programmable buttons, keeping game commands and everyday shortcuts close at hand."
+      },
+      {
+        title: "Make it feel right for you.",
+        text: "Adjust pointer sensitivity and add or remove the included weights to find a balance that suits your hand and movements."
+      },
+      {
+        title: "Scroll your way.",
+        text: "Switch between precise, stepped scrolling for individual selections and free-spinning scrolling to move quickly through long documents and webpages."
+      }
+    ],
+
     specs: [
-      ["Connection", "USB wired — requires a suitable USB port and a cable during use."],
-      ["Sensor", "100–25,600 DPI — adjust pointer sensitivity; higher DPI does not guarantee better aim."],
-      ["Buttons", "11 programmable buttons — assign shortcuts through Logitech G HUB."],
-      ["Weight tuning", "Five removable 3.6g weights — adjust weight and balance."],
-      ["Scroll wheel", "Dual-mode scrolling — switch between stepped and fast scrolling."]
+      [
+        "USB wired connection",
+        "Plug in and play without worrying about battery life or recharging."
+      ],
+      [
+        "HERO 25K sensor, 100–25,600 DPI",
+        "Choose how far the pointer moves when you move your hand, from slower, controlled movements to faster navigation."
+      ],
+      [
+        "11 programmable buttons",
+        "Keep game commands and everyday shortcuts within easy reach by assigning them through Logitech G HUB."
+      ],
+      [
+        "Five removable 3.6g weights",
+        "Make the mouse lighter or heavier and adjust its balance to suit your preferred feel."
+      ]
     ],
+
+
     fullSpecs: [
-      ["Model", "Wired G502 HERO, reference part 910-005469; not G502 LIGHTSPEED or G502 X."],
-      ["Lighting", "LIGHTSYNC RGB — optional cosmetic customization through Logitech software."]
+      ["Model", "G502 HERO"],
+      ["Connection", "USB wired"],
+      ["Sensor", "HERO 25K optical"],
+      ["Sensitivity range", "100–25,600 DPI"],
+      ["Programmable buttons", "11"]
     ],
-    note: "Button customization uses Logitech G HUB. Check device and software support.",
+
+
+
     related: ["headphones", "razerheadset"]
   },
   {
@@ -566,23 +827,57 @@ const assignment11Products = [
     reviews: 639,
     image: "RazerHeadset.png",
     goodFor: "Wireless gaming and voice chat",
-    overview: "Several connection options let you choose a setup for a supported device. Check device compatibility rather than assuming every console works the same way.",
+    overview: "Stay connected to your game and your teammates without a headset cable getting in the way. The Razer BlackShark V2 HyperSpeed combines wireless audio, an adjustable boom microphone, and long battery life for gaming and everyday listening.",
+
+    benefits: [
+      {
+        title: "Play without the cable.",
+        text: "A wireless USB receiver connects the headset to compatible devices, giving you freedom to move without a cable running to your computer."
+      },
+      {
+        title: "Keep your team in the conversation.",
+        text: "Position the bendable microphone close to your mouth for voice chat, calls, and coordinating your next move."
+      },
+      {
+        title: "Recharge less often.",
+        text: "Long battery life lets you get through multiple gaming sessions between charges. Actual runtime depends on volume and usage."
+      }
+    ],
+
+
     specs: [
-      ["Connections", "Wireless dongle, Bluetooth, or USB — choose a supported connection for your setup."],
-      ["Battery", "Manufacturer states up to 70 hours — actual runtime varies with use."],
-      ["Microphone", "Bendable boom mic — position it for voice chat."],
-      ["Weight", "280g for the researched offer — compare weight before choosing your fit."],
-      ["Ear cushions", "Memory foam — comfort and passive isolation depend on personal fit."]
+      [
+        "2.4GHz wireless, Bluetooth and USB wired audio",
+        "Use the wireless receiver for gaming, Bluetooth for compatible mobile devices, or a USB cable for wired listening."
+      ],
+      [
+        "Up to 70 hours of battery life",
+        "Get through multiple gaming sessions between charges. Actual battery life varies with volume and usage."
+      ],
+      [
+        "Bendable boom microphone",
+        "Position the microphone close to your mouth so teammates can hear you more clearly."
+      ],
+      [
+        "Memory-foam ear cushions",
+        "Soft padding cushions your ears during longer sessions and helps reduce surrounding sound through a close fit."
+      ]
     ],
+
+
     fullSpecs: [
-      ["Charging", "USB-C charging; fast-charge claims depend on manufacturer test conditions."],
-      ["Spatial audio", "THX software requires supported Windows software; it is not universal across consoles."]
+      ["Wireless connection", "2.4GHz through a wireless dongle"],
+      ["Bluetooth version", "5.2"],
+      ["Wired connection", "USB"],
+      ["Driver diameter", "50mm"],
+      ["Listed weight", "280g — researched White Edition"]
     ],
-    note: "White Edition image. Confirm the exact color SKU and connection support for your device.",
+
+
     related: ["headphones", "logitechg502"]
   },
 
-    {
+  {
     id: "videogame",
     title: "Call of Duty: Modern Warfare 4",
     category: "Software",
@@ -592,19 +887,49 @@ const assignment11Products = [
     reviews: 146,
     image: "VideoGame.png",
     goodFor: "Story missions and online matches on supported platforms",
-    overview: "A standard-edition digital-code reference for Xbox Series X|S and Windows. Check the redemption region, device, and online requirements; no physical disc is included.",
+    overview: "Jump into military action with a digital copy of Call of Duty. Download the game without a physical disc and explore the content included in the Standard edition.",
+
+    benefits: [
+      {
+        title: "No disc required.",
+        text: "Redeem your code and download the game directly to a supported device."
+      },
+      {
+        title: "Start with the base game.",
+        text: "The Standard edition includes the main game without the additional content offered in premium editions."
+      },
+      {
+        title: "Keep it in your digital library.",
+        text: "Access your purchase through the account used to redeem it, without storing or swapping a physical disc."
+      }
+    ],
+
+
     specs: [
-      ["Platform", "Xbox Series X|S and Windows — confirm your device; not Xbox One or PS5."],
-      ["Format", "Standard digital code — no physical disc included."],
-      ["Modes", "Campaign, Multiplayer, and DMZ — choose story or online play."],
-      ["Online access", "Activision account required; console multiplayer needs a separate subscription."],
-      ["Edition", "Base game — no Vault Edition bonuses implied."]
+      [
+        "Digital download code",
+        "Download the game without waiting for shipping or keeping track of a physical disc."
+      ],
+      [
+        "Standard edition",
+        "Get the base game without paying for a premium edition's additional content."
+      ],
+      [
+        "Account-linked redemption",
+        "Keep the game in the digital library of the account used to redeem your code."
+      ]
     ],
+
+
     fullSpecs: [
-      ["Reference listing", "Newegg item N82E16832701126, model G7Q-00461. Confirm redemption terms."],
-      ["Release date", "The researched sources conflict; the release date is not treated as confirmed here."]
+      ["Model number", "G7Q-00461"],
+      ["Edition", "Standard"],
+      ["Delivery format", "Digital download code"],
+      ["Console platform", "Xbox Series X|S"],
+      ["PC platform", "Windows 10/11"]
     ],
-    note: "Check region and account requirements. Related peripherals are browsing options, not Xbox compatibility claims.",
+
+
     related: ["logitechg502", "razerheadset"]
   },
   {
@@ -617,19 +942,53 @@ const assignment11Products = [
     reviews: 737,
     image: "lenovo.png",
     goodFor: "PC gaming and multitasking",
-    overview: "A gaming-laptop family with dedicated RTX graphics and a high-refresh display. Confirm the seller's memory and storage configuration before comparing offers.",
+    overview: "For PC gaming and everyday work, this Lenovo LOQ reference combines dedicated graphics, a high-refresh screen and storage for applications, projects and games.",
+
+    benefits: [
+      {
+        title: "Go from assignments to game time.",
+        text: "A Ryzen 7 processor handles everyday work, while dedicated NVIDIA graphics power PC games and supported creative apps."
+      },
+      {
+        title: "Follow fast-moving action.",
+        text: "The 144Hz Full HD screen makes movement look smoother in games running at higher frame rates."
+      },
+      {
+        title: "Make room for work and play.",
+        text: "A 1TB SSD gives you space for projects, applications, and games, with quick access when you're ready to get started."
+      }
+    ],
+
+
     specs: [
-      ["Processor", "Ryzen 7 170 — supports games and everyday multitasking."],
-      ["Graphics", "RTX 4050 Laptop GPU — dedicated graphics for supported games and creative apps."],
-      ["Screen", "15.6-inch Full HD, 144Hz — smoother motion when games supply matching frames."],
-      ["Connections", "Platform reference: Wi-Fi 6, Ethernet, HDMI, and USB — confirm exact ports."],
-      ["Memory and storage", "Capacity to confirm — seller offers differ; do not assume a particular RAM/SSD size."]
+      [
+        "15.6-inch Full HD display, 144Hz",
+        "See clear text and images, with smoother motion in games running at higher frame rates."
+      ],
+      [
+        "AMD Ryzen 7 170 processor",
+        "Run your everyday apps and move between assignments, browsing, and other tasks."
+      ],
+      [
+        "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "Play PC games and accelerate graphics-intensive tasks in supported creative apps."
+      ],
+      [
+        "1TB SSD",
+        "Keep projects, applications, and games in one place, with faster loading than a traditional hard drive."
+      ]
     ],
+
+
     fullSpecs: [
-      ["Variant check", "Confirm the exact seller item and machine type before using detailed platform specifications."],
-      ["Seller upgrades", "Some offers are seller-upgraded; check configuration and coverage separately."]
+      ["Processor", "AMD Ryzen 7 170"],
+      ["Graphics", "NVIDIA GeForce RTX 4050 Laptop GPU"],
+      ["Display diagonal", "15.6 inches"],
+      ["Display resolution", "1920 × 1080"],
+      ["Display refresh rate", "144Hz"]
     ],
-    note: "Exact RAM, storage, and ports need confirmation. No capacity is inferred from the picture.",
+
+
     related: ["msikatana", "acer", "asuszenbook"]
   },
   {
@@ -642,19 +1001,56 @@ const assignment11Products = [
     reviews: 407,
     image: "headphones.png",
     goodFor: "Gaming and calls across supported devices",
-    overview: "A wireless headset with receiver and Bluetooth connection options. Its microphone is built into the headset; there is no external boom.",
+    overview: "Go from gaming to everyday calls without the wires. The Logitech G325 combines flexible wireless connections, a built-in microphone, and lightweight cushioning for work and play.",
+
+    benefits: [
+      {
+        title: "Connect to your gaming setup or phone.",
+        text: "Use the LIGHTSPEED receiver with your computer or Bluetooth with compatible devices, giving you options for gaming, music, and calls."
+      },
+      {
+        title: "Speak without adjusting a microphone arm.",
+        text: "The built-in microphone keeps voice chat and calls simple, with no boom to position in front of your face."
+      },
+      {
+        title: "Keep things light.",
+        text: "At 212g, the headset keeps weight down, while memory-foam earcups provide soft cushioning around your ears."
+      }
+    ],
+
+
     specs: [
-      ["Wireless modes", "LIGHTSPEED receiver and Bluetooth — choose the connection for your setup."],
-      ["Platforms", "PC, PS5, and Switch support listed by Logitech — verify the connection mode."],
-      ["Microphone", "Built-in beamforming mic — voice chat without an external boom."],
-      ["Battery", "Manufacturer states 24+ hours — actual runtime varies."],
-      ["Weight", "212g — compare weight and fit before choosing."]
+      [
+        "LIGHTSPEED wireless and Bluetooth",
+        "Connect through the wireless receiver for gaming or use Bluetooth for listening and calls on compatible devices."
+      ],
+      [
+        "Built-in beamforming microphone",
+        "Talk to teammates or join calls without a microphone arm in front of your face."
+      ],
+      [
+        "24+ hours of battery life",
+        "Get through multiple sessions between charges. Actual runtime depends on volume, connection mode, and usage."
+      ],
+      [
+        "212g headset weight",
+        "Keeps the headset light on your head during gaming, listening, and calls."
+      ]
     ],
+
+
     fullSpecs: [
-      ["Padding", "Knit fabric and memory-foam earcups — comfort depends on fit and personal preference."],
-      ["Audio format", "24-bit audio listed — results depend on content, software, and connection."]
+      ["Receiver-based wireless technology", "Logitech LIGHTSPEED"],
+      ["Bluetooth connection", "Supported"],
+      ["Microphone design", "Built-in, boomless beamforming"],
+      ["Battery life claim", "24+ hours — stated by Logitech"],
+      ["Weight", "212g"]
     ],
-    note: "Platform support varies by connection. Microphone noise reduction is not active noise cancellation.",
+
+
+    keySpecsNote: "",
+
+
     related: ["razerheadset", "logitechg502"]
   },
   {
@@ -667,19 +1063,53 @@ const assignment11Products = [
     reviews: 489,
     image: "Acer.png",
     goodFor: "Everyday work and multitasking",
-    overview: "A large everyday workspace with substantial memory for browsing and office apps. This AG15-42P-R3GM reference uses integrated graphics, not a dedicated gaming GPU.",
+    overview: "Settle into your daily work with room to multitask. The Acer Aspire Go 15 pairs a spacious screen with plenty of memory and storage for assignments, documents, and entertainment.",
+
+    benefits: [
+      {
+        title: "Pick up where you left off.",
+        text: "Keep research tabs, documents, and other apps open together. A Ryzen 7 processor and 32GB of memory give you room to move between tasks without constantly closing things."
+      },
+      {
+        title: "See your work more comfortably.",
+        text: "The 15.6-inch Full HD screen gives documents and spreadsheets room to breathe, while IPS technology keeps the picture consistent when viewed from an angle."
+      },
+      {
+        title: "Make space for more than assignments.",
+        text: "A 1TB SSD holds your applications, projects, photos, and videos, with fast access when you need to open a file or get started on something new."
+      }
+    ],
+
+
     specs: [
-      ["Screen", "15.6-inch Full HD IPS, 60Hz — clear everyday viewing; non-touch."],
-      ["Processor", "Ryzen 7 7730U — supports office work and multitasking."],
-      ["Memory", "32GB DDR4 — working room for more tabs and apps."],
-      ["Storage", "1TB SSD — space for documents, applications, and media."],
-      ["Connections", "USB-C, USB-A, HDMI, and Ethernet — connect everyday accessories."]
-    ],
+  [
+    "15.6-inch Full HD IPS display",
+    "Read clear text and watch detailed video on a spacious screen, with colors that stay consistent when viewed from an angle."
+  ],
+  [
+    "AMD Ryzen 7 7730U processor",
+    "Work on documents, join video calls, and switch between everyday apps."
+  ],
+  [
+    "32GB DDR4 RAM",
+    "Keep research tabs, large documents, and multiple apps open without constantly closing things to free up memory."
+  ],
+  [
+    "1TB SSD",
+    "Store your projects, photos, and applications, with faster startup and loading than a traditional hard drive."
+  ]
+],
+
+
     fullSpecs: [
-      ["Graphics", "Integrated AMD Radeon — assess graphics-heavy applications separately."],
-      ["Battery claim", "Up to 9.5 hours in a listed test; actual runtime varies with settings and use."]
+      ["Processor", "AMD Ryzen 7 7730U"],
+      ["Graphics", "Integrated AMD Radeon"],
+      ["Memory", "32GB DDR4"],
+      ["Storage", "1TB SSD"],
+      ["Display resolution", "1920 × 1080"]
     ],
-    note: "Reference configuration: AG15-42P-R3GM. Other Aspire Go 15 variants differ.",
+
+
     related: ["asuszenbook", "lenovo", "msikatana"]
   }
 ];
@@ -771,20 +1201,60 @@ document.querySelectorAll(".product-card").forEach(function (card) {
 });
 
 // Build a simple specifications table.
-function makeSpecsTable(rows, caption) {
+function makeSpecsTable(rows, caption, firstHeading, secondHeading) {
+  firstHeading = firstHeading || "Technical feature";
+  secondHeading = secondHeading || "What it means for you";
+
+  let body = rows.map(function (row) {
+    return '<tr>' +
+      '<th scope="row">' + escapeProductText(row[0]) + '</th>' +
+      '<td>' + escapeProductText(row[1]) + '</td>' +
+      '</tr>';
+  }).join("");
+
+  if (rows.length === 0) {
+    body = '<tr><td colspan="2">' +
+      'Verified full specifications are not available ' +
+      'for the exact catalog item yet.' +
+      '</td></tr>';
+  }
+
   return '<table class="product-spec-table">' +
-    '<caption class="sr-only">' + escapeProductText(caption) + '</caption>' +
+    '<caption class="sr-only">' +
+    escapeProductText(caption) +
+    '</caption>' +
     '<thead><tr>' +
-    '<th scope="col">Feature</th>' +
-    '<th scope="col">What it means for you</th>' +
-    '</tr></thead><tbody>' +
-    rows.map(function (row) {
-      return '<tr>' +
-        '<th scope="row">' + escapeProductText(row[0]) + '</th>' +
-        '<td>' + escapeProductText(row[1]) + '</td>' +
-        '</tr>';
-    }).join("") +
-    '</tbody></table>';
+    '<th scope="col">' + escapeProductText(firstHeading) + '</th>' +
+    '<th scope="col">' + escapeProductText(secondHeading) + '</th>' +
+    '</tr></thead>' +
+    '<tbody>' + body + '</tbody></table>';
+}
+
+// Build an introduction followed by practical benefits.
+function renderProductOverview(product) {
+  const panel = document.querySelector("#panel-overview");
+  const benefits = product.benefits || [];
+
+  panel.innerHTML = '<div class="product-overview-copy">' +
+    '<p data-product-overview>' +
+    escapeProductText(product.overview) +
+    '</p>' +
+    '<ul>' + benefits.map(function (benefit) {
+      return '<li><strong>' +
+        escapeProductText(benefit.title) +
+        '</strong> ' +
+        escapeProductText(benefit.text) +
+        '</li>';
+    }).join("") + '</ul></div>';
+}
+
+// Show a specification note only when one is provided.
+function specsPanelNote(text) {
+  if (!text) return "";
+
+  return '<p class="specs-panel-note">' +
+    escapeProductText(text) +
+    '</p>';
 }
 
 // Build a related-product card using the same catalog.
@@ -859,7 +1329,7 @@ if (document.body.classList.contains("page-product")) {
     const stock = info.querySelector(".stock-status");
     stock.className = "product-demo-note";
     stock.textContent =
-      "Sample price and rating · Front-end demo. No real purchase is made.";
+      "";
 
     const addButton = info.querySelector("[data-add-cart]");
     addButton.dataset.productId = product.id;
@@ -887,18 +1357,25 @@ if (document.body.classList.contains("page-product")) {
       }
     });
 
-    document.querySelector("[data-product-overview]").textContent =
-      product.overview;
+    renderProductOverview(product);
 
     document.querySelector("#panel-key-specs").innerHTML =
+      specsPanelNote(product.keySpecsNote) +
       makeSpecsTable(product.specs, product.title + " key specifications");
 
     document.querySelector("#panel-full-specs").innerHTML =
-      makeSpecsTable(product.fullSpecs, product.title + " additional specifications");
+      specsPanelNote(product.fullSpecsNote) +
+      makeSpecsTable(
+        product.fullSpecs,
+        product.title + " full specifications",
+        "Specification",
+        "Details"
+      );
 
     const note = document.createElement("p");
     note.className = "product-spec-note";
     note.textContent = product.note;
+    note.hidden = !product.note;
     document.querySelector(".product-details").appendChild(note);
 
     const recommended = [];
@@ -2481,34 +2958,34 @@ document.addEventListener("input", function (event) {
   let paused = reducedMotion.matches;
   let touchStart = null;
   // Duplicate the first slide for a seamless forward loop.
-const firstSlideCopy = slides[0].cloneNode(true);
-firstSlideCopy.inert = true;
-firstSlideCopy.setAttribute("aria-hidden", "true");
-track.appendChild(firstSlideCopy);
-let wrapping = false;
+  const firstSlideCopy = slides[0].cloneNode(true);
+  firstSlideCopy.inert = true;
+  firstSlideCopy.setAttribute("aria-hidden", "true");
+  track.appendChild(firstSlideCopy);
+  let wrapping = false;
 
 
-// Fit the mobile carousel to the active slide.
-function fitMobileSlide() {
-  if (window.innerWidth < 768) {
-    viewport.style.height = slides[currentSlide].offsetHeight + "px";
-  } else {
-    viewport.style.height = "";
+  // Fit the mobile carousel to the active slide.
+  function fitMobileSlide() {
+    if (window.innerWidth < 768) {
+      viewport.style.height = slides[currentSlide].offsetHeight + "px";
+    } else {
+      viewport.style.height = "";
+    }
   }
-}
 
-// Update the height when the browser size changes.
-window.addEventListener("resize", fitMobileSlide);
+  // Update the height when the browser size changes.
+  window.addEventListener("resize", fitMobileSlide);
 
-// Update again after banner images finish loading.
-carousel.querySelectorAll("img").forEach(function (image) {
-  image.addEventListener("load", fitMobileSlide);
-});
+  // Update again after banner images finish loading.
+  carousel.querySelectorAll("img").forEach(function (image) {
+    image.addEventListener("load", fitMobileSlide);
+  });
 
-// Update after the website fonts finish loading.
-if (document.fonts) {
-  document.fonts.ready.then(fitMobileSlide);
-}
+  // Update after the website fonts finish loading.
+  if (document.fonts) {
+    document.fonts.ready.then(fitMobileSlide);
+  }
 
   function stopTimer() {
     clearTimeout(timer);
@@ -2545,67 +3022,67 @@ if (document.fonts) {
   }
 
   function showSlide(index, announce) {
-  if (wrapping) return;
+    if (wrapping) return;
 
-  const movingPastEnd = index >= slides.length;
-  currentSlide = (index + slides.length) % slides.length;
+    const movingPastEnd = index >= slides.length;
+    currentSlide = (index + slides.length) % slides.length;
 
-  slides.forEach(function (slide, slideIndex) {
-    const active = slideIndex === currentSlide;
-    slide.inert = !active;
-    slide.setAttribute("aria-hidden", String(!active));
-  });
+    slides.forEach(function (slide, slideIndex) {
+      const active = slideIndex === currentSlide;
+      slide.inert = !active;
+      slide.setAttribute("aria-hidden", String(!active));
+    });
 
-  dots.forEach(function (dot, dotIndex) {
-    dot.setAttribute(
-      "aria-pressed",
-      String(dotIndex === currentSlide)
-    );
-  });
+    dots.forEach(function (dot, dotIndex) {
+      dot.setAttribute(
+        "aria-pressed",
+        String(dotIndex === currentSlide)
+      );
+    });
 
-  if (announce) {
-    status.textContent =
-      slides[currentSlide].getAttribute("aria-label");
-  }
-
-  fitMobileSlide();
-
-  if (movingPastEnd && !reducedMotion.matches) {
-    wrapping = true;
-
-    // Continue forward to the duplicate first slide.
-    track.style.transform =
-      "translateX(-" + slides.length * 100 + "%)";
-
-    function finishLoop(event) {
-      if (
-        event &&
-        (event.target !== track || event.propertyName !== "transform")
-      ) {
-        return;
-      }
-
-      clearTimeout(fallback);
-      track.removeEventListener("transitionend", finishLoop);
-
-      // Jump to the identical real first slide without animation.
-      track.style.transition = "none";
-      track.style.transform = "translateX(0)";
-
-      // Apply the reset before restoring the CSS transition.
-      void track.offsetWidth;
-      track.style.transition = "";
-
-      wrapping = false;
+    if (announce) {
+      status.textContent =
+        slides[currentSlide].getAttribute("aria-label");
     }
 
-    track.addEventListener("transitionend", finishLoop);
-    const fallback = setTimeout(finishLoop, 650);
-  } else {
-    track.style.transform =
-      "translateX(-" + currentSlide * 100 + "%)";
+    fitMobileSlide();
+
+    if (movingPastEnd && !reducedMotion.matches) {
+      wrapping = true;
+
+      // Continue forward to the duplicate first slide.
+      track.style.transform =
+        "translateX(-" + slides.length * 100 + "%)";
+
+      function finishLoop(event) {
+        if (
+          event &&
+          (event.target !== track || event.propertyName !== "transform")
+        ) {
+          return;
+        }
+
+        clearTimeout(fallback);
+        track.removeEventListener("transitionend", finishLoop);
+
+        // Jump to the identical real first slide without animation.
+        track.style.transition = "none";
+        track.style.transform = "translateX(0)";
+
+        // Apply the reset before restoring the CSS transition.
+        void track.offsetWidth;
+        track.style.transition = "";
+
+        wrapping = false;
+      }
+
+      track.addEventListener("transitionend", finishLoop);
+      const fallback = setTimeout(finishLoop, 650);
+    } else {
+      track.style.transform =
+        "translateX(-" + currentSlide * 100 + "%)";
+    }
   }
-}
 
   function navigate(index) {
     showSlide(index, true);

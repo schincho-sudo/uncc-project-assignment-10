@@ -4097,3 +4097,37 @@ body.dark-mode {
   }
 }
 
+/* Product overview benefits and specification notes. */
+.page-product .product-overview-copy,
+.page-product .specs-panel-note {
+  color: var(--ink-soft);
+  font-size: .875rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.page-product .product-overview-copy {
+  padding: 1rem;
+}
+
+.page-product .product-overview-copy p {
+  margin: 0 0 1rem;
+}
+
+.page-product .product-overview-copy ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.page-product .product-overview-copy li + li {
+  margin-top: .75rem;
+}
+
+.page-product .product-overview-copy strong {
+  color: var(--ink);
+}
+
+.page-product .specs-panel-note {
+  margin: 0;
+  padding: 1rem;
+}
